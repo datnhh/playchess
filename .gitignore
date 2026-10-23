@@ -1,0 +1,27 @@
+docs/decisions/debates/
+
+# Dependencies and build output
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Engine files are copied from node_modules by scripts/copy-engine.mjs
+public/engine/
+
+# Test output
+test-results/
+playwright-report/
+coverage/
+
+# Local environment (TTS keys etc.)
+.env
+.env.*
+!.env.example
+
+# Editors / OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+*.log

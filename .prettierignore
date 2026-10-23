@@ -1,0 +1,9 @@
+dist
+node_modules
+public/engine
+coverage
+playwright-report
+test-results
+docs/decisions/debates
+package-lock.json
+LICENSE

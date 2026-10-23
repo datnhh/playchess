@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "id": "sprout-rook",
+  "track": "sprout",
+  "order": 4,
+  "title": "Quân Xe",
+  "summary": "Bài mẫu viết tay: Xe đi thẳng theo hàng ngang và cột dọc, không đi chéo.",
+  "boardMode": "sandbox",
+  "orientation": "white",
+  "start": "8/8/8/8/3R4/8/8/8",
+  "reviewed": false,
+  "steps": [
+    {
+      "kind": "watch",
+      "id": "meet-rook",
+      "say": "Đây là quân Xe. Xe trông giống một lâu đài nhỏ.",
+      "actions": [{ "type": "highlight", "squares": ["d4"], "tone": "good" }]
+    },
+    {
+      "kind": "watch",
+      "id": "rook-lines",
+      "say": "Xe đi thẳng theo hàng ngang và cột dọc, đi xa bao nhiêu cũng được.",
+      "actions": [
+        { "type": "clear", "target": "shapes" },
+        {
+          "type": "highlight",
+          "squares": [
+            "d1",
+            "d2",
+            "d3",
+            "d5",
+            "d6",
+            "d7",
+            "d8",
+            "a4",
+            "b4",
+            "c4",
+            "e4",
+            "f4",
+            "g4",
+            "h4"
+          ]
+        }
+      ],
+      "assert": [{ "type": "highlightIsLegalMoves", "square": "d4" }]
+    },
+    {
+      "kind": "watch",
+      "id": "rook-goes-far",
+      "say": "Xem này, Xe đi lên thật xa.",
+      "actions": [
+        { "type": "clear", "target": "shapes" },
+        { "type": "move", "from": "d4", "to": "d7" }
+      ],
+      "assert": [{ "type": "pieceAt", "square": "d7", "piece": "wR" }]
+    },
+    {
+      "kind": "watch",
+      "id": "rook-no-diagonal",
+      "say": "Xe không đi chéo được nhé.",
+      "actions": [
+        { "type": "setPosition", "position": "8/8/8/8/3R4/8/8/8" },
+        { "type": "arrow", "from": "d4", "to": "f6", "tone": "warn" }
+      ]
+    },
+    {
+      "kind": "interactMove",
+      "id": "move-to-star",
+      "say": "Bé hãy chạm vào Xe, rồi chạm vào ô có ngôi sao.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "stickers", "items": [{ "square": "d8", "kind": "star" }] }
+      ],
+      "accept": [{ "from": "d4", "to": "d8" }],
+      "praise": "Giỏi quá! Xe đã tới ngôi sao.",
+      "retry": "Chưa đúng rồi. Bé thử lại nhé, Xe chỉ đi thẳng thôi."
+    },
+    {
+      "kind": "captureTargets",
+      "id": "eat-apples",
+      "say": "Bây giờ bé giúp Xe ăn hết ba quả táo nhé.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "setPosition", "position": "8/8/8/8/3R4/8/8/8" },
+        {
+          "type": "stickers",
+          "items": [
+            { "square": "d7", "kind": "apple" },
+            { "square": "a7", "kind": "apple" },
+            { "square": "a2", "kind": "apple" }
+          ]
+        }
+      ],
+      "piece": "d4",
+      "targets": ["d7", "a7", "a2"],
+      "maxMoves": 4,
+      "praise": "Tuyệt vời! Bé đã giúp Xe ăn hết táo."
+    },
+    {
+      "kind": "watch",
+      "id": "goodbye",
+      "say": "Bé đã học xong quân Xe. Hẹn gặp lại bé nhé!",
+      "actions": [{ "type": "clear", "target": "all" }]
+    }
+  ]
+}
