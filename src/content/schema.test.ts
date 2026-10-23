@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { lessonSchema, type LessonInput } from './schema.ts';
+import { lessonSchema, trackSchema, type LessonInput } from './schema.ts';
 import rookLesson from '../../content/lessons/basic/rook.json';
 
 const lessonFiles = import.meta.glob<unknown>('../../content/lessons/**/*.json', {
@@ -34,6 +34,12 @@ describe('lesson files', () => {
       expect(lesson.id).toBe(`${track}-${fileName}`);
     });
   }
+});
+
+describe('trackSchema', () => {
+  it('matches the plain isTrack check in src/app/App.tsx', () => {
+    expect(trackSchema.options).toEqual(['basic', 'advanced']);
+  });
 });
 
 describe('lessonSchema', () => {

@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "id": "basic-check",
+  "track": "basic",
+  "order": 10,
+  "title": "Chiếu và 3 cách thoát chiếu",
+  "icon": "check",
+  "summary": "Chiếu là Vua bị tấn công. Ba cách thoát: chạy Vua, chặn, ăn quân đang chiếu.",
+  "boardMode": "standard",
+  "orientation": "white",
+  "start": "4k3/8/8/8/8/8/8/4K2r w - - 0 1",
+  "reviewed": false,
+  "steps": [
+    {
+      "kind": "watch",
+      "id": "meet-check",
+      "say": "Xe đen đang tấn công Vua trắng. Như vậy gọi là chiếu.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "highlight", "squares": ["e1"], "tone": "warn" },
+        { "type": "arrow", "from": "h1", "to": "e1", "tone": "warn" }
+      ],
+      "assert": [{ "type": "check" }]
+    },
+    {
+      "kind": "watch",
+      "id": "save-king",
+      "say": "Khi bị chiếu, bé phải cứu Vua ngay. Có ba cách nhé.",
+      "actions": [
+        { "type": "clear", "target": "shapes" },
+        { "type": "highlight", "squares": ["e1"], "tone": "good" }
+      ],
+      "assert": [{ "type": "check" }]
+    },
+    {
+      "kind": "watch",
+      "id": "way-run",
+      "say": "Cách thứ nhất: Vua chạy sang ô an toàn.",
+      "actions": [
+        { "type": "clear", "target": "shapes" },
+        { "type": "highlight", "squares": ["d2", "e2", "f2"], "tone": "good" }
+      ],
+      "assert": [{ "type": "check" }]
+    },
+    {
+      "kind": "interactMove",
+      "id": "do-run",
+      "say": "Bé hãy chạm vào Vua, rồi chạm vào ô có ngôi sao.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "stickers", "items": [{ "square": "e2", "kind": "star" }] }
+      ],
+      "accept": [{ "from": "e1", "to": "e2" }],
+      "praise": "Giỏi quá! Vua đã chạy thoát rồi.",
+      "retry": "Bé thử lại nhé, Vua đi tới ngôi sao."
+    },
+    {
+      "kind": "watch",
+      "id": "way-block",
+      "say": "Cách thứ hai: đặt một quân vào giữa để chặn.",
+      "actions": [
+        { "type": "setPosition", "position": "k7/8/8/8/8/4N3/8/4K2r w - - 0 1" },
+        { "type": "clear", "target": "all" },
+        { "type": "arrow", "from": "h1", "to": "e1", "tone": "warn" },
+        { "type": "highlight", "squares": ["f1", "g1"], "tone": "good" }
+      ],
+      "assert": [{ "type": "check" }]
+    },
+    {
+      "kind": "interactMove",
+      "id": "do-block",
+      "say": "Bé hãy cho Mã nhảy tới ô có ngôi sao để chặn.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "stickers", "items": [{ "square": "f1", "kind": "star" }] }
+      ],
+      "accept": [{ "from": "e3", "to": "f1" }],
+      "praise": "Tuyệt vời! Mã đã chặn Xe đen.",
+      "retry": "Bé thử lại nhé, cho Mã tới ngôi sao."
+    },
+    {
+      "kind": "watch",
+      "id": "way-capture",
+      "say": "Cách thứ ba: ăn luôn quân đang chiếu.",
+      "actions": [
+        { "type": "setPosition", "position": "k7/8/8/7R/8/8/8/4K2r w - - 0 1" },
+        { "type": "clear", "target": "all" },
+        { "type": "arrow", "from": "h1", "to": "e1", "tone": "warn" },
+        { "type": "arrow", "from": "h5", "to": "h1", "tone": "good" }
+      ],
+      "assert": [{ "type": "check" }]
+    },
+    {
+      "kind": "interactMove",
+      "id": "do-capture",
+      "say": "Bé hãy cho Xe trắng ăn Xe đen nhé.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "stickers", "items": [{ "square": "h1", "kind": "star" }] }
+      ],
+      "accept": [{ "from": "h5", "to": "h1" }],
+      "praise": "Giỏi quá! Bé đã ăn quân đang chiếu.",
+      "retry": "Bé thử lại nhé, Xe trắng đi thẳng xuống."
+    },
+    {
+      "kind": "watch",
+      "id": "recap",
+      "say": "Chạy Vua, chặn, hoặc ăn quân. Bé nhớ ba cách nhé.",
+      "actions": [
+        { "type": "setPosition", "position": "4k3/8/8/8/8/8/8/4K2r w - - 0 1" },
+        { "type": "clear", "target": "all" },
+        { "type": "highlight", "squares": ["e1"], "tone": "good" }
+      ],
+      "assert": [{ "type": "check" }]
+    },
+    {
+      "kind": "watch",
+      "id": "goodbye",
+      "say": "Bé đã học xong bài chiếu. Hẹn gặp lại bé nhé!",
+      "actions": [{ "type": "clear", "target": "all" }]
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "id": "basic-king",
+  "track": "basic",
+  "order": 5,
+  "title": "Quân Vua",
+  "summary": "Vua đi từng ô một theo mọi hướng: thẳng, ngang và chéo.",
+  "icon": "king",
+  "boardMode": "sandbox",
+  "orientation": "white",
+  "start": "8/8/8/8/3K4/8/8/8",
+  "reviewed": false,
+  "steps": [
+    {
+      "kind": "watch",
+      "id": "meet-king",
+      "say": "Đây là quân Vua. Vua đội chiếc vương miện có dấu cộng.",
+      "actions": [{ "type": "highlight", "squares": ["d4"], "tone": "good" }]
+    },
+    {
+      "kind": "watch",
+      "id": "king-one-step",
+      "say": "Vua đi từng ô một, đi hướng nào cũng được.",
+      "actions": [
+        { "type": "clear", "target": "shapes" },
+        { "type": "highlight", "squares": ["c3", "c4", "c5", "d3", "d5", "e3", "e4", "e5"] }
+      ],
+      "assert": [{ "type": "highlightIsLegalMoves", "square": "d4" }]
+    },
+    {
+      "kind": "watch",
+      "id": "king-steps",
+      "say": "Xem này, Vua bước lên một ô.",
+      "actions": [
+        { "type": "clear", "target": "shapes" },
+        { "type": "move", "from": "d4", "to": "d5" }
+      ],
+      "assert": [{ "type": "pieceAt", "square": "d5", "piece": "wK" }]
+    },
+    {
+      "kind": "tapSquare",
+      "id": "tap-king-square",
+      "say": "Bé chạm vào hình dán mà Vua bước tới được nhé.",
+      "actions": [
+        { "type": "setPosition", "position": "8/8/8/8/3K4/8/8/8" },
+        { "type": "clear", "target": "all" },
+        {
+          "type": "stickers",
+          "items": [
+            { "square": "e5", "kind": "star" },
+            { "square": "d6", "kind": "heart" },
+            { "square": "f4", "kind": "heart" }
+          ]
+        }
+      ],
+      "answers": ["e5"],
+      "retry": "Chưa đúng rồi. Bé nhớ nhé, Vua chỉ bước một ô."
+    },
+    {
+      "kind": "watch",
+      "id": "king-not-far",
+      "say": "Vua không đi xa được, chỉ một ô thôi.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "arrow", "from": "d4", "to": "d7", "tone": "warn" }
+      ]
+    },
+    {
+      "kind": "interactMove",
+      "id": "move-to-star",
+      "say": "Bé chạm vào Vua, rồi chạm vào ô có ngôi sao.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "stickers", "items": [{ "square": "c3", "kind": "star" }] }
+      ],
+      "accept": [{ "from": "d4", "to": "c3" }],
+      "praise": "Giỏi quá! Vua đã bước tới ngôi sao.",
+      "retry": "Chưa đúng rồi. Vua bước một ô sát bên nhé."
+    },
+    {
+      "kind": "captureTargets",
+      "id": "eat-apples",
+      "say": "Bây giờ bé giúp Vua ăn hết ba quả táo nhé.",
+      "actions": [
+        { "type": "setPosition", "position": "8/8/8/8/3K4/8/8/8" },
+        { "type": "clear", "target": "all" },
+        {
+          "type": "stickers",
+          "items": [
+            { "square": "e5", "kind": "apple" },
+            { "square": "f6", "kind": "apple" },
+            { "square": "g6", "kind": "apple" }
+          ]
+        }
+      ],
+      "piece": "d4",
+      "targets": ["e5", "f6", "g6"],
+      "maxMoves": 5,
+      "praise": "Tuyệt vời! Bé đã giúp Vua ăn hết táo."
+    },
+    {
+      "kind": "watch",
+      "id": "goodbye",
+      "say": "Bé đã học xong quân Vua. Hẹn gặp lại bé nhé!",
+      "actions": [
+        { "type": "setPosition", "position": "8/8/8/8/3K4/8/8/8" },
+        { "type": "clear", "target": "all" }
+      ]
+    }
+  ]
+}

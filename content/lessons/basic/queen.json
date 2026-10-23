@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "id": "basic-queen",
+  "track": "basic",
+  "order": 4,
+  "title": "Quân Hậu",
+  "summary": "Hậu đi thẳng như Xe và đi chéo như Tượng, xa bao nhiêu cũng được, nhưng không nhảy hình chữ L.",
+  "icon": "queen",
+  "boardMode": "sandbox",
+  "orientation": "white",
+  "start": "8/8/8/8/3Q4/8/8/8",
+  "reviewed": false,
+  "steps": [
+    {
+      "kind": "watch",
+      "id": "meet-queen",
+      "say": "Đây là quân Hậu. Hậu đội chiếc vương miện nhiều răng.",
+      "actions": [{ "type": "highlight", "squares": ["d4"], "tone": "good" }]
+    },
+    {
+      "kind": "watch",
+      "id": "queen-straight",
+      "say": "Hậu đi thẳng theo hàng ngang và cột dọc, giống Xe.",
+      "actions": [
+        { "type": "clear", "target": "shapes" },
+        { "type": "arrow", "from": "d4", "to": "d8" },
+        { "type": "arrow", "from": "d4", "to": "d1" },
+        { "type": "arrow", "from": "d4", "to": "a4" },
+        { "type": "arrow", "from": "d4", "to": "h4" }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "queen-diagonal",
+      "say": "Hậu cũng đi theo đường chéo, giống Tượng.",
+      "actions": [
+        { "type": "clear", "target": "shapes" },
+        { "type": "arrow", "from": "d4", "to": "h8" },
+        { "type": "arrow", "from": "d4", "to": "a7" },
+        { "type": "arrow", "from": "d4", "to": "a1" },
+        { "type": "arrow", "from": "d4", "to": "g1" }
+      ]
+    },
+    {
+      "kind": "tapSquare",
+      "id": "tap-queen-square",
+      "say": "Bé chạm vào hình dán mà Hậu đi tới được nhé.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        {
+          "type": "stickers",
+          "items": [
+            { "square": "b6", "kind": "star" },
+            { "square": "c6", "kind": "heart" },
+            { "square": "e6", "kind": "heart" }
+          ]
+        }
+      ],
+      "answers": ["b6"],
+      "retry": "Chưa đúng rồi. Hậu đi thẳng hoặc đi chéo nhé."
+    },
+    {
+      "kind": "watch",
+      "id": "queen-all-squares",
+      "say": "Từ đây, Hậu đi được tới tất cả các ô đang sáng.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        {
+          "type": "highlight",
+          "squares": [
+            "d1",
+            "d2",
+            "d3",
+            "d5",
+            "d6",
+            "d7",
+            "d8",
+            "a4",
+            "b4",
+            "c4",
+            "e4",
+            "f4",
+            "g4",
+            "h4",
+            "c3",
+            "b2",
+            "a1",
+            "e5",
+            "f6",
+            "g7",
+            "h8",
+            "c5",
+            "b6",
+            "a7",
+            "e3",
+            "f2",
+            "g1"
+          ]
+        }
+      ],
+      "assert": [{ "type": "highlightIsLegalMoves", "square": "d4" }]
+    },
+    {
+      "kind": "watch",
+      "id": "queen-goes-far",
+      "say": "Xem này, Hậu đi chéo lên thật xa.",
+      "actions": [
+        { "type": "clear", "target": "shapes" },
+        { "type": "move", "from": "d4", "to": "h8" }
+      ],
+      "assert": [{ "type": "pieceAt", "square": "h8", "piece": "wQ" }]
+    },
+    {
+      "kind": "watch",
+      "id": "queen-no-jump",
+      "say": "Hậu không nhảy hình chữ L như Mã đâu nhé.",
+      "actions": [
+        { "type": "setPosition", "position": "8/8/8/8/3Q4/8/8/8" },
+        { "type": "clear", "target": "all" },
+        { "type": "arrow", "from": "d4", "to": "e6", "tone": "warn" }
+      ]
+    },
+    {
+      "kind": "interactMove",
+      "id": "move-to-star",
+      "say": "Bé chạm vào Hậu, rồi chạm vào ô có ngôi sao.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "stickers", "items": [{ "square": "g7", "kind": "star" }] }
+      ],
+      "accept": [{ "from": "d4", "to": "g7" }],
+      "praise": "Giỏi quá! Hậu đã tới ngôi sao.",
+      "retry": "Chưa đúng rồi. Hậu đi thẳng hoặc đi chéo nhé."
+    },
+    {
+      "kind": "captureTargets",
+      "id": "eat-apples",
+      "say": "Bây giờ bé giúp Hậu ăn hết ba quả táo nhé.",
+      "actions": [
+        { "type": "setPosition", "position": "8/8/8/8/3Q4/8/8/8" },
+        { "type": "clear", "target": "all" },
+        {
+          "type": "stickers",
+          "items": [
+            { "square": "d8", "kind": "apple" },
+            { "square": "h4", "kind": "apple" },
+            { "square": "b4", "kind": "apple" }
+          ]
+        }
+      ],
+      "piece": "d4",
+      "targets": ["d8", "h4", "b4"],
+      "maxMoves": 5,
+      "praise": "Tuyệt vời! Bé đã giúp Hậu ăn hết táo."
+    },
+    {
+      "kind": "watch",
+      "id": "goodbye",
+      "say": "Bé đã học xong quân Hậu. Hẹn gặp lại bé nhé!",
+      "actions": [
+        { "type": "setPosition", "position": "8/8/8/8/3Q4/8/8/8" },
+        { "type": "clear", "target": "all" }
+      ]
+    }
+  ]
+}

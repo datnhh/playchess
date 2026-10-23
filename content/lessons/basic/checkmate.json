@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "id": "basic-checkmate",
+  "track": "basic",
+  "order": 11,
+  "title": "Chiếu hết",
+  "icon": "checkmate",
+  "summary": "Chiếu mà Vua hết đường thoát là thắng. Bé tự chiếu hết bằng Xe, rồi bằng Hậu và Vua.",
+  "boardMode": "standard",
+  "orientation": "white",
+  "start": "R5k1/5ppp/8/8/8/8/8/6K1 b - - 0 1",
+  "reviewed": false,
+  "steps": [
+    {
+      "kind": "watch",
+      "id": "meet-mate",
+      "say": "Chiếu mà Vua không còn đường chạy là chiếu hết.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "highlight", "squares": ["g8"], "tone": "warn" },
+        { "type": "arrow", "from": "a8", "to": "g8", "tone": "warn" }
+      ],
+      "assert": [{ "type": "checkmate" }]
+    },
+    {
+      "kind": "watch",
+      "id": "no-escape",
+      "say": "Vua đen bị chính Tốt của mình chắn đường.",
+      "actions": [
+        { "type": "clear", "target": "shapes" },
+        { "type": "highlight", "squares": ["f7", "g7", "h7"], "tone": "warn" }
+      ],
+      "assert": [{ "type": "checkmate" }]
+    },
+    {
+      "kind": "watch",
+      "id": "white-wins",
+      "say": "Không chạy, không chặn, không ăn được Xe. Bên trắng thắng!",
+      "actions": [
+        { "type": "clear", "target": "shapes" },
+        { "type": "highlight", "squares": ["a8"], "tone": "good" }
+      ],
+      "assert": [{ "type": "checkmate" }]
+    },
+    {
+      "kind": "interactMove",
+      "id": "rook-mate",
+      "say": "Đến lượt bé. Hãy cho Xe tới ô có ngôi sao.",
+      "actions": [
+        { "type": "setPosition", "position": "6k1/5ppp/8/8/8/8/8/R5K1 w - - 0 1" },
+        { "type": "clear", "target": "all" },
+        { "type": "stickers", "items": [{ "square": "a8", "kind": "star" }] }
+      ],
+      "accept": [{ "from": "a1", "to": "a8" }],
+      "praise": "Giỏi quá! Xe đã tới ngôi sao.",
+      "retry": "Bé thử lại nhé, Xe đi thẳng lên."
+    },
+    {
+      "kind": "watch",
+      "id": "rook-mate-done",
+      "say": "Chiếu hết rồi! Vua đen không chạy được nữa.",
+      "actions": [
+        { "type": "setPosition", "position": "R5k1/5ppp/8/8/8/8/8/6K1 b - - 0 1" },
+        { "type": "clear", "target": "all" },
+        { "type": "highlight", "squares": ["g8"], "tone": "warn" }
+      ],
+      "assert": [{ "type": "checkmate" }]
+    },
+    {
+      "kind": "watch",
+      "id": "queen-king",
+      "say": "Hậu và Vua đứng gần nhau cũng chiếu hết được.",
+      "actions": [
+        { "type": "setPosition", "position": "k7/7Q/1K6/8/8/8/8/8 w - - 0 1" },
+        { "type": "clear", "target": "all" },
+        { "type": "highlight", "squares": ["b6", "h7"], "tone": "good" }
+      ]
+    },
+    {
+      "kind": "interactMove",
+      "id": "queen-mate",
+      "say": "Bé hãy cho Hậu tới ô có ngôi sao, sát Vua đen.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "stickers", "items": [{ "square": "b7", "kind": "star" }] }
+      ],
+      "accept": [{ "from": "h7", "to": "b7" }],
+      "praise": "Giỏi quá! Bé đã chiếu hết rồi.",
+      "retry": "Bé thử lại nhé, Hậu đi tới ngôi sao."
+    },
+    {
+      "kind": "watch",
+      "id": "queen-mate-done",
+      "say": "Vua trắng giữ Hậu, nên Vua đen không ăn Hậu được.",
+      "actions": [
+        { "type": "setPosition", "position": "k7/1Q6/1K6/8/8/8/8/8 b - - 0 1" },
+        { "type": "clear", "target": "all" },
+        { "type": "arrow", "from": "b6", "to": "b7", "tone": "good" },
+        { "type": "highlight", "squares": ["a8"], "tone": "warn" }
+      ],
+      "assert": [{ "type": "checkmate" }]
+    },
+    {
+      "kind": "watch",
+      "id": "goodbye",
+      "say": "Bé đã học xong bài chiếu hết. Hẹn gặp lại bé nhé!",
+      "actions": [{ "type": "clear", "target": "all" }]
+    }
+  ]
+}

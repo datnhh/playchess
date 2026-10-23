@@ -61,7 +61,10 @@ export type LessonEvent =
   | { type: 'TIMER'; token: number }
   | { type: 'USER_MOVE'; from: Square; to: Square }
   | { type: 'USER_TAP'; square: Square }
-  | { type: 'NEXT' }
+  /** The child's ▶ button: only skips the wait of a watch step, and only the step it was pressed on. */
+  | { type: 'NEXT'; stepIndex: number }
+  /** Unconditional skip, also over interactive steps (dev/review tools and tests). */
+  | { type: 'SKIP' }
   | { type: 'REPLAY' }
   | { type: 'RESTART' };
 
@@ -120,11 +123,33 @@ export function starsForMistakes(mistakes: number): number {
   return mistakes <= 2 ? 2 : 1;
 }
 
+/**
+ * Whether taps and moves count right now. Interactive steps accept them while the instruction is
+ * still being read (young children tap as soon as they understand) and while a retry clip plays;
+ * the answer then cuts the sentence short. Praise and mini-game restarts are never interrupted.
+ */
+export function acceptsInput(step: LessonStep | undefined, state: LessonMachineState): boolean {
+  if (!step || step.kind === 'watch') return false;
+  return (
+    state.phase === 'waitingInteraction' ||
+    state.phase === 'playingStep' ||
+    (state.phase === 'feedback' && state.feedbackThen === 'wait')
+  );
+}
+
+/** Whether the child's ▶ button is offered: watch steps only, so exercises cannot be skipped. */
+export function canSkipStep(lesson: Lesson, state: LessonMachineState): boolean {
+  const step = lesson.steps[state.stepIndex];
+  return (
+    step?.kind === 'watch' &&
+    (state.phase === 'playingStep' || state.phase === 'waitingInteraction')
+  );
+}
+
 /** Destinations the child may use right now; null = board is view only. */
 export function boardMovable(lesson: Lesson, state: LessonMachineState): BoardMovable | null {
-  if (state.phase !== 'waitingInteraction') return null;
   const step = lesson.steps[state.stepIndex];
-  if (!step) return null;
+  if (!acceptsInput(step, state) || !step) return null;
   if (step.kind === 'interactMove') {
     return { color: 'both', dests: legalDests(state.board.position, lesson.boardMode) };
   }
@@ -334,6 +359,11 @@ export function lessonTransition(
       return enterStep(lesson, createLessonState(lesson), 0, createBoardState(lesson.start));
 
     case 'NEXT':
+      // stepIndex guards against a press that lands just after the step auto-advanced.
+      if (event.stepIndex !== state.stepIndex || !canSkipStep(lesson, state)) return none;
+      return advance(lesson, state);
+
+    case 'SKIP':
       if (state.phase === 'idle' || state.phase === 'completed') return none;
       return advance(lesson, state);
 
@@ -377,11 +407,11 @@ export function lessonTransition(
       return step?.kind === 'watch' ? advance(lesson, state) : none;
 
     case 'USER_MOVE':
-      if (state.phase !== 'waitingInteraction' || !step) return none;
+      if (!acceptsInput(step, state) || !step) return none;
       return handleMove(lesson, state, step, event.from, event.to);
 
     case 'USER_TAP': {
-      if (state.phase !== 'waitingInteraction' || step?.kind !== 'tapSquare') return none;
+      if (!acceptsInput(step, state) || step?.kind !== 'tapSquare') return none;
       if (step.answers.includes(event.square)) {
         return giveFeedback(lesson, step, state, 'praise', 'advance', [
           { type: 'sfx', name: 'tap' },

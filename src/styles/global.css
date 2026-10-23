@@ -46,6 +46,7 @@ button {
 }
 
 .page {
+  position: relative;
   max-width: 1080px;
   margin: 0 auto;
   padding: 24px 16px 48px;
@@ -80,6 +81,21 @@ button {
   font-size: 1.4rem;
   text-decoration: none;
   touch-action: manipulation;
+}
+
+a.tile {
+  color: var(--color-primary-contrast);
+  text-decoration: none;
+}
+
+/* Text for screen readers only. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
 
 .tile[aria-disabled='true'] {

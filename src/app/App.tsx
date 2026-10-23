@@ -1,5 +1,5 @@
 import { lazy, Suspense, type ComponentType, type ReactElement } from 'react';
-import { trackSchema } from '../content/schema.ts';
+import type { Track } from '../content/schema.ts';
 import { HomePage } from '../pages/HomePage.tsx';
 import { NotFoundPage } from '../pages/NotFoundPage.tsx';
 import { matchPath, usePathname, type RouteParams } from './router.ts';
@@ -23,6 +23,11 @@ const EngineDemoPage = named(() => import('../engine/EngineDemoPage.tsx'), 'Engi
 // The review page lists draft lessons: it only exists in `vite dev`, so production never ships it.
 const ReviewPage = import.meta.env.DEV ? lazy(() => import('../review/ReviewPage.tsx')) : null;
 
+// Plain check instead of trackSchema: importing the schema here would pull zod and chess.js into the
+// first page load. Keep in sync with trackSchema (src/content/schema.ts).
+const isTrack = (value: string | undefined): value is Track =>
+  value === 'basic' || value === 'advanced';
+
 interface Route {
   pattern: string;
   /** Returns null when the params are invalid, which renders the not-found page. */
@@ -33,10 +38,7 @@ const ROUTES: readonly Route[] = [
   { pattern: '/', render: () => <HomePage /> },
   {
     pattern: '/learn/:track',
-    render: ({ track }) => {
-      const parsed = trackSchema.safeParse(track);
-      return parsed.success ? <TrackPage track={parsed.data} /> : null;
-    },
+    render: ({ track }) => (isTrack(track) ? <TrackPage track={track} /> : null),
   },
   { pattern: '/lesson/:id', render: ({ id }) => (id ? <LessonPage lessonId={id} /> : null) },
   { pattern: '/play', render: () => <PlayPage /> },

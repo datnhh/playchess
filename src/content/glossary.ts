@@ -24,10 +24,11 @@ export const PIECE_NAMES: Readonly<Record<PieceRole, string>> = {
 export const GLOSSARY: readonly GlossaryEntry[] = [
   { term: 'Vua', meaning: 'king' },
   { term: 'Hậu', meaning: 'queen', avoid: ['Hoàng hậu', 'Nữ hoàng'] },
-  { term: 'Xe', meaning: 'rook', avoid: ['Thành', 'Tháp'] },
+  // Phrases, not single words: "thành", "lính"… are common Vietnamese words ("trở thành").
+  { term: 'Xe', meaning: 'rook', avoid: ['quân Thành', 'quân Tháp', 'con Tháp'] },
   { term: 'Tượng', meaning: 'bishop', avoid: ['Giám mục'] },
-  { term: 'Mã', meaning: 'knight', avoid: ['Ngựa', 'Hiệp sĩ'] },
-  { term: 'Tốt', meaning: 'pawn', avoid: ['Chốt', 'Lính'] },
+  { term: 'Mã', meaning: 'knight', avoid: ['quân Ngựa', 'con Ngựa', 'Hiệp sĩ'] },
+  { term: 'Tốt', meaning: 'pawn', avoid: ['quân Chốt', 'con Chốt', 'quân Lính', 'người Lính'] },
   { term: 'bàn cờ', meaning: 'chessboard' },
   { term: 'ô', meaning: 'square' },
   { term: 'hàng ngang', meaning: 'rank' },

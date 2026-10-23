@@ -67,7 +67,7 @@ describe('lessonMachine on the rook lesson', () => {
     p.watch();
     expect(rook.steps[p.state.stepIndex]!.id).toBe('move-to-star');
 
-    expect(boardMovable(rook, p.state)).toBeNull();
+    expect(boardMovable(rook, p.state)).not.toBeNull(); // open while the instruction is read
     p.narrationDone();
     expect(p.state.phase).toBe('waitingInteraction');
     expect(boardMovable(rook, p.state)?.dests.get('d4')).toContain('d8');
@@ -94,7 +94,7 @@ describe('lessonMachine on the rook lesson', () => {
   it('keeps the board on a wrong move and shows a hint after 2 errors', () => {
     const p = run(rook);
     p.send({ type: 'START' });
-    for (let i = 0; i < stepIndex('move-to-star'); i += 1) p.send({ type: 'NEXT' });
+    for (let i = 0; i < stepIndex('move-to-star'); i += 1) p.send({ type: 'SKIP' });
     p.narrationDone();
     const before = p.state.board.position;
 
@@ -103,7 +103,7 @@ describe('lessonMachine on the rook lesson', () => {
     expect(first).toContainEqual({ type: 'sfx', name: 'retry' });
     expect(p.state.board.position).toBe(before);
     expect(p.state.board.shapes).toEqual([]);
-    expect(boardMovable(rook, p.state)).toBeNull(); // locked during feedback
+    expect(boardMovable(rook, p.state)).not.toBeNull(); // a new try may cut the retry clip
     p.narrationDone();
 
     p.move('d4', 'a4');
@@ -121,7 +121,7 @@ describe('lessonMachine on the rook lesson', () => {
   it('restarts the capture game when moves run out', () => {
     const p = run(rook);
     p.send({ type: 'START' });
-    for (let i = 0; i < stepIndex('eat-apples'); i += 1) p.send({ type: 'NEXT' });
+    for (let i = 0; i < stepIndex('eat-apples'); i += 1) p.send({ type: 'SKIP' });
     p.narrationDone();
     expect([...(boardMovable(rook, p.state)?.dests.keys() ?? [])]).toEqual(['d4']);
 
@@ -141,19 +141,62 @@ describe('lessonMachine on the rook lesson', () => {
     expect(p.state.pieceSquare).toBe('d4');
   });
 
-  it('ignores moves of other pieces and moves before the narration ends', () => {
+  it('ignores moves of other pieces but accepts moves while the instruction is read', () => {
     const p = run(rook);
     p.send({ type: 'START' });
-    for (let i = 0; i < stepIndex('eat-apples'); i += 1) p.send({ type: 'NEXT' });
-    const before = p.state;
-    p.move('d4', 'd7');
-    expect(p.state).toBe(before);
-    p.narrationDone();
+    for (let i = 0; i < stepIndex('eat-apples'); i += 1) p.send({ type: 'SKIP' });
+    expect(p.state.phase).toBe('playingStep');
     p.move('a1', 'a2');
     expect(p.state.movesUsed).toBe(0);
+    p.move('d4', 'd7');
+    expect(p.state.movesUsed).toBe(1);
+    expect(p.state.collected).toEqual(['d7']);
   });
 
-  it('REPLAY re-narrates without touching the board; NEXT skips; stale tokens are ignored', () => {
+  it('accepts an answer during the instruction and cuts the sentence short', () => {
+    const p = run(rook);
+    p.send({ type: 'START' });
+    for (let i = 0; i < stepIndex('move-to-star'); i += 1) p.send({ type: 'SKIP' });
+    expect(p.state.phase).toBe('playingStep');
+    expect(boardMovable(rook, p.state)?.dests.get('d4')).toContain('d8');
+    const effects = p.move('d4', 'd8');
+    expect(effects[0]).toEqual({ type: 'cancel' });
+    expect(narrated(effects)).toEqual(['basic-rook/move-to-star/praise']);
+  });
+
+  it('accepts a new try while the retry clip plays, but not during praise', () => {
+    const p = run(rook);
+    p.send({ type: 'START' });
+    for (let i = 0; i < stepIndex('move-to-star'); i += 1) p.send({ type: 'SKIP' });
+    p.move('d4', 'd5');
+    expect(p.state.feedbackThen).toBe('wait');
+    p.move('d4', 'd8');
+    expect(p.state.feedbackThen).toBe('advance');
+    const praise = p.state;
+    p.move('d8', 'd1');
+    expect(p.state).toBe(praise);
+    expect(boardMovable(rook, p.state)).toBeNull();
+  });
+
+  it('the child ▶ only skips watch steps, and only the step it was pressed on', () => {
+    const p = run(rook);
+    p.send({ type: 'START' });
+    p.send({ type: 'NEXT', stepIndex: 0 });
+    expect(p.state.stepIndex).toBe(1);
+    // A late press for step 0 must not skip step 1.
+    p.send({ type: 'NEXT', stepIndex: 0 });
+    expect(p.state.stepIndex).toBe(1);
+
+    for (let i = p.state.stepIndex; i < stepIndex('move-to-star'); i += 1) p.send({ type: 'SKIP' });
+    const exercise = p.state;
+    p.send({ type: 'NEXT', stepIndex: exercise.stepIndex });
+    expect(p.state).toBe(exercise);
+    p.narrationDone();
+    p.send({ type: 'NEXT', stepIndex: exercise.stepIndex });
+    expect(p.state.stepIndex).toBe(exercise.stepIndex);
+  });
+
+  it('REPLAY re-narrates without touching the board; SKIP skips; stale tokens are ignored', () => {
     const p = run(rook);
     p.send({ type: 'START' });
     const staleToken = p.state.token;
@@ -163,10 +206,10 @@ describe('lessonMachine on the rook lesson', () => {
     p.send({ type: 'NARRATION_DONE', token: staleToken });
     expect(p.state.phase).toBe('playingStep');
 
-    p.send({ type: 'NEXT' });
+    p.send({ type: 'SKIP' });
     expect(p.state.stepIndex).toBe(1);
     const stale = p.state.token;
-    p.send({ type: 'NEXT' });
+    p.send({ type: 'SKIP' });
     p.send({ type: 'TIMER', token: stale });
     expect(p.state.stepIndex).toBe(2);
   });
@@ -174,9 +217,9 @@ describe('lessonMachine on the rook lesson', () => {
   it('RESTART after completion starts over with no mistakes', () => {
     const p = run(rook);
     p.send({ type: 'START' });
-    for (let i = 0; i < rook.steps.length; i += 1) p.send({ type: 'NEXT' });
+    for (let i = 0; i < rook.steps.length; i += 1) p.send({ type: 'SKIP' });
     expect(p.state.phase).toBe('completed');
-    p.send({ type: 'NEXT' });
+    p.send({ type: 'SKIP' });
     expect(p.state.phase).toBe('completed');
     p.send({ type: 'RESTART' });
     expect(p.state.phase).toBe('playingStep');
@@ -201,8 +244,6 @@ describe('tapSquare and shared feedback clips', () => {
   it('rotates retry clips, hints after 2 wrong taps, then praises', () => {
     const p = run(tapLesson);
     p.send({ type: 'START' });
-    p.tap('a1'); // ignored while narrating
-    expect(p.state.mistakes).toBe(0);
     p.narrationDone();
 
     expect(narrated(p.tap('a1'))).toEqual(['common/retry-1']);

@@ -59,9 +59,9 @@ Giới hạn độ dài câu đọc: cơ bản ≤ 15 từ, nâng cao ≤ 25 t�
 
 | #   | Bước                                                                                                                     | Phụ thuộc | Trạng thái |
 | --- | ------------------------------------------------------------------------------------------------------------------------ | --------- | ---------- |
-| 8   | Trang đấu máy: chọn cấp bằng nhân vật có giọng đọc, gợi ý, đi lại, phong cấp bằng hình                                   | 4, 7      | ⬜         |
-| 9   | Nội dung **Học cơ bản**: thí điểm 1–2 bài → chỉnh prompt → AI soạn đủ bộ → validate → TTS → người dùng duyệt ở `/review` | 5, 6, 7b  | ⬜         |
-| 10  | Bản đồ lộ trình Cơ bản / Nâng cao, sao thưởng, cổng phụ huynh, trang ghi công                                            | 3, 4, 7b  | ⬜         |
+| 8   | Trang đấu máy: chọn cấp bằng nhân vật có giọng đọc, gợi ý, đi lại, phong cấp bằng hình                                   | 4, 7      | ✅         |
+| 9   | Nội dung **Học cơ bản**: thí điểm 1–2 bài → chỉnh prompt → AI soạn đủ bộ → validate → TTS → người dùng duyệt ở `/review` | 5, 6, 7b  | 🟡         |
+| 10  | Bản đồ lộ trình Cơ bản / Nâng cao, sao thưởng, cổng phụ huynh, trang ghi công                                            | 3, 4, 7b  | ✅         |
 
 ### Đợt 3: Nội dung nâng cao (tuần tự sau bước 9)
 
@@ -105,3 +105,7 @@ Giới hạn độ dài câu đọc: cơ bản ≤ 15 từ, nâng cao ≤ 25 t�
 | 2026-10-23 | Đổi yêu cầu: bỏ chia Mầm/Nhí theo tuổi, thay bằng **Học cơ bản** / **Học nâng cao** theo trình độ. Cập nhật lộ trình, bước 9–11; thêm bước 7b sửa code, chờ duyệt.                                                                                                                                                                                                                |
 | 2026-10-23 | Đợt 1 xong (chưa commit): 4 nhánh + ghép nối (route `/dev/*`, quân trượt về khi đi sai, mở khóa âm thanh bằng `/media/silence.wav`, hash audio gồm nhà cung cấp + cách đọc, `setPosition` sau bước tương tác là lỗi cứng). Lint, typecheck, 109 unit test, validate (0 lỗi), build, 21 e2e đều qua. Chạy tay trong trình duyệt: bài Xe từ đầu đến cuối, Stockfish cấp 10 + gợi ý. |
 | 2026-10-23 | Commit Đợt 1 (`667af14`). Làm 7b: track `basic` / `advanced`, bài mẫu chuyển sang `content/lessons/basic/rook.json` (id `basic-rook`), trang chủ hiện "Học cơ bản" / "Học nâng cao". 109 unit test, validate, 21 e2e qua.                                                                                                                                                         |
+| 2026-10-23 | Push Đợt 1 + 7b, kiểm tra /dev trên Pages. Commit hợp đồng Đợt 2 (`5b451c1`: route, icon bài, nhân vật 10 cấp, thống kê ván).                                                                                                                                                                                                                                                     |
+| 2026-10-23 | Đợt 2 ghép xong (chưa commit): trang đấu máy (8), bản đồ + sao + cổng phụ huynh + ghi công (10), 2 bài thí điểm Làm quen bàn cờ, Quân Mã (9a). Người dùng duyệt giọng văn và nhịp bài thí điểm.                                                                                                                                                                                   |
+| 2026-10-23 | Sửa trình phát bài theo chạy thử: ▶ chỉ bỏ qua bước xem (bước tương tác phải làm; chống bấm trễ nhảy bước), nhận chạm ngay khi đang đọc lời và khi đang nghe câu thử lại, ô sáng tô kín cả ô, hình dán trên quân thu nhỏ vào góc, phụ đề chữ ẩn/hiện (nút Aa) cho người lớn.                                                                                                      |
+| 2026-10-23 | 9b: soạn đủ 16 bài cơ bản (thêm Tượng, Hậu, Vua, Tốt, Ăn quân, Xếp quân, Chiếu, Chiếu hết, Hòa pat, Nhập thành, Phong cấp, Bắt tốt qua đường, Thắng thua hòa), tất cả `reviewed: false`. Lint, typecheck, 144 unit test, validate 0 lỗi, build, 36 e2e qua. Còn: sinh TTS (chờ khóa Azure) và người dùng nghe duyệt ở `/review`.                                                  |

@@ -30,6 +30,7 @@ export function LessonDemoPage({ Board = MockBoard, audio, manifest }: LessonDem
         manifest={manifest ?? EMPTY_MANIFEST}
         audio={audio ?? fallbackAudio}
         Board={Board}
+        allowSkip
         onExit={() => setSession((n) => n + 1)}
       />
     </main>

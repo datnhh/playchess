@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "id": "basic-en-passant",
+  "track": "basic",
+  "order": 15,
+  "title": "Bắt tốt qua đường",
+  "summary": "Tốt đối phương đi 2 ô đứng cạnh Tốt của bé thì bé ăn được như nó chỉ đi 1 ô, nhưng phải ăn ngay nước sau.",
+  "icon": "enPassant",
+  "boardMode": "standard",
+  "orientation": "white",
+  "start": "4k3/3p4/8/4P3/8/8/8/4K3 b - - 0 1",
+  "reviewed": false,
+  "steps": [
+    {
+      "kind": "watch",
+      "id": "meet-pawn",
+      "say": "Đây là Tốt của bé, đang đứng ở giữa bàn cờ.",
+      "actions": [{ "type": "highlight", "squares": ["e5"], "tone": "good" }]
+    },
+    {
+      "kind": "watch",
+      "id": "black-double-step",
+      "say": "Tốt đen đi hai ô, đứng ngay cạnh Tốt của bé.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "move", "from": "d7", "to": "d5" }
+      ],
+      "assert": [{ "type": "pieceAt", "square": "d5", "piece": "bP" }]
+    },
+    {
+      "kind": "tapSquare",
+      "id": "tap-black-pawn",
+      "say": "Bé chạm vào Tốt đen vừa đi hai ô nhé.",
+      "answers": ["d5"],
+      "retry": "Chưa đúng rồi. Tốt đen đứng ngay cạnh Tốt của bé."
+    },
+    {
+      "kind": "watch",
+      "id": "en-passant-name",
+      "say": "Bé ăn nó như nó chỉ đi một ô. Đó là bắt tốt qua đường.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "highlight", "squares": ["d6"], "tone": "good" },
+        { "type": "arrow", "from": "e5", "to": "d6", "tone": "good" }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "en-passant-demo",
+      "say": "Xem này, Tốt đi chéo, và Tốt đen biến mất.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "move", "from": "e5", "to": "d6" }
+      ],
+      "assert": [{ "type": "pieceAt", "square": "d6", "piece": "wP" }]
+    },
+    {
+      "kind": "interactMove",
+      "id": "capture-star",
+      "say": "Tốt đen vừa đi hai ô. Bé bắt tốt qua đường nhé!",
+      "actions": [
+        { "type": "setPosition", "position": "4k3/5p2/8/4P3/8/8/8/4K3 b - - 0 1" },
+        { "type": "clear", "target": "all" },
+        { "type": "move", "from": "f7", "to": "f5" },
+        { "type": "stickers", "items": [{ "square": "f6", "kind": "star" }] }
+      ],
+      "accept": [{ "from": "e5", "to": "f6" }],
+      "praise": "Giỏi quá! Bé đã bắt tốt qua đường.",
+      "retry": "Chưa đúng rồi. Tốt đi chéo tới ô ngôi sao nhé."
+    },
+    {
+      "kind": "watch",
+      "id": "only-right-away",
+      "say": "Phải ăn ngay nước sau. Chờ lâu là không được nữa.",
+      "actions": [
+        { "type": "setPosition", "position": "4k3/8/8/3pP3/8/8/8/4K3 w - - 0 1" },
+        { "type": "clear", "target": "all" },
+        { "type": "arrow", "from": "e5", "to": "d6", "tone": "warn" }
+      ]
+    },
+    {
+      "kind": "interactMove",
+      "id": "capture-heart",
+      "say": "Bé thử lại nào, bắt Tốt đen ngay nhé.",
+      "actions": [
+        { "type": "setPosition", "position": "4k3/2p5/8/1P6/8/8/8/4K3 b - - 0 1" },
+        { "type": "clear", "target": "all" },
+        { "type": "move", "from": "c7", "to": "c5" },
+        { "type": "stickers", "items": [{ "square": "c6", "kind": "heart" }] }
+      ],
+      "accept": [{ "from": "b5", "to": "c6" }],
+      "praise": "Tuyệt quá! Bé bắt rất nhanh."
+    },
+    {
+      "kind": "watch",
+      "id": "goodbye",
+      "say": "Bé đã học xong bắt tốt qua đường. Hẹn gặp lại bé nhé!",
+      "actions": [
+        { "type": "setPosition", "position": "4k3/8/8/8/8/8/8/4K3 w - - 0 1" },
+        { "type": "clear", "target": "all" }
+      ]
+    }
+  ]
+}

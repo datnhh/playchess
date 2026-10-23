@@ -146,6 +146,12 @@ describe('validateLessons', () => {
     expect(found[0]?.step).toBe('not');
   });
 
+  it('does not flag everyday words that only look like avoided piece names', () => {
+    const lesson = baseLesson();
+    steps(lesson)[0]!.say = 'Các ô này tạo thành một hàng ngang.';
+    expect(errors(lesson)).toEqual([]);
+  });
+
   it('flags a long sentence and banned or non-glossary words', () => {
     const lesson = baseLesson();
     steps(lesson)[0]!.say =

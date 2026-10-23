@@ -15,13 +15,27 @@ export const TONE_BRUSH: Readonly<Record<ShapeTone, string>> = {
   warn: 'red',
 };
 
+/** Arrows are drawn by chessground's SVG layer; circles are rendered as square fills instead. */
 export function toAutoShapes(shapes: readonly BoardShape[] | undefined): DrawShape[] {
   if (!shapes) return [];
-  return shapes.map((shape) =>
+  return shapes.flatMap((shape) =>
     shape.kind === 'arrow'
-      ? { orig: shape.from, dest: shape.to, brush: TONE_BRUSH[shape.tone] }
-      : { orig: shape.square, brush: TONE_BRUSH[shape.tone] },
+      ? [{ orig: shape.from, dest: shape.to, brush: TONE_BRUSH[shape.tone] }]
+      : [],
   );
+}
+
+/**
+ * Highlighted squares as chessground custom square classes (styled in board.css). A thin SVG circle
+ * was too faint for "the lit squares" in the narration, so the whole square glows instead.
+ * When a square is highlighted twice, the latest tone wins.
+ */
+export function toSquareClasses(shapes: readonly BoardShape[] | undefined): Map<Key, string> {
+  const classes = new Map<Key, string>();
+  for (const shape of shapes ?? []) {
+    if (shape.kind === 'circle') classes.set(shape.square, `board-hl board-hl--${shape.tone}`);
+  }
+  return classes;
 }
 
 /** Copies readonly caller data into the mutable Map chessground expects. */
@@ -41,6 +55,24 @@ export function squarePosition(
   const column = orientation === 'white' ? file : 7 - file;
   const row = orientation === 'white' ? 7 - rank : rank;
   return { leftPercent: column * 12.5, topPercent: row * 12.5 };
+}
+
+/** Squares holding a piece (stickers on them shrink to a corner so the piece stays visible). */
+export function occupiedSquares(position: string): Set<Square> {
+  const occupied = new Set<Square>();
+  placementOf(position)
+    .split('/')
+    .forEach((rankText, row) => {
+      let file = 0;
+      for (const char of rankText) {
+        if (char >= '1' && char <= '8') file += Number(char);
+        else {
+          if (file < 8 && row < 8) occupied.add(`${'abcdefgh'[file]}${8 - row}` as Square);
+          file += 1;
+        }
+      }
+    });
+  return occupied;
 }
 
 /** Placement field of a FEN (chessground also accepts it, but trimming keeps the input explicit). */

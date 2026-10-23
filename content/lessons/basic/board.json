@@ -1,0 +1,224 @@
+{
+  "schemaVersion": 1,
+  "id": "basic-board",
+  "track": "basic",
+  "order": 1,
+  "title": "Làm quen bàn cờ",
+  "summary": "Bàn cờ có 64 ô sáng tối xen kẽ, ô sáng ở góc dưới bên phải; hàng ngang, cột dọc và đường chéo.",
+  "icon": "board",
+  "boardMode": "sandbox",
+  "orientation": "white",
+  "start": "8/8/8/8/8/8/8/8",
+  "reviewed": false,
+  "steps": [
+    {
+      "kind": "watch",
+      "id": "meet-board",
+      "say": "Đây là bàn cờ. Bàn cờ có sáu mươi tư ô vuông nhỏ."
+    },
+    {
+      "kind": "watch",
+      "id": "light-dark",
+      "say": "Ô sáng và ô tối nằm xen kẽ nhau, cứ một sáng một tối.",
+      "actions": [
+        {
+          "type": "highlight",
+          "squares": ["b1", "d1", "f1", "h1"],
+          "tone": "info"
+        }
+      ]
+    },
+    {
+      "kind": "tapSquare",
+      "id": "tap-flower",
+      "say": "Bé hãy chạm vào ô có bông hoa nhé.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "stickers",
+          "items": [
+            {
+              "square": "d5",
+              "kind": "flower"
+            }
+          ]
+        }
+      ],
+      "answers": ["d5"]
+    },
+    {
+      "kind": "watch",
+      "id": "light-corner",
+      "say": "Góc dưới bên phải bàn cờ luôn là một ô sáng.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "highlight",
+          "squares": ["h1"],
+          "tone": "good"
+        },
+        {
+          "type": "stickers",
+          "items": [
+            {
+              "square": "h1",
+              "kind": "star"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "tapSquare",
+      "id": "tap-light-corner",
+      "say": "Bé chạm vào ô sáng ở góc dưới bên phải nhé.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        }
+      ],
+      "answers": ["h1"],
+      "retry": "Chưa đúng rồi. Bé tìm góc dưới, phía tay phải nhé."
+    },
+    {
+      "kind": "watch",
+      "id": "show-rank",
+      "say": "Các ô xếp từ trái sang phải là một hàng ngang.",
+      "actions": [
+        {
+          "type": "highlight",
+          "squares": ["a4", "b4", "c4", "d4", "e4", "f4", "g4", "h4"]
+        },
+        {
+          "type": "arrow",
+          "from": "a4",
+          "to": "h4"
+        }
+      ]
+    },
+    {
+      "kind": "tapSquare",
+      "id": "tap-rank",
+      "say": "Bé chạm vào một ô trên hàng ngang đang sáng nhé.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "highlight",
+          "squares": ["a2", "b2", "c2", "d2", "e2", "f2", "g2", "h2"]
+        }
+      ],
+      "answers": ["a2", "b2", "c2", "d2", "e2", "f2", "g2", "h2"]
+    },
+    {
+      "kind": "watch",
+      "id": "show-file",
+      "say": "Các ô xếp từ dưới lên trên là một cột dọc.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "highlight",
+          "squares": ["e1", "e2", "e3", "e4", "e5", "e6", "e7", "e8"]
+        },
+        {
+          "type": "arrow",
+          "from": "e1",
+          "to": "e8"
+        }
+      ]
+    },
+    {
+      "kind": "tapSquare",
+      "id": "tap-file",
+      "say": "Bé chạm vào một ô trên cột dọc đang sáng nhé.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "highlight",
+          "squares": ["c1", "c2", "c3", "c4", "c5", "c6", "c7", "c8"]
+        }
+      ],
+      "answers": ["c1", "c2", "c3", "c4", "c5", "c6", "c7", "c8"]
+    },
+    {
+      "kind": "watch",
+      "id": "show-diagonal",
+      "say": "Các ô cùng màu nối góc với nhau là một đường chéo.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "highlight",
+          "squares": ["a1", "b2", "c3", "d4", "e5", "f6", "g7", "h8"]
+        },
+        {
+          "type": "arrow",
+          "from": "a1",
+          "to": "h8"
+        }
+      ]
+    },
+    {
+      "kind": "tapSquare",
+      "id": "tap-diagonal-apple",
+      "say": "Bé chạm vào quả táo nằm trên đường chéo đang sáng nhé.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "highlight",
+          "squares": ["a1", "b2", "c3", "d4", "e5", "f6", "g7", "h8"]
+        },
+        {
+          "type": "stickers",
+          "items": [
+            {
+              "square": "f6",
+              "kind": "apple"
+            },
+            {
+              "square": "c6",
+              "kind": "apple"
+            },
+            {
+              "square": "g3",
+              "kind": "apple"
+            }
+          ]
+        }
+      ],
+      "answers": ["f6"],
+      "retry": "Chưa đúng rồi. Bé tìm quả táo nằm trên các ô đang sáng nhé."
+    },
+    {
+      "kind": "watch",
+      "id": "goodbye",
+      "say": "Bé đã làm quen với bàn cờ rồi. Hẹn gặp lại bé nhé!",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        }
+      ]
+    }
+  ]
+}

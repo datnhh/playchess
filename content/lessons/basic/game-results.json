@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "id": "basic-game-results",
+  "track": "basic",
+  "order": 16,
+  "title": "Thắng, thua và hòa",
+  "summary": "Chiếu hết là thắng, bị chiếu hết là thua; hòa khi hòa pat hoặc hai bên chỉ còn Vua. Thắng hay thua bé đều giỏi.",
+  "icon": "trophy",
+  "boardMode": "standard",
+  "orientation": "white",
+  "start": "R5k1/5ppp/8/8/8/8/8/6K1 b - - 0 1",
+  "reviewed": false,
+  "steps": [
+    {
+      "kind": "watch",
+      "id": "black-mated",
+      "say": "Vua đen bị chiếu hết, không trốn đi đâu được.",
+      "actions": [{ "type": "highlight", "squares": ["g8"], "tone": "warn" }],
+      "assert": [{ "type": "checkmate" }]
+    },
+    {
+      "kind": "watch",
+      "id": "mate-wins",
+      "say": "Bé chiếu hết Vua bạn là bé thắng ván cờ.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "highlight", "squares": ["a8"], "tone": "good" }
+      ]
+    },
+    {
+      "kind": "interactMove",
+      "id": "do-mate",
+      "say": "Bé đưa Xe tới ngôi sao để chiếu hết nhé.",
+      "actions": [
+        { "type": "setPosition", "position": "6k1/5ppp/8/8/8/8/8/R5K1 w - - 0 1" },
+        { "type": "clear", "target": "all" },
+        { "type": "stickers", "items": [{ "square": "a8", "kind": "star" }] }
+      ],
+      "accept": [{ "from": "a1", "to": "a8" }],
+      "praise": "Giỏi quá! Chiếu hết rồi, bé thắng!",
+      "retry": "Chưa đúng rồi. Xe đi thẳng lên tới ngôi sao nhé."
+    },
+    {
+      "kind": "watch",
+      "id": "white-mated",
+      "say": "Nếu Vua của bé bị chiếu hết, bé thua ván đó.",
+      "actions": [
+        { "type": "setPosition", "position": "6k1/8/8/8/8/8/5PPP/r5K1 w - - 0 1" },
+        { "type": "clear", "target": "all" },
+        { "type": "highlight", "squares": ["g1"], "tone": "warn" }
+      ],
+      "assert": [{ "type": "checkmate" }]
+    },
+    {
+      "kind": "watch",
+      "id": "losing-is-ok",
+      "say": "Thua cũng không sao, bé chơi lại sẽ giỏi hơn.",
+      "actions": [{ "type": "clear", "target": "all" }]
+    },
+    {
+      "kind": "watch",
+      "id": "stalemate",
+      "say": "Vua đen không bị chiếu, nhưng không đi được. Đó là hòa pat.",
+      "actions": [
+        { "type": "setPosition", "position": "7k/5Q2/6K1/8/8/8/8/8 b - - 0 1" },
+        { "type": "clear", "target": "all" },
+        { "type": "highlight", "squares": ["h8"], "tone": "warn" }
+      ],
+      "assert": [{ "type": "stalemate" }]
+    },
+    {
+      "kind": "tapSquare",
+      "id": "tap-stuck-king",
+      "say": "Bé chạm vào Vua không đi được nữa nhé.",
+      "answers": ["h8"],
+      "retry": "Chưa đúng rồi. Bé tìm Vua đen ở góc bàn cờ nhé."
+    },
+    {
+      "kind": "watch",
+      "id": "two-kings",
+      "say": "Hai bên chỉ còn Vua thì ván cờ hòa.",
+      "actions": [
+        { "type": "setPosition", "position": "4k3/8/8/8/8/8/8/4K3 w - - 0 1" },
+        { "type": "clear", "target": "all" },
+        { "type": "highlight", "squares": ["e1", "e8"], "tone": "good" }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "always-proud",
+      "say": "Thắng hay thua, bé đều rất giỏi vì đã cố gắng.",
+      "actions": [{ "type": "clear", "target": "all" }]
+    },
+    {
+      "kind": "watch",
+      "id": "goodbye",
+      "say": "Bé đã học xong thắng, thua và hòa. Hẹn gặp lại bé nhé!",
+      "actions": [{ "type": "clear", "target": "all" }]
+    }
+  ]
+}

@@ -94,8 +94,27 @@ async function playGame(white: EngineLevel, black: EngineLevel): Promise<number>
     const level = chess.turn() === 'w' ? white : black;
     chess.move(engineMoveToUci(await chooseMove(chess.fen(), level)));
   }
-  if (!chess.isCheckmate()) return 0.5;
-  return chess.turn() === 'w' ? 0 : 1;
+  if (chess.isCheckmate()) return chess.turn() === 'w' ? 0 : 1;
+  if (chess.isGameOver()) return 0.5;
+  return adjudicateByMaterial(chess);
+}
+
+const PIECE_VALUES: Readonly<Record<string, number>> = { p: 1, n: 3, b: 3, r: 5, q: 9, k: 0 };
+
+/**
+ * Ply cap reached: weak bots rarely mate, so counting every capped game as a draw hid real
+ * differences between levels. A lead of at least 3 pawns' worth is scored as a win.
+ */
+function adjudicateByMaterial(chess: Chess): number {
+  let balance = 0;
+  for (const row of chess.board()) {
+    for (const cell of row) {
+      if (cell) balance += (cell.color === 'w' ? 1 : -1) * (PIECE_VALUES[cell.type] ?? 0);
+    }
+  }
+  if (balance >= 3) return 1;
+  if (balance <= -3) return 0;
+  return 0.5;
 }
 
 interface PairResult {

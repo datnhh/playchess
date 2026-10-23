@@ -5,6 +5,7 @@ import { audioUrl, type AudioManifest } from '../content/audio.ts';
 import type { Lesson } from '../content/schema.ts';
 import {
   boardMovable,
+  canSkipStep,
   createLessonState,
   estimateNarrationMs,
   lessonTransition,
@@ -27,6 +28,8 @@ export interface LessonPlayerProps {
   Board: ComponentType<BoardProps>;
   onComplete?: (result: LessonResult) => void;
   onExit?: () => void;
+  /** Dev/review tools: ▶ also skips exercises. Children only get ▶ on watch steps. */
+  allowSkip?: boolean;
 }
 
 export function LessonPlayer({
@@ -36,8 +39,11 @@ export function LessonPlayer({
   Board,
   onComplete,
   onExit,
+  allowSkip = false,
 }: LessonPlayerProps) {
   const [state, setState] = useState<LessonMachineState>(() => createLessonState(lesson));
+  // Text of the narration for adults (reading without sound). Hidden by default: children use audio.
+  const [showCaption, setShowCaption] = useState(false);
   // Source of truth for dispatch: effects run synchronously, before React re-renders.
   const stateRef = useRef(state);
   const timersRef = useRef(new Set<ReturnType<typeof setTimeout>>());
@@ -193,6 +199,8 @@ export function LessonPlayer({
 
   const movable = boardMovable(lesson, state);
   const { board } = state;
+  const showNext = allowSkip || canSkipStep(lesson, state);
+  const caption = lesson.steps[state.stepIndex]?.say ?? '';
 
   return (
     <div className="lesson-player">
@@ -222,6 +230,15 @@ export function LessonPlayer({
             />
           ))}
         </ol>
+        <button
+          type="button"
+          className="lesson-caption-toggle"
+          aria-label={showCaption ? 'Ẩn chữ' : 'Hiện chữ'}
+          aria-pressed={showCaption}
+          onClick={() => setShowCaption((shown) => !shown)}
+        >
+          Aa
+        </button>
       </div>
       <div className="lesson-board">
         <Board
@@ -235,6 +252,11 @@ export function LessonPlayer({
           onSquareTap={(square) => dispatch({ type: 'USER_TAP', square })}
         />
       </div>
+      {showCaption && (
+        <p className="lesson-caption" aria-live="polite">
+          {caption}
+        </p>
+      )}
       <div className="lesson-controls">
         <button
           type="button"
@@ -244,11 +266,20 @@ export function LessonPlayer({
         >
           🔊
         </button>
+        {/* Hidden rather than removed on exercises, so the controls do not jump around. */}
         <button
           type="button"
-          className="lesson-icon-button lesson-next"
+          className={
+            showNext
+              ? 'lesson-icon-button lesson-next'
+              : 'lesson-icon-button lesson-next lesson-hidden'
+          }
           aria-label="Tiếp"
-          onClick={() => dispatch({ type: 'NEXT' })}
+          aria-hidden={!showNext}
+          disabled={!showNext}
+          onClick={() =>
+            dispatch(allowSkip ? { type: 'SKIP' } : { type: 'NEXT', stepIndex: state.stepIndex })
+          }
         >
           ▶
         </button>

@@ -111,3 +111,31 @@
   height: 100%;
   will-change: auto;
 }
+
+/* Highlighted squares ("ô đang sáng" in the narration): the whole square glows. */
+.chess-board cg-board square.board-hl {
+  box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.85);
+}
+
+.chess-board cg-board square.board-hl--info {
+  background: rgba(255, 213, 0, 0.6);
+}
+
+.chess-board cg-board square.board-hl--good {
+  background: rgba(76, 175, 80, 0.6);
+}
+
+.chess-board cg-board square.board-hl--warn {
+  background: rgba(229, 57, 53, 0.55);
+}
+
+/* A sticker on an occupied square shrinks into the top-right corner so the piece stays visible. */
+.chess-board__sticker--on-piece {
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.chess-board__sticker--on-piece svg {
+  width: 45%;
+  height: 45%;
+}

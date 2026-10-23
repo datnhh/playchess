@@ -173,3 +173,38 @@
   position: relative;
   line-height: 1;
 }
+
+.lesson-hidden {
+  visibility: hidden;
+}
+
+/* Caption toggle for adults: small and out of the way of the child's big buttons. */
+.lesson-caption-toggle {
+  margin-left: auto;
+  min-width: 48px;
+  min-height: 48px;
+  font-weight: 800;
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+}
+
+.lesson-caption-toggle[aria-pressed='true'] {
+  color: var(--color-primary-contrast);
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.lesson-caption {
+  width: min(100%, 640px);
+  margin: 0;
+  padding: 12px 16px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-align: center;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+}

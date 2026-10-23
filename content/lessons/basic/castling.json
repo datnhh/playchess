@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "id": "basic-castling",
+  "track": "basic",
+  "order": 13,
+  "title": "Nhập thành",
+  "summary": "Vua đi 2 ô về phía Xe, Xe nhảy qua đứng cạnh Vua. Không nhập thành khi Vua/Xe đã đi, khi bị chiếu hoặc có quân đứng giữa.",
+  "icon": "castling",
+  "boardMode": "standard",
+  "orientation": "white",
+  "start": "4k3/8/8/8/8/8/8/R3K2R w KQ - 0 1",
+  "reviewed": false,
+  "steps": [
+    {
+      "kind": "watch",
+      "id": "meet-king-rook",
+      "say": "Đây là Vua và Xe. Hai bạn có một nước đi đặc biệt.",
+      "actions": [{ "type": "highlight", "squares": ["e1", "h1"], "tone": "good" }]
+    },
+    {
+      "kind": "watch",
+      "id": "castling-name",
+      "say": "Nước đi này gọi là nhập thành, Vua và Xe cùng đi.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "arrow", "from": "e1", "to": "g1", "tone": "good" },
+        { "type": "arrow", "from": "h1", "to": "f1", "tone": "good" }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "castle-demo",
+      "say": "Xem này, Vua đi hai ô về phía Xe.",
+      "actions": [
+        { "type": "setPosition", "position": "4k3/8/8/8/8/8/8/R3K2R w KQ - 0 1" },
+        { "type": "clear", "target": "all" },
+        { "type": "move", "from": "e1", "to": "g1" }
+      ],
+      "assert": [
+        { "type": "pieceAt", "square": "g1", "piece": "wK" },
+        { "type": "pieceAt", "square": "f1", "piece": "wR" }
+      ]
+    },
+    {
+      "kind": "tapSquare",
+      "id": "tap-rook",
+      "say": "Xe nhảy qua Vua. Bé chạm vào Xe vừa nhảy nhé.",
+      "actions": [{ "type": "clear", "target": "all" }],
+      "answers": ["f1"],
+      "retry": "Chưa đúng rồi. Xe đứng ngay cạnh Vua đó."
+    },
+    {
+      "kind": "interactMove",
+      "id": "do-kingside",
+      "say": "Bé chạm vào Vua, rồi chạm vào ô có ngôi sao.",
+      "actions": [
+        { "type": "setPosition", "position": "4k3/8/8/8/8/8/8/R3K2R w KQ - 0 1" },
+        { "type": "clear", "target": "all" },
+        { "type": "stickers", "items": [{ "square": "g1", "kind": "star" }] }
+      ],
+      "accept": [{ "from": "e1", "to": "g1" }],
+      "praise": "Giỏi quá! Bé đã nhập thành rồi.",
+      "retry": "Chưa đúng rồi. Vua đi hai ô về phía Xe nhé."
+    },
+    {
+      "kind": "watch",
+      "id": "queenside",
+      "say": "Vua cũng nhập thành được về phía Xe bên kia.",
+      "actions": [
+        { "type": "setPosition", "position": "4k3/8/8/8/8/8/8/R3K2R w KQ - 0 1" },
+        { "type": "clear", "target": "all" },
+        { "type": "arrow", "from": "e1", "to": "c1", "tone": "good" },
+        { "type": "arrow", "from": "a1", "to": "d1", "tone": "good" }
+      ]
+    },
+    {
+      "kind": "interactMove",
+      "id": "do-queenside",
+      "say": "Bé giúp Vua nhập thành tới ô có bông hoa nhé.",
+      "actions": [
+        { "type": "setPosition", "position": "4k3/8/8/8/8/8/8/R3K2R w KQ - 0 1" },
+        { "type": "clear", "target": "all" },
+        { "type": "stickers", "items": [{ "square": "c1", "kind": "flower" }] }
+      ],
+      "accept": [{ "from": "e1", "to": "c1" }],
+      "praise": "Tuyệt quá! Xe đã đứng cạnh Vua rồi.",
+      "retry": "Chưa đúng rồi. Vua đi hai ô về phía Xe nhé."
+    },
+    {
+      "kind": "watch",
+      "id": "no-after-moving",
+      "say": "Vua hoặc Xe đã đi rồi thì không được nhập thành.",
+      "actions": [
+        { "type": "setPosition", "position": "4k3/8/8/8/8/8/8/R3K2R w - - 0 1" },
+        { "type": "clear", "target": "all" },
+        { "type": "arrow", "from": "e1", "to": "g1", "tone": "warn" }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "no-in-check",
+      "say": "Vua đang bị chiếu thì cũng không được nhập thành.",
+      "actions": [
+        { "type": "setPosition", "position": "4r1k1/8/8/8/8/8/8/R3K2R w KQ - 0 1" },
+        { "type": "clear", "target": "all" },
+        { "type": "highlight", "squares": ["e8"], "tone": "warn" },
+        { "type": "arrow", "from": "e1", "to": "g1", "tone": "warn" }
+      ],
+      "assert": [{ "type": "check" }]
+    },
+    {
+      "kind": "watch",
+      "id": "no-piece-between",
+      "say": "Có quân đứng giữa Vua và Xe thì phải chờ nhé.",
+      "actions": [
+        { "type": "setPosition", "position": "4k3/8/8/8/8/8/8/R3KN1R w KQ - 0 1" },
+        { "type": "clear", "target": "all" },
+        { "type": "highlight", "squares": ["f1"], "tone": "warn" },
+        { "type": "arrow", "from": "e1", "to": "g1", "tone": "warn" }
+      ]
+    },
+    {
+      "kind": "interactMove",
+      "id": "choose-free-side",
+      "say": "Bé nhập thành về bên không có quân chặn, tới trái tim nhé.",
+      "actions": [
+        { "type": "setPosition", "position": "4k3/8/8/8/8/8/8/R3KN1R w KQ - 0 1" },
+        { "type": "clear", "target": "all" },
+        { "type": "stickers", "items": [{ "square": "c1", "kind": "heart" }] }
+      ],
+      "accept": [{ "from": "e1", "to": "c1" }],
+      "praise": "Giỏi quá! Bé chọn đúng bên rồi."
+    },
+    {
+      "kind": "watch",
+      "id": "goodbye",
+      "say": "Bé đã học xong nhập thành. Hẹn gặp lại bé nhé!",
+      "actions": [
+        { "type": "setPosition", "position": "4k3/8/8/8/8/8/8/R3K2R w KQ - 0 1" },
+        { "type": "clear", "target": "all" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "id": "basic-stalemate",
+  "track": "basic",
+  "order": 12,
+  "title": "Hòa pat",
+  "icon": "stalemate",
+  "summary": "Đến lượt mà không có nước đi hợp lệ và không bị chiếu là hòa. So sánh với chiếu hết, tránh hòa pat khi đang thắng.",
+  "boardMode": "standard",
+  "orientation": "white",
+  "start": "k7/2Q5/1K6/8/8/8/8/8 b - - 0 1",
+  "reviewed": false,
+  "steps": [
+    {
+      "kind": "watch",
+      "id": "meet-stalemate",
+      "say": "Đến lượt Vua đen, nhưng Vua đen không đi đâu được.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "highlight", "squares": ["a8"] }
+      ],
+      "assert": [{ "type": "stalemate" }]
+    },
+    {
+      "kind": "watch",
+      "id": "why-stuck",
+      "say": "Ô xung quanh đều bị canh, mà Vua không bị chiếu.",
+      "actions": [
+        { "type": "clear", "target": "shapes" },
+        { "type": "highlight", "squares": ["a7", "b7", "b8"], "tone": "warn" }
+      ],
+      "assert": [{ "type": "stalemate" }]
+    },
+    {
+      "kind": "watch",
+      "id": "name-stalemate",
+      "say": "Như vậy gọi là hòa pat. Không ai thắng cả.",
+      "actions": [
+        { "type": "clear", "target": "shapes" },
+        { "type": "highlight", "squares": ["a8"], "tone": "good" }
+      ],
+      "assert": [{ "type": "stalemate" }]
+    },
+    {
+      "kind": "tapSquare",
+      "id": "tap-king",
+      "say": "Bé hãy chạm vào Vua đen nhé.",
+      "actions": [{ "type": "clear", "target": "all" }],
+      "answers": ["a8"],
+      "praise": "Đúng rồi! Vua đen không đi được, nên hòa pat."
+    },
+    {
+      "kind": "watch",
+      "id": "compare-mate",
+      "say": "Còn đây là chiếu hết. Vua đen bị chiếu, bên trắng thắng.",
+      "actions": [
+        { "type": "setPosition", "position": "k1Q5/8/1K6/8/8/8/8/8 b - - 0 1" },
+        { "type": "clear", "target": "all" },
+        { "type": "arrow", "from": "c8", "to": "a8", "tone": "warn" }
+      ],
+      "assert": [{ "type": "checkmate" }]
+    },
+    {
+      "kind": "watch",
+      "id": "be-careful",
+      "say": "Khi đang thắng, bé cẩn thận đừng làm hòa pat nhé.",
+      "actions": [
+        { "type": "setPosition", "position": "k7/8/1K6/8/8/8/2Q5/8 w - - 0 1" },
+        { "type": "clear", "target": "all" },
+        { "type": "arrow", "from": "c2", "to": "c7", "tone": "warn" }
+      ]
+    },
+    {
+      "kind": "interactMove",
+      "id": "mate-not-stalemate",
+      "say": "Bé hãy cho Hậu tới ô có ngôi sao để chiếu hết.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "stickers", "items": [{ "square": "c8", "kind": "star" }] }
+      ],
+      "accept": [{ "from": "c2", "to": "c8" }],
+      "praise": "Giỏi quá! Bé đã chiếu hết rồi.",
+      "retry": "Cẩn thận nhé, bé cho Hậu tới ngôi sao."
+    },
+    {
+      "kind": "watch",
+      "id": "won",
+      "say": "Bé đã thắng mà không làm hòa pat. Tuyệt vời!",
+      "actions": [
+        { "type": "setPosition", "position": "k1Q5/8/1K6/8/8/8/8/8 b - - 0 1" },
+        { "type": "clear", "target": "all" },
+        { "type": "highlight", "squares": ["a8"], "tone": "warn" }
+      ],
+      "assert": [{ "type": "checkmate" }]
+    },
+    {
+      "kind": "watch",
+      "id": "goodbye",
+      "say": "Bé đã học xong bài hòa pat. Hẹn gặp lại bé nhé!",
+      "actions": [{ "type": "clear", "target": "all" }]
+    }
+  ]
+}

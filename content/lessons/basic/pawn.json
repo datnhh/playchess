@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "id": "basic-pawn",
+  "track": "basic",
+  "order": 7,
+  "title": "Quân Tốt",
+  "summary": "Tốt đi thẳng 1 ô (nước đầu được đi 2 ô), ăn chéo 1 ô và không bao giờ đi lùi.",
+  "icon": "pawn",
+  "boardMode": "sandbox",
+  "orientation": "white",
+  "start": "8/8/8/8/8/8/4P3/8",
+  "reviewed": false,
+  "steps": [
+    {
+      "kind": "watch",
+      "id": "meet-pawn",
+      "say": "Đây là quân Tốt. Tốt nhỏ bé nhưng rất dũng cảm.",
+      "actions": [{ "type": "highlight", "squares": ["e2"], "tone": "good" }]
+    },
+    {
+      "kind": "watch",
+      "id": "pawn-first-move",
+      "say": "Lần đi đầu tiên, Tốt được đi một ô hoặc hai ô.",
+      "actions": [
+        { "type": "clear", "target": "shapes" },
+        { "type": "highlight", "squares": ["e3", "e4"] }
+      ],
+      "assert": [{ "type": "highlightIsLegalMoves", "square": "e2" }]
+    },
+    {
+      "kind": "tapSquare",
+      "id": "tap-pawn-square",
+      "say": "Bé chạm vào hình dán mà Tốt đi tới được nhé.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        {
+          "type": "stickers",
+          "items": [
+            { "square": "e4", "kind": "star" },
+            { "square": "d3", "kind": "heart" },
+            { "square": "e5", "kind": "heart" }
+          ]
+        }
+      ],
+      "answers": ["e4"],
+      "retry": "Chưa đúng rồi. Tốt đi thẳng lên một ô hoặc hai ô nhé."
+    },
+    {
+      "kind": "watch",
+      "id": "pawn-two-squares",
+      "say": "Xem này, Tốt bước liền hai ô về phía trước.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "move", "from": "e2", "to": "e4" }
+      ],
+      "assert": [{ "type": "pieceAt", "square": "e4", "piece": "wP" }]
+    },
+    {
+      "kind": "watch",
+      "id": "pawn-one-step",
+      "say": "Sau đó, mỗi lần Tốt chỉ đi thẳng một ô thôi.",
+      "actions": [
+        { "type": "clear", "target": "shapes" },
+        { "type": "highlight", "squares": ["e5"] }
+      ],
+      "assert": [{ "type": "highlightIsLegalMoves", "square": "e4" }]
+    },
+    {
+      "kind": "interactMove",
+      "id": "move-to-star",
+      "say": "Bé chạm vào Tốt, rồi chạm vào ô có ngôi sao.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "stickers", "items": [{ "square": "e5", "kind": "star" }] }
+      ],
+      "accept": [{ "from": "e4", "to": "e5" }],
+      "praise": "Giỏi quá! Tốt đã bước tới ngôi sao.",
+      "retry": "Chưa đúng rồi. Tốt chỉ đi thẳng lên một ô nhé."
+    },
+    {
+      "kind": "watch",
+      "id": "pawn-no-back",
+      "say": "Tốt chỉ đi về phía trước, không bao giờ đi lùi.",
+      "actions": [
+        { "type": "setPosition", "position": "8/8/8/4P3/8/8/8/8" },
+        { "type": "clear", "target": "all" },
+        { "type": "arrow", "from": "e5", "to": "e4", "tone": "warn" }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "pawn-captures-diagonal",
+      "say": "Tốt đi thẳng, nhưng ăn quân thì ăn chéo một ô.",
+      "actions": [
+        { "type": "setPosition", "position": "8/8/3p4/4P3/8/8/8/8" },
+        { "type": "clear", "target": "all" },
+        { "type": "highlight", "squares": ["e6", "d6"] },
+        { "type": "arrow", "from": "e5", "to": "d6", "tone": "good" }
+      ],
+      "assert": [{ "type": "highlightIsLegalMoves", "square": "e5" }]
+    },
+    {
+      "kind": "interactMove",
+      "id": "capture-heart",
+      "say": "Bé giúp Tốt ăn quân đen ở ô có trái tim nhé.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "stickers", "items": [{ "square": "d6", "kind": "heart" }] }
+      ],
+      "accept": [{ "from": "e5", "to": "d6" }],
+      "praise": "Giỏi quá! Tốt đã ăn chéo được quân đen.",
+      "retry": "Chưa đúng rồi. Tốt ăn quân theo đường chéo nhé."
+    },
+    {
+      "kind": "captureTargets",
+      "id": "eat-apples",
+      "say": "Bây giờ bé giúp Tốt ăn hết ba quả táo nhé.",
+      "actions": [
+        { "type": "setPosition", "position": "8/8/8/8/5p2/4p3/3P4/8" },
+        { "type": "clear", "target": "all" },
+        {
+          "type": "stickers",
+          "items": [
+            { "square": "e3", "kind": "apple" },
+            { "square": "f4", "kind": "apple" },
+            { "square": "f5", "kind": "apple" }
+          ]
+        }
+      ],
+      "piece": "d2",
+      "targets": ["e3", "f4", "f5"],
+      "maxMoves": 5,
+      "praise": "Tuyệt vời! Bé đã giúp Tốt ăn hết táo.",
+      "retry": "Bé nhớ nhé, Tốt ăn chéo, còn đi thì đi thẳng."
+    },
+    {
+      "kind": "watch",
+      "id": "goodbye",
+      "say": "Bé đã học xong quân Tốt. Hẹn gặp lại bé nhé!",
+      "actions": [
+        { "type": "setPosition", "position": "8/8/8/8/8/8/4P3/8" },
+        { "type": "clear", "target": "all" }
+      ]
+    }
+  ]
+}

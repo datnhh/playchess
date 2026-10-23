@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef } from 'react';
 import type { ReactNode } from 'react';
 import { Chessground } from 'chessground';
 import type { Api } from 'chessground/api';
@@ -10,7 +10,14 @@ import 'chessground/assets/chessground.cburnett.css';
 import './board.css';
 import { isSquare } from '../chess/types.ts';
 import type { Square } from '../chess/types.ts';
-import { placementOf, squarePosition, toAutoShapes, toDests } from './boardMapping.ts';
+import {
+  occupiedSquares,
+  placementOf,
+  squarePosition,
+  toAutoShapes,
+  toDests,
+  toSquareClasses,
+} from './boardMapping.ts';
 import { StickerIcon } from './Stickers.tsx';
 import type { BoardProps } from './types.ts';
 
@@ -103,6 +110,7 @@ export function ChessBoard(props: BoardProps) {
         },
       },
       drawable: { autoShapes: toAutoShapes(shapes) },
+      highlight: { custom: toSquareClasses(shapes) },
     };
     api.set(config);
     // Coordinates are only drawn on a full redraw; doing it on every change would cancel animations.
@@ -111,6 +119,8 @@ export function ChessBoard(props: BoardProps) {
       api.redrawAll();
     }
   }, [position, orientation, showCoordinates, lastMove, checkSquare, movable, shapes]);
+
+  const occupied = useMemo(() => occupiedSquares(position), [position]);
 
   return (
     <div className="chess-board">
@@ -122,6 +132,7 @@ export function ChessBoard(props: BoardProps) {
               key={`${sticker.square}-${index}`}
               square={sticker.square}
               orientation={orientation}
+              onPiece={occupied.has(sticker.square)}
             >
               <StickerIcon kind={sticker.kind} />
             </StickerAt>
@@ -135,16 +146,20 @@ export function ChessBoard(props: BoardProps) {
 function StickerAt({
   square,
   orientation,
+  onPiece,
   children,
 }: {
   square: Square;
   orientation: BoardProps['orientation'];
+  onPiece: boolean;
   children: ReactNode;
 }) {
   const { leftPercent, topPercent } = squarePosition(square, orientation);
   return (
     <div
-      className="chess-board__sticker"
+      className={
+        onPiece ? 'chess-board__sticker chess-board__sticker--on-piece' : 'chess-board__sticker'
+      }
       style={{ left: `${leftPercent}%`, top: `${topPercent}%` }}
     >
       {children}

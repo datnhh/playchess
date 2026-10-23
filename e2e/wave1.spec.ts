@@ -11,7 +11,7 @@ test('sample lesson runs on the real board', async ({ page }) => {
   await expect(page.locator('cg-board piece.rook.white')).toBeVisible();
   // Step 2 highlights the 14 squares the rook can reach.
   await page.getByRole('button', { name: 'Tiếp' }).click();
-  await expect(page.locator('cg-container svg circle, cg-container svg g')).not.toHaveCount(0);
+  await expect(page.locator('cg-board square[class*="board-hl"]')).not.toHaveCount(0);
 });
 
 test('Stockfish answers at level 10 and gives a hint', async ({ page }) => {

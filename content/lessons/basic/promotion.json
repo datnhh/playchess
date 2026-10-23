@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "id": "basic-promotion",
+  "track": "basic",
+  "order": 14,
+  "title": "Phong cấp",
+  "summary": "Tốt đi tới hàng cuối thì đổi thành Hậu, Xe, Tượng hoặc Mã; thường chọn Hậu vì mạnh nhất.",
+  "icon": "promotion",
+  "boardMode": "standard",
+  "orientation": "white",
+  "start": "4k3/P7/8/8/8/8/8/4K3 w - - 0 1",
+  "reviewed": false,
+  "steps": [
+    {
+      "kind": "watch",
+      "id": "meet-pawn",
+      "say": "Đây là Tốt. Tốt đã đi gần tới hàng cuối rồi.",
+      "actions": [{ "type": "highlight", "squares": ["a7"], "tone": "good" }]
+    },
+    {
+      "kind": "watch",
+      "id": "last-rank",
+      "say": "Đây là hàng cuối. Tốt tới đây sẽ được đổi quân.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        {
+          "type": "highlight",
+          "squares": ["a8", "b8", "c8", "d8", "e8", "f8", "g8", "h8"],
+          "tone": "good"
+        }
+      ]
+    },
+    {
+      "kind": "tapSquare",
+      "id": "tap-last-rank",
+      "say": "Bé chạm vào hàng ngang đang sáng nhé.",
+      "answers": ["a8", "b8", "c8", "d8", "e8", "f8", "g8", "h8"]
+    },
+    {
+      "kind": "watch",
+      "id": "promote-demo",
+      "say": "Tốt tới hàng cuối thì đổi ra Hậu. Đó là phong cấp.",
+      "actions": [
+        { "type": "setPosition", "position": "4k3/P7/8/8/8/8/8/4K3 w - - 0 1" },
+        { "type": "clear", "target": "all" },
+        { "type": "move", "from": "a7", "to": "a8", "promotion": "queen" }
+      ],
+      "assert": [{ "type": "pieceAt", "square": "a8", "piece": "wQ" }]
+    },
+    {
+      "kind": "watch",
+      "id": "four-choices",
+      "say": "Tốt có thể đổi ra Hậu, Xe, Tượng hoặc Mã.",
+      "actions": [
+        { "type": "setPosition", "position": "4k3/8/8/8/8/8/8/QRBNK3 w - - 0 1" },
+        { "type": "clear", "target": "all" },
+        { "type": "highlight", "squares": ["a1", "b1", "c1", "d1"], "tone": "good" }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "queen-best",
+      "say": "Hậu mạnh nhất, nên bé thường chọn Hậu nhé.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "highlight", "squares": ["a1"], "tone": "good" }
+      ]
+    },
+    {
+      "kind": "interactMove",
+      "id": "promote-star",
+      "say": "Bé chạm vào Tốt, rồi đưa Tốt tới ngôi sao nhé.",
+      "actions": [
+        { "type": "setPosition", "position": "4k3/P7/8/8/8/8/8/4K3 w - - 0 1" },
+        { "type": "clear", "target": "all" },
+        { "type": "stickers", "items": [{ "square": "a8", "kind": "star" }] }
+      ],
+      "accept": [{ "from": "a7", "to": "a8", "promotion": "queen" }],
+      "praise": "Giỏi quá! Tốt đã phong cấp ra Hậu.",
+      "retry": "Chưa đúng rồi. Tốt đi thẳng lên một ô nhé."
+    },
+    {
+      "kind": "watch",
+      "id": "new-queen",
+      "say": "Hậu mới của bé đi được thật xa.",
+      "actions": [
+        { "type": "setPosition", "position": "Q3k3/8/8/8/8/8/8/4K3 b - - 0 1" },
+        { "type": "clear", "target": "all" },
+        { "type": "highlight", "squares": ["a8"], "tone": "good" }
+      ]
+    },
+    {
+      "kind": "interactMove",
+      "id": "promote-flower",
+      "say": "Thêm một Tốt nữa. Bé giúp Tốt phong cấp ra Hậu nhé.",
+      "actions": [
+        { "type": "setPosition", "position": "4k3/6P1/8/8/8/8/8/4K3 w - - 0 1" },
+        { "type": "clear", "target": "all" },
+        { "type": "stickers", "items": [{ "square": "g8", "kind": "flower" }] }
+      ],
+      "accept": [{ "from": "g7", "to": "g8", "promotion": "queen" }],
+      "praise": "Tuyệt quá! Bé lại có thêm một Hậu."
+    },
+    {
+      "kind": "watch",
+      "id": "goodbye",
+      "say": "Bé đã học xong phong cấp. Hẹn gặp lại bé nhé!",
+      "actions": [
+        { "type": "setPosition", "position": "4k3/8/8/8/8/8/8/4K3 w - - 0 1" },
+        { "type": "clear", "target": "all" }
+      ]
+    }
+  ]
+}

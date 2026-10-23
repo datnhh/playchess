@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "id": "basic-bishop",
+  "track": "basic",
+  "order": 3,
+  "title": "Quân Tượng",
+  "summary": "Tượng đi chéo xa bao nhiêu cũng được, không đi thẳng, và luôn ở trên ô cùng màu.",
+  "icon": "bishop",
+  "boardMode": "sandbox",
+  "orientation": "white",
+  "start": "8/8/8/8/3B4/8/8/8",
+  "reviewed": false,
+  "steps": [
+    {
+      "kind": "watch",
+      "id": "meet-bishop",
+      "say": "Đây là quân Tượng. Tượng có cái mũ nhọn thật xinh.",
+      "actions": [{ "type": "highlight", "squares": ["d4"], "tone": "good" }]
+    },
+    {
+      "kind": "watch",
+      "id": "bishop-diagonals",
+      "say": "Tượng đi theo đường chéo, đi xa bao nhiêu cũng được.",
+      "actions": [
+        { "type": "clear", "target": "shapes" },
+        {
+          "type": "highlight",
+          "squares": ["c3", "b2", "a1", "e5", "f6", "g7", "h8", "c5", "b6", "a7", "e3", "f2", "g1"]
+        }
+      ],
+      "assert": [{ "type": "highlightIsLegalMoves", "square": "d4" }]
+    },
+    {
+      "kind": "watch",
+      "id": "bishop-slides",
+      "say": "Xem này, Tượng đi chéo lên thật xa.",
+      "actions": [
+        { "type": "clear", "target": "shapes" },
+        { "type": "move", "from": "d4", "to": "g7" }
+      ],
+      "assert": [{ "type": "pieceAt", "square": "g7", "piece": "wB" }]
+    },
+    {
+      "kind": "tapSquare",
+      "id": "tap-bishop-square",
+      "say": "Bé chạm vào hình dán mà Tượng đi tới được nhé.",
+      "actions": [
+        { "type": "setPosition", "position": "8/8/8/8/3B4/8/8/8" },
+        { "type": "clear", "target": "all" },
+        {
+          "type": "stickers",
+          "items": [
+            { "square": "f6", "kind": "star" },
+            { "square": "d6", "kind": "heart" },
+            { "square": "f4", "kind": "heart" }
+          ]
+        }
+      ],
+      "answers": ["f6"],
+      "retry": "Chưa đúng rồi. Bé nhớ nhé, Tượng chỉ đi chéo thôi."
+    },
+    {
+      "kind": "watch",
+      "id": "bishop-no-straight",
+      "say": "Tượng không đi thẳng được nhé.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "arrow", "from": "d4", "to": "d7", "tone": "warn" }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "bishop-same-color",
+      "say": "Tượng đứng ô tối thì luôn đi trên ô tối.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "highlight", "squares": ["d4", "f6", "b2"], "tone": "good" },
+        { "type": "arrow", "from": "d4", "to": "f6", "tone": "good" },
+        { "type": "arrow", "from": "d4", "to": "b2", "tone": "good" }
+      ]
+    },
+    {
+      "kind": "interactMove",
+      "id": "move-to-star",
+      "say": "Bé chạm vào Tượng, rồi chạm vào ô có ngôi sao.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "stickers", "items": [{ "square": "b6", "kind": "star" }] }
+      ],
+      "accept": [{ "from": "d4", "to": "b6" }],
+      "praise": "Giỏi quá! Tượng đã đi chéo tới ngôi sao.",
+      "retry": "Chưa đúng rồi. Tượng đi theo đường chéo nhé."
+    },
+    {
+      "kind": "captureTargets",
+      "id": "eat-apples",
+      "say": "Bây giờ bé giúp Tượng ăn hết ba quả táo nhé.",
+      "actions": [
+        { "type": "setPosition", "position": "8/8/8/8/3B4/8/8/8" },
+        { "type": "clear", "target": "all" },
+        {
+          "type": "stickers",
+          "items": [
+            { "square": "f6", "kind": "apple" },
+            { "square": "h4", "kind": "apple" },
+            { "square": "e1", "kind": "apple" }
+          ]
+        }
+      ],
+      "piece": "d4",
+      "targets": ["f6", "h4", "e1"],
+      "maxMoves": 5,
+      "praise": "Tuyệt vời! Bé đã giúp Tượng ăn hết táo."
+    },
+    {
+      "kind": "watch",
+      "id": "goodbye",
+      "say": "Bé đã học xong quân Tượng. Hẹn gặp lại bé nhé!",
+      "actions": [
+        { "type": "setPosition", "position": "8/8/8/8/3B4/8/8/8" },
+        { "type": "clear", "target": "all" }
+      ]
+    }
+  ]
+}

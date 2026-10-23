@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "id": "basic-capture",
+  "track": "basic",
+  "order": 8,
+  "title": "Ăn quân",
+  "summary": "Quân đi vào ô có quân khác màu là ăn quân đó; không ăn được quân cùng màu.",
+  "icon": "capture",
+  "boardMode": "sandbox",
+  "orientation": "white",
+  "start": "8/8/3p4/8/8/8/8/3R4",
+  "reviewed": false,
+  "steps": [
+    {
+      "kind": "watch",
+      "id": "what-is-capture",
+      "say": "Quân đi vào ô có quân khác màu, như vậy gọi là ăn quân.",
+      "actions": [
+        { "type": "highlight", "squares": ["d1"], "tone": "good" },
+        { "type": "highlight", "squares": ["d6"], "tone": "warn" },
+        { "type": "arrow", "from": "d1", "to": "d6", "tone": "good" }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "rook-captures",
+      "say": "Xem này, Xe ăn quân đen và đứng vào ô đó.",
+      "actions": [
+        { "type": "clear", "target": "shapes" },
+        { "type": "move", "from": "d1", "to": "d6" }
+      ],
+      "assert": [{ "type": "pieceAt", "square": "d6", "piece": "wR" }]
+    },
+    {
+      "kind": "tapSquare",
+      "id": "tap-rook-target",
+      "say": "Bé chạm vào quân đen mà Xe ăn được nhé.",
+      "actions": [
+        { "type": "setPosition", "position": "8/8/1p3p2/8/3R2p1/8/8/8" },
+        { "type": "clear", "target": "all" }
+      ],
+      "answers": ["g4"],
+      "retry": "Chưa đúng rồi. Xe chỉ đi thẳng thôi, bé nhớ nhé."
+    },
+    {
+      "kind": "watch",
+      "id": "no-same-color",
+      "say": "Quân cùng màu là bạn, không ăn được bạn đâu nhé.",
+      "actions": [
+        { "type": "setPosition", "position": "8/8/8/8/3R2P1/8/8/8" },
+        { "type": "clear", "target": "all" },
+        { "type": "highlight", "squares": ["g4"], "tone": "warn" },
+        { "type": "arrow", "from": "d4", "to": "g4", "tone": "warn" }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "friend-blocks",
+      "say": "Bạn đứng chắn đường thì Xe phải dừng lại trước bạn.",
+      "actions": [
+        { "type": "clear", "target": "shapes" },
+        {
+          "type": "highlight",
+          "squares": ["a4", "b4", "c4", "e4", "f4", "d1", "d2", "d3", "d5", "d6", "d7", "d8"]
+        }
+      ],
+      "assert": [{ "type": "highlightIsLegalMoves", "square": "d4" }]
+    },
+    {
+      "kind": "interactMove",
+      "id": "capture-star",
+      "say": "Bé chạm vào Xe, rồi ăn quân đen có ngôi sao nhé.",
+      "actions": [
+        { "type": "setPosition", "position": "8/3p4/8/8/3R2P1/8/8/8" },
+        { "type": "clear", "target": "all" },
+        { "type": "stickers", "items": [{ "square": "d7", "kind": "star" }] }
+      ],
+      "accept": [{ "from": "d4", "to": "d7" }],
+      "praise": "Giỏi quá! Xe đã ăn quân đen rồi.",
+      "retry": "Chưa đúng rồi. Bé tìm quân đen có ngôi sao nhé."
+    },
+    {
+      "kind": "tapSquare",
+      "id": "tap-knight-target",
+      "say": "Bé chạm vào quân mà Mã ăn được nhé.",
+      "actions": [
+        { "type": "setPosition", "position": "8/8/2P1p3/8/3N1p2/8/8/8" },
+        { "type": "clear", "target": "all" }
+      ],
+      "answers": ["e6"],
+      "retry": "Chưa đúng rồi. Mã chỉ ăn quân khác màu thôi nhé."
+    },
+    {
+      "kind": "captureTargets",
+      "id": "eat-apples",
+      "say": "Bây giờ bé giúp Xe ăn hết ba quân đen có táo nhé.",
+      "actions": [
+        { "type": "setPosition", "position": "8/1p4n1/8/8/3R2p1/8/8/8" },
+        { "type": "clear", "target": "all" },
+        {
+          "type": "stickers",
+          "items": [
+            { "square": "g4", "kind": "apple" },
+            { "square": "g7", "kind": "apple" },
+            { "square": "b7", "kind": "apple" }
+          ]
+        }
+      ],
+      "piece": "d4",
+      "targets": ["g4", "g7", "b7"],
+      "maxMoves": 5,
+      "praise": "Tuyệt vời! Bé đã giúp Xe ăn hết quân đen."
+    },
+    {
+      "kind": "watch",
+      "id": "goodbye",
+      "say": "Bé đã học xong cách ăn quân. Hẹn gặp lại bé nhé!",
+      "actions": [
+        { "type": "setPosition", "position": "8/8/3p4/8/8/8/8/3R4" },
+        { "type": "clear", "target": "all" }
+      ]
+    }
+  ]
+}

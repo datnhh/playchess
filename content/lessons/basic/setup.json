@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "id": "basic-setup",
+  "track": "basic",
+  "order": 9,
+  "title": "Xếp quân lúc bắt đầu",
+  "summary": "Quân trắng ở dưới; hàng Tốt phía trước; Xe ở góc, Mã cạnh Xe, Tượng cạnh Mã, Hậu ở ô cùng màu, Vua cạnh Hậu.",
+  "icon": "setup",
+  "boardMode": "sandbox",
+  "orientation": "white",
+  "start": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR",
+  "reviewed": false,
+  "steps": [
+    {
+      "kind": "watch",
+      "id": "white-at-bottom",
+      "say": "Lúc bắt đầu, quân trắng đứng ở dưới, gần bé nhất.",
+      "actions": [
+        {
+          "type": "highlight",
+          "squares": [
+            "a1",
+            "b1",
+            "c1",
+            "d1",
+            "e1",
+            "f1",
+            "g1",
+            "h1",
+            "a2",
+            "b2",
+            "c2",
+            "d2",
+            "e2",
+            "f2",
+            "g2",
+            "h2"
+          ],
+          "tone": "good"
+        }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "pawn-row",
+      "say": "Tám quân Tốt trắng đứng kín một hàng ngang phía trước.",
+      "actions": [
+        { "type": "setPosition", "position": "8/8/8/8/8/8/PPPPPPPP/8" },
+        { "type": "clear", "target": "all" },
+        {
+          "type": "highlight",
+          "squares": ["a2", "b2", "c2", "d2", "e2", "f2", "g2", "h2"],
+          "tone": "good"
+        }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "rooks-in-corners",
+      "say": "Hai quân Xe đứng ở hai góc bàn cờ.",
+      "actions": [
+        { "type": "setPosition", "position": "8/8/8/8/8/8/PPPPPPPP/R6R" },
+        { "type": "clear", "target": "all" },
+        { "type": "highlight", "squares": ["a1", "h1"], "tone": "good" }
+      ]
+    },
+    {
+      "kind": "tapSquare",
+      "id": "tap-knight-spot",
+      "say": "Mã đứng ngay cạnh Xe. Bé chạm vào ô Mã đứng nhé.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        {
+          "type": "stickers",
+          "items": [
+            { "square": "b1", "kind": "star" },
+            { "square": "g1", "kind": "star" },
+            { "square": "d1", "kind": "heart" },
+            { "square": "e3", "kind": "heart" }
+          ]
+        }
+      ],
+      "answers": ["b1", "g1"],
+      "retry": "Chưa đúng rồi. Mã đứng sát bên Xe nhé."
+    },
+    {
+      "kind": "watch",
+      "id": "bishops-next",
+      "say": "Hai quân Tượng đứng ngay cạnh hai quân Mã.",
+      "actions": [
+        { "type": "setPosition", "position": "8/8/8/8/8/8/PPPPPPPP/RNB2BNR" },
+        { "type": "clear", "target": "all" },
+        { "type": "highlight", "squares": ["c1", "f1"], "tone": "good" }
+      ]
+    },
+    {
+      "kind": "tapSquare",
+      "id": "tap-queen-spot",
+      "say": "Hậu trắng thích ô sáng. Bé chạm vào ô sáng còn trống nhé.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "highlight", "squares": ["d1", "e1"] }
+      ],
+      "answers": ["d1"],
+      "retry": "Chưa đúng rồi. Bé tìm ô trống màu sáng nhé."
+    },
+    {
+      "kind": "tapSquare",
+      "id": "tap-king-spot",
+      "say": "Vua đứng ngay cạnh Hậu. Bé chạm vào ô của Vua nhé.",
+      "actions": [
+        { "type": "setPosition", "position": "8/8/8/8/8/8/PPPPPPPP/RNBQ1BNR" },
+        { "type": "clear", "target": "all" },
+        {
+          "type": "stickers",
+          "items": [
+            { "square": "e1", "kind": "star" },
+            { "square": "e3", "kind": "heart" }
+          ]
+        }
+      ],
+      "answers": ["e1"],
+      "retry": "Chưa đúng rồi. Vua đứng sát bên Hậu nhé."
+    },
+    {
+      "kind": "watch",
+      "id": "black-side",
+      "say": "Quân đen xếp giống hệt như vậy ở phía bên kia.",
+      "actions": [
+        { "type": "setPosition", "position": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR" },
+        { "type": "clear", "target": "all" },
+        {
+          "type": "highlight",
+          "squares": [
+            "a7",
+            "b7",
+            "c7",
+            "d7",
+            "e7",
+            "f7",
+            "g7",
+            "h7",
+            "a8",
+            "b8",
+            "c8",
+            "d8",
+            "e8",
+            "f8",
+            "g8",
+            "h8"
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "tapSquare",
+      "id": "tap-white-rook",
+      "say": "Bé chạm vào một quân Xe trắng nhé.",
+      "actions": [{ "type": "clear", "target": "all" }],
+      "answers": ["a1", "h1"],
+      "retry": "Chưa đúng rồi. Xe trắng đứng ở góc, gần bé nhé."
+    },
+    {
+      "kind": "watch",
+      "id": "goodbye",
+      "say": "Bé đã học xong cách xếp quân. Hẹn gặp lại bé nhé!",
+      "actions": [
+        { "type": "setPosition", "position": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR" },
+        { "type": "clear", "target": "all" }
+      ]
+    }
+  ]
+}

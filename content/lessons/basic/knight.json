@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "id": "basic-knight",
+  "track": "basic",
+  "order": 6,
+  "title": "Quân Mã",
+  "summary": "Mã nhảy hình chữ L (2 ô thẳng rồi 1 ô sang bên), luôn đổi màu ô và nhảy qua được các quân khác.",
+  "icon": "knight",
+  "boardMode": "sandbox",
+  "orientation": "white",
+  "start": "8/8/8/8/3N4/8/8/8",
+  "reviewed": false,
+  "steps": [
+    {
+      "kind": "watch",
+      "id": "meet-knight",
+      "say": "Đây là quân Mã. Mã có cái bờm thật đẹp.",
+      "actions": [{ "type": "highlight", "squares": ["d4"], "tone": "good" }]
+    },
+    {
+      "kind": "watch",
+      "id": "knight-l-shape",
+      "say": "Mã đi hai ô thẳng, rồi rẽ sang bên một ô.",
+      "actions": [
+        { "type": "clear", "target": "shapes" },
+        { "type": "arrow", "from": "d4", "to": "d6" },
+        { "type": "arrow", "from": "d6", "to": "e6", "tone": "good" }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "knight-jumps",
+      "say": "Xem này, Mã nhảy theo hình chữ L.",
+      "actions": [
+        { "type": "clear", "target": "shapes" },
+        { "type": "move", "from": "d4", "to": "e6" }
+      ],
+      "assert": [{ "type": "pieceAt", "square": "e6", "piece": "wN" }]
+    },
+    {
+      "kind": "watch",
+      "id": "knight-eight-squares",
+      "say": "Từ đây, Mã có thể nhảy tới tám ô đang sáng.",
+      "actions": [
+        { "type": "setPosition", "position": "8/8/8/8/3N4/8/8/8" },
+        { "type": "highlight", "squares": ["b3", "b5", "c2", "c6", "e2", "e6", "f3", "f5"] }
+      ],
+      "assert": [{ "type": "highlightIsLegalMoves", "square": "d4" }]
+    },
+    {
+      "kind": "tapSquare",
+      "id": "tap-knight-square",
+      "say": "Bé chạm vào hình dán mà Mã nhảy tới được nhé.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        {
+          "type": "stickers",
+          "items": [
+            { "square": "f5", "kind": "star" },
+            { "square": "d6", "kind": "heart" },
+            { "square": "f4", "kind": "heart" }
+          ]
+        }
+      ],
+      "answers": ["f5"],
+      "retry": "Chưa đúng rồi. Bé nhớ nhé, hai ô thẳng rồi rẽ một ô."
+    },
+    {
+      "kind": "watch",
+      "id": "knight-changes-color",
+      "say": "Mã đứng ô tối thì nhảy sang ô sáng, luôn đổi màu.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "highlight", "squares": ["d4"], "tone": "warn" },
+        { "type": "highlight", "squares": ["e6"], "tone": "good" },
+        { "type": "arrow", "from": "d4", "to": "e6", "tone": "good" }
+      ]
+    },
+    {
+      "kind": "interactMove",
+      "id": "move-to-star",
+      "say": "Bé chạm vào Mã, rồi chạm vào ô có ngôi sao.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "stickers", "items": [{ "square": "f5", "kind": "star" }] }
+      ],
+      "accept": [{ "from": "d4", "to": "f5" }],
+      "praise": "Giỏi quá! Mã đã nhảy tới ngôi sao.",
+      "retry": "Chưa đúng rồi. Mã đi hai ô thẳng, rồi rẽ một ô nhé."
+    },
+    {
+      "kind": "watch",
+      "id": "knight-jumps-over",
+      "say": "Mã còn nhảy qua được các quân khác, như nhảy qua hàng rào.",
+      "actions": [
+        { "type": "setPosition", "position": "8/8/8/2PPP3/2PNP3/2PPP3/8/8" },
+        { "type": "clear", "target": "all" },
+        { "type": "highlight", "squares": ["b3", "b5", "c2", "c6", "e2", "e6", "f3", "f5"] }
+      ],
+      "assert": [{ "type": "highlightIsLegalMoves", "square": "d4" }]
+    },
+    {
+      "kind": "interactMove",
+      "id": "jump-to-flower",
+      "say": "Bé giúp Mã nhảy qua hàng rào, tới ô có bông hoa.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "stickers", "items": [{ "square": "b5", "kind": "flower" }] }
+      ],
+      "accept": [{ "from": "d4", "to": "b5" }],
+      "praise": "Tuyệt quá! Mã nhảy qua hàng rào rồi."
+    },
+    {
+      "kind": "captureTargets",
+      "id": "eat-apples",
+      "say": "Bây giờ bé giúp Mã ăn hết ba quả táo nhé.",
+      "actions": [
+        { "type": "setPosition", "position": "8/8/8/8/3N4/8/8/8" },
+        { "type": "clear", "target": "all" },
+        {
+          "type": "stickers",
+          "items": [
+            { "square": "e6", "kind": "apple" },
+            { "square": "g7", "kind": "apple" },
+            { "square": "f5", "kind": "apple" }
+          ]
+        }
+      ],
+      "piece": "d4",
+      "targets": ["e6", "g7", "f5"],
+      "maxMoves": 5,
+      "praise": "Tuyệt vời! Bé đã giúp Mã ăn hết táo."
+    },
+    {
+      "kind": "watch",
+      "id": "goodbye",
+      "say": "Bé đã học xong quân Mã. Hẹn gặp lại bé nhé!",
+      "actions": [
+        { "type": "setPosition", "position": "8/8/8/8/3N4/8/8/8" },
+        { "type": "clear", "target": "all" }
+      ]
+    }
+  ]
+}
