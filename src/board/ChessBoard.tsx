@@ -86,6 +86,9 @@ export function ChessBoard(props: BoardProps) {
     else delete state.lastMove;
     if (movable) state.movable.color = movable.color;
     else delete state.movable.color;
+    // chessground flips its turn after each move made on the board, but a reply set through `fen`
+    // does not flip it back; a one-colour board is only movable on that colour's turn.
+    if (movable && movable.color !== 'both') state.turnColor = movable.color;
     const config: Config = {
       fen: placementOf(position),
       orientation,

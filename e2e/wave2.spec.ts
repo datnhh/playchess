@@ -14,13 +14,15 @@ async function clickSquare(page: Page, square: string) {
 }
 
 // chessground stores each piece's square on the element as `cgKey`.
-const blackPieceSquares = (page: Page) =>
-  page.locator('cg-board piece.black').evaluateAll((pieces) =>
+const pieceSquares = (page: Page, color: 'white' | 'black') =>
+  page.locator(`cg-board piece.${color}`).evaluateAll((pieces) =>
     pieces
       .map((piece) => (piece as unknown as { cgKey?: string }).cgKey ?? '')
       .sort()
       .join(','),
   );
+const blackPieceSquares = (page: Page) => pieceSquares(page, 'black');
+const whitePieceSquares = (page: Page) => pieceSquares(page, 'white');
 
 // Reviewed lessons ship in production; the manifest tells which audio files they use.
 const lessonFiles = readdirSync('content/lessons/basic');
@@ -95,6 +97,13 @@ test('play page: pick level 1, move, and the computer answers', async ({ page })
   await clickSquare(page, 'e4');
   await expect.poll(() => blackPieceSquares(page), { timeout: 15_000 }).not.toBe(before);
   await expect(page.getByRole('button', { name: 'Đi lại' })).toBeEnabled();
+
+  // The child can keep playing after the computer's reply (d2-d4 is legal after any first reply).
+  const afterReply = await blackPieceSquares(page);
+  await clickSquare(page, 'd2');
+  await clickSquare(page, 'd4');
+  await expect.poll(() => whitePieceSquares(page)).toContain('d4');
+  await expect.poll(() => blackPieceSquares(page), { timeout: 15_000 }).not.toBe(afterReply);
 });
 
 test('settings are behind the parental gate', async ({ page }) => {
