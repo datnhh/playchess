@@ -100,7 +100,10 @@
       "kind": "watch",
       "id": "goodbye",
       "say": "Bé đã học xong quân Xe. Hẹn gặp lại bé nhé!",
-      "actions": [{ "type": "clear", "target": "all" }]
+      "actions": [
+        { "type": "setPosition", "position": "8/8/8/8/3R4/8/8/8" },
+        { "type": "clear", "target": "all" }
+      ]
     }
   ]
 }

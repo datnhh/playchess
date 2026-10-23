@@ -4,7 +4,8 @@
  * - Every spoken text has a key: `<lessonId>/<stepId>/<field>` for lesson narration,
  *   `common/<clipId>` for clips shared across lessons and the play page.
  * - The pipeline writes MP3 files to public/audio/<hash>.mp3, where
- *   hash = first 16 hex chars of sha256(`${voice}|${rate}|${text}`), and records them in
+ *   hash = first 16 hex chars of sha256(`${provider}|${voice}|${rate}|${spoken text}`) (spoken text =
+ *   text with glossary pronunciation overrides; see tools/tts/hash.ts), and records them in
  *   content/audio/manifest.json. CI fails when an entry is missing or its hash no longer
  *   matches the current text (stale audio).
  * - The app only looks keys up in the manifest; it never hashes text itself.

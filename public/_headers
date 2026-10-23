@@ -15,3 +15,7 @@
 
 /engine/*
   Cache-Control: public, max-age=31536000, immutable
+
+# Audio files are named by the hash of voice, rate and text (tools/tts), so a changed text gets a new name.
+/audio/*
+  Cache-Control: public, max-age=31536000, immutable

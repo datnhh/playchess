@@ -1,0 +1,175 @@
+/* Lesson player and mock board. Big touch targets (>= 64px), icons over text. */
+
+.lesson-player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  min-height: 80dvh;
+}
+
+.lesson-center {
+  justify-content: center;
+}
+
+.lesson-start {
+  min-width: 240px;
+  min-height: 120px;
+  padding: 24px 40px;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-primary-contrast);
+  background: var(--color-primary);
+  border: none;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+}
+
+.lesson-topbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 640px;
+}
+
+.lesson-dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lesson-dots li {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-border);
+}
+
+.lesson-dots .lesson-dot-done {
+  background: var(--color-sprout);
+}
+
+.lesson-dots .lesson-dot-current {
+  background: var(--color-primary);
+  transform: scale(1.3);
+}
+
+.lesson-board {
+  width: min(100%, 640px, 70dvh);
+}
+
+.lesson-controls {
+  display: flex;
+  gap: 24px;
+}
+
+.lesson-icon-button {
+  min-width: var(--touch-target);
+  min-height: var(--touch-target);
+  font-size: 2rem;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+}
+
+.lesson-next {
+  color: var(--color-primary-contrast);
+  background: var(--color-primary);
+}
+
+.lesson-stars {
+  font-size: 5rem;
+  letter-spacing: 8px;
+}
+
+.lesson-star-on {
+  color: #f5b301;
+}
+
+.lesson-star-off {
+  color: var(--color-border);
+}
+
+/* ---------- Mock board ---------- */
+
+.mock-board {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.mock-square {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  font-size: clamp(1.5rem, 7vw, 3rem);
+  cursor: pointer;
+}
+
+.mock-light {
+  background: #f0d9b5;
+}
+.mock-dark {
+  background: #b58863;
+}
+.mock-last {
+  box-shadow: inset 0 0 0 100px rgba(255, 230, 0, 0.35);
+}
+.mock-selected {
+  box-shadow: inset 0 0 0 4px var(--color-primary);
+}
+.mock-target::after {
+  content: '';
+  position: absolute;
+  width: 28%;
+  height: 28%;
+  border-radius: 50%;
+  background: rgba(47, 125, 79, 0.5);
+}
+.mock-check {
+  background: var(--color-danger);
+}
+.mock-circle-info {
+  box-shadow: inset 0 0 0 5px var(--color-play);
+}
+.mock-circle-good,
+.mock-arrow-to-good {
+  box-shadow: inset 0 0 0 5px var(--color-primary);
+}
+.mock-circle-warn,
+.mock-arrow-to-warn {
+  box-shadow: inset 0 0 0 5px var(--color-danger);
+}
+.mock-arrow-to-info {
+  box-shadow: inset 0 0 0 5px var(--color-play);
+}
+.mock-arrow-from-info,
+.mock-arrow-from-good,
+.mock-arrow-from-warn {
+  outline: 3px dashed var(--color-text);
+  outline-offset: -6px;
+}
+
+.mock-sticker {
+  position: absolute;
+  font-size: 0.7em;
+}
+
+.mock-piece {
+  position: relative;
+  line-height: 1;
+}

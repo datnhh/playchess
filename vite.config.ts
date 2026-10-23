@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { lessonsPlugin } from './tools/vite/lessonsPlugin.ts';
 
 /**
  * Reads the global ("/*") block of public/_headers so that `vite preview`
@@ -29,7 +30,7 @@ function readGlobalHeaders(): Record<string, string> {
 }
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), lessonsPlugin()],
   build: {
     target: 'es2022',
     sourcemap: true,

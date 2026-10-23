@@ -1,0 +1,113 @@
+/* Board fills its container width and stays square; the overlay sits exactly above it. */
+.chess-board {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.chess-board__ground {
+  position: absolute;
+  inset: 0;
+}
+
+.chess-board__ground cg-container {
+  touch-action: none;
+}
+
+.chess-board__stickers {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.chess-board__sticker {
+  position: absolute;
+  width: 12.5%;
+  height: 12.5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chess-board__sticker svg {
+  width: 70%;
+  height: 70%;
+  filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.25));
+}
+
+.promotion-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  background: var(--color-surface, #fff);
+  border-radius: var(--radius-lg, 24px);
+  box-shadow: var(--shadow-card, 0 6px 0 rgba(0, 0, 0, 0.12));
+}
+
+.promotion-picker__choice,
+.promotion-picker__cancel {
+  min-width: 88px;
+  min-height: 88px;
+  border: 3px solid var(--color-border, #e6dcc3);
+  border-radius: var(--radius-md, 14px);
+  background: var(--color-bg, #fff8e7);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.promotion-picker__choice:focus-visible,
+.promotion-picker__cancel:focus-visible {
+  outline: 4px solid var(--color-play, #4a8fd9);
+}
+
+.promotion-picker__piece {
+  width: 76px;
+  height: 76px;
+  background-size: cover;
+}
+
+.promotion-picker__cancel {
+  min-width: 64px;
+  min-height: 64px;
+  font-size: 32px;
+  color: var(--color-danger, #c4453c);
+}
+
+.board-demo {
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.board-demo__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.board-demo__row .button {
+  min-height: var(--touch-target, 64px);
+}
+
+/* Reuse the cburnett piece images: they are only styled under `.cg-wrap piece`. */
+.promotion-picker .promotion-picker__piece {
+  position: relative;
+  display: block;
+}
+
+.promotion-picker .promotion-picker__piece piece {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  will-change: auto;
+}
