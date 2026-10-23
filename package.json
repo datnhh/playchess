@@ -20,6 +20,7 @@
     "validate": "node tools/content/validate.ts",
     "tts": "node tools/tts/generate.ts",
     "tts:setup": "node tools/tts/setup.ts",
+    "icons": "node scripts/make-icons.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "vitest run",

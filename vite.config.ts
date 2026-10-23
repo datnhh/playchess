@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { lessonsPlugin } from './tools/vite/lessonsPlugin.ts';
+import { serviceWorkerPlugin } from './tools/vite/serviceWorkerPlugin.ts';
 
 /**
  * Reads the global ("/*") block of public/_headers so that `vite preview`
@@ -30,7 +31,7 @@ function readGlobalHeaders(): Record<string, string> {
 }
 
 export default defineConfig({
-  plugins: [react(), lessonsPlugin()],
+  plugins: [react(), lessonsPlugin(), serviceWorkerPlugin()],
   // .tools/ holds the offline TTS binaries and voice (hundreds of MB, gitignored): do not watch it.
   server: { watch: { ignored: ['**/.tools/**'] } },
   build: {

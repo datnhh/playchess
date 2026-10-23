@@ -1,0 +1,22 @@
+{
+  "name": "Bé học cờ vua",
+  "short_name": "Cờ vua bé",
+  "description": "Bé học cờ vua: bài học có giọng đọc và hoạt cảnh cho trẻ mới bắt đầu, đấu với máy 10 cấp độ.",
+  "lang": "vi",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#fff8e7",
+  "theme_color": "#2f7d4f",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    {
+      "src": "/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

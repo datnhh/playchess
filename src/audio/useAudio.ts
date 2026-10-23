@@ -17,6 +17,26 @@ export function getAudioController(): AudioController {
   return singleton;
 }
 
+let unlockRequested = false;
+
+/**
+ * Unlocks sound from a tap that opens a lesson, so the lesson can start without its ▶ screen.
+ * Must run synchronously inside the tap (iOS rule).
+ */
+export function unlockAudio(): void {
+  unlockRequested = true;
+  void getAudioController().unlock();
+}
+
+/**
+ * True when sound is unlocked or being unlocked by the tap that opened the page: only then may a
+ * lesson start by itself. A lesson opened from a link or a reload keeps its ▶ screen, which
+ * unlocks sound. (navigator.userActivation is not used: automation browsers report it as set.)
+ */
+export function canStartWithSound(): boolean {
+  return unlockRequested || getAudioController().getState().unlocked;
+}
+
 export function useAudioState(controller: AudioController = getAudioController()): AudioState {
   return useSyncExternalStore(controller.subscribe, controller.getState, controller.getState);
 }

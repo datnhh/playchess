@@ -36,8 +36,12 @@ test('home tiles lead to the learning map with every reviewed lesson', async ({ 
   await expect(page).toHaveURL(/\/learn\/basic$/);
   await expect(page.getByRole('heading', { name: 'Học cơ bản' })).toBeVisible();
   await expect(page.locator('a[href^="/lesson/basic-"]')).toHaveCount(lessonFiles.length);
-  await page.locator('a[href="/lesson/basic-board"]').click();
-  await expect(page.getByRole('button', { name: '▶ Bắt đầu' })).toBeVisible();
+  // Each lesson shows its name; a tap opens it straight away (the tap unlocks sound).
+  const board = page.locator('a[href="/lesson/basic-board"]');
+  await expect(board).toContainText('Làm quen bàn cờ');
+  await board.click();
+  await expect(page.locator('.lesson-caption')).toBeVisible();
+  await expect(page.getByRole('button', { name: '▶ Bắt đầu' })).toHaveCount(0);
 });
 
 test('the advanced map lists every reviewed advanced lesson', async ({ page }) => {
@@ -48,6 +52,11 @@ test('the advanced map lists every reviewed advanced lesson', async ({ page }) =
     advancedLessonFiles.length,
   );
   await page.locator('a[href="/lesson/advanced-center"]').click();
+  await expect(page.locator('.lesson-caption')).toBeVisible();
+});
+
+test('a lesson opened from a link keeps its start screen', async ({ page }) => {
+  await page.goto('/lesson/advanced-center');
   await expect(page.getByRole('button', { name: '▶ Bắt đầu' })).toBeVisible();
 });
 

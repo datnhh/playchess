@@ -19,3 +19,15 @@
 # Audio files are named by the hash of voice, rate and text (tools/tts), so a changed text gets a new name.
 /audio/*
   Cache-Control: public, max-age=31536000, immutable
+
+# The service worker must always be revalidated, so a new deploy reaches returning visitors.
+/sw.js
+  Cache-Control: no-cache
+
+/manifest.webmanifest
+  Content-Type: application/manifest+json
+  Cache-Control: no-cache
+
+# Icons keep the same name across deploys, so they are cached for one day only.
+/icons/*
+  Cache-Control: public, max-age=86400

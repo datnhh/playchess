@@ -57,3 +57,19 @@
 .settings a:not(.button):not(.icon-button) {
   color: var(--color-primary);
 }
+.settings-offline {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.settings-heading {
+  margin: 0;
+  font-size: 1.4rem;
+}
+.settings-note {
+  margin: 0;
+}
+.settings-progress {
+  flex: 1 1 200px;
+  height: 24px;
+}

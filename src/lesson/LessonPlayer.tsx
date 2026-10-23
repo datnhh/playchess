@@ -30,6 +30,8 @@ export interface LessonPlayerProps {
   onExit?: () => void;
   /** Dev/review tools: ▶ also skips exercises. Children only get ▶ on watch steps. */
   allowSkip?: boolean;
+  /** Start without the ▶ screen: only when sound was unlocked by the tap that opened the lesson. */
+  autoStart?: boolean;
 }
 
 export function LessonPlayer({
@@ -40,6 +42,7 @@ export function LessonPlayer({
   onComplete,
   onExit,
   allowSkip = false,
+  autoStart = false,
 }: LessonPlayerProps) {
   const [state, setState] = useState<LessonMachineState>(() => createLessonState(lesson));
   // Text of the narration, so adults can follow without sound. Shown by default; the Aa button hides it.
@@ -131,6 +134,15 @@ export function LessonPlayer({
     };
   }, []);
 
+  useEffect(() => {
+    if (!autoStart) return;
+    // Deferred so that StrictMode's mount/unmount/mount (dev) starts the lesson only once.
+    const timer = setTimeout(() => {
+      if (stateRef.current.phase === 'idle') dispatchRef.current({ type: 'START' });
+    }, 0);
+    return () => clearTimeout(timer);
+  }, [autoStart]);
+
   const handleStart = () => {
     // unlock() must be called synchronously inside the tap, before any await (iOS rule).
     void audio.unlock();
@@ -143,6 +155,8 @@ export function LessonPlayer({
   };
 
   if (state.phase === 'idle') {
+    // Starting on the next tick: show nothing rather than flash the ▶ screen.
+    if (autoStart) return <div className="lesson-player lesson-center" />;
     return (
       <div className="lesson-player lesson-center">
         <button type="button" className="lesson-start" onClick={handleStart}>

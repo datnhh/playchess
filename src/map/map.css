@@ -82,6 +82,16 @@
   line-height: 1;
 }
 
+/* Lesson name, for adults and children who read. */
+.map-node-title {
+  max-width: 10em;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
 .map-node--next .map-node-circle {
   background: var(--map-color, var(--color-basic));
   animation: map-bounce 1.6s ease-in-out infinite;

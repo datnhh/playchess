@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { Link } from '../app/Link.tsx';
+import { unlockAudio } from '../audio/useAudio.ts';
 import { getLessons } from '../content/lessons.ts';
 import type { Track } from '../content/schema.ts';
 import { loadProgress } from '../services/storage.ts';
@@ -45,11 +46,12 @@ export function TrackPage({ track }: TrackPageProps) {
                 <Link
                   to={`/lesson/${encodeURIComponent(lesson.id)}`}
                   className={isNext ? 'map-node map-node--next' : 'map-node'}
+                  onNavigate={unlockAudio}
                 >
                   <span className="map-node-circle" aria-hidden="true">
                     {lessonPicture(lesson.icon)}
                   </span>
-                  <span className="visually-hidden">{lesson.title}</span>
+                  <span className="map-node-title">{lesson.title}</span>
                   <Stars count={starsOf(progress, lesson.id)} />
                 </Link>
               </li>

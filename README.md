@@ -40,6 +40,58 @@ Kết nối repo GitHub trong Cloudflare Pages với cấu hình:
 
 Header bảo mật và cache nằm trong `public/_headers`. GitHub Actions (`.github/workflows/ci.yml`) chạy lint, test, build và e2e cho mỗi push và pull request.
 
+## Chạy offline (PWA)
+
+Bản production có service worker (`src/sw/sw.ts`, build thành `dist/sw.js` bởi `tools/vite/serviceWorkerPlugin.ts`):
+
+- Khi cài, worker tải sẵn toàn bộ file của bản build (trang, code, engine) và các câu audio dùng chung. Tải lỗi một file thì không cache gì, trang vẫn chạy online như khi không có worker.
+- Audio bài học không tải sẵn: câu nào đã nghe thì được lưu lại (cache-first, hỗ trợ Range). Muốn tải hết, phụ huynh dùng nút "Tải để học không cần mạng" trong Cài đặt.
+- Điều hướng trang: lấy từ mạng trước, mất mạng hoặc chậm quá 3 giây thì dùng bản đã cache.
+- Version của worker là hash nội dung các file cache sẵn: build lại mà file không đổi thì người dùng không phải tải lại gì.
+
+**Bản mới được áp dụng khi nào:** worker mới chờ đến khi mọi tab/app của bản cũ đóng hết, mở lại thì dùng bản mới. Không ép tải lại vì bài học đang mở có thể còn cần các file code của bản cũ; tải lại giữa chừng sẽ làm bé mất bài.
+
+Dev server (`npm run dev`) không đăng ký service worker (`src/offline/register.ts`). Kiểm tra trên máy:
+
+```bash
+npm run build && npx vite preview
+```
+
+Mở DevTools → Application → Service Workers (xem trạng thái, bản đang chờ) và Cache Storage (các cache tiền tố `playchess-`), rồi bật Offline và tải lại trang.
+
+### Công tắc khẩn cấp (kill switch)
+
+Nếu một bản service worker lỗi làm người dùng kẹt, deploy một `sw.js` tự gỡ:
+
+```ts
+/// <reference lib="webworker" />
+declare const self: ServiceWorkerGlobalScope;
+
+self.addEventListener('install', () => {
+  void self.skipWaiting();
+});
+
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    (async () => {
+      const names = await caches.keys();
+      await Promise.all(
+        names.filter((name) => name.startsWith('playchess-')).map((name) => caches.delete(name)),
+      );
+      await self.registration.unregister();
+      const clients = await self.clients.matchAll({ type: 'window' });
+      await Promise.all(clients.map((client) => client.navigate(client.url)));
+    })(),
+  );
+});
+```
+
+1. Tạm thay nội dung `src/sw/sw.ts` bằng đoạn trên (plugin vẫn build ra `dist/sw.js`), hoặc tắt plugin và đặt bản JS của đoạn này vào `public/sw.js`.
+2. Deploy. Vì `/sw.js` có `Cache-Control: no-cache`, trình duyệt sẽ nhận bản tự gỡ ở lần kiểm tra cập nhật kế tiếp.
+3. Sau khi người dùng đã nhận (vài ngày đến vài tuần), khôi phục `src/sw/sw.ts` và deploy lại.
+
+Cần thử tay trên iOS Safari và Android Chrome (cả khi Thêm vào màn hình chính); phần này chưa được kiểm tự động trên thiết bị thật.
+
 ## Cấu trúc
 
 | Thư mục                                   | Nội dung                                                            |
