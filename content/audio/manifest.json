@@ -99,6 +99,626 @@
     "hash": "82f5155ef32017c9",
     "text": "Quân đứng ở trung tâm đi được nhiều ô hơn, nên mạnh hơn."
   },
+  "advanced-develop/bad-queen/say": {
+    "file": "ff1ae8b369dbd703.mp3",
+    "hash": "ff1ae8b369dbd703",
+    "text": "Còn đây là nước dở: Hậu chạy ra quá sớm."
+  },
+  "advanced-develop/black-bc5/say": {
+    "file": "711766db9132bc1a.mp3",
+    "hash": "711766db9132bc1a",
+    "text": "Bên đen đưa Tượng ra. Hai bên đều ra quân thật nhanh."
+  },
+  "advanced-develop/black-e5/say": {
+    "file": "98cdfaecea40ee8f.mp3",
+    "hash": "98cdfaecea40ee8f",
+    "text": "Bên đen cũng đưa Tốt vào trung tâm."
+  },
+  "advanced-develop/black-nc6/say": {
+    "file": "0d73d4bb6e9a6d1e.mp3",
+    "hash": "0d73d4bb6e9a6d1e",
+    "text": "Bên đen cũng đưa Mã ra."
+  },
+  "advanced-develop/do-bc4/praise": {
+    "file": "be0a854e2b2a570e.mp3",
+    "hash": "be0a854e2b2a570e",
+    "text": "Giỏi lắm! Tượng đã ra trận."
+  },
+  "advanced-develop/do-bc4/retry": {
+    "file": "2aad8ab1898bae22.mp3",
+    "hash": "2aad8ab1898bae22",
+    "text": "Bé thử lại nhé, Tượng đi chéo tới ngôi sao."
+  },
+  "advanced-develop/do-bc4/say": {
+    "file": "e87b09483e2bc013.mp3",
+    "hash": "e87b09483e2bc013",
+    "text": "Bé hãy cho Tượng đi chéo tới ngôi sao."
+  },
+  "advanced-develop/do-e4/praise": {
+    "file": "66321640e10e8ac3.mp3",
+    "hash": "66321640e10e8ac3",
+    "text": "Giỏi quá! Đường cho Tượng đã mở rồi."
+  },
+  "advanced-develop/do-e4/retry": {
+    "file": "cc9b00e0b46ac61e.mp3",
+    "hash": "cc9b00e0b46ac61e",
+    "text": "Bé thử lại nhé, Tốt vua đi tới ngôi sao."
+  },
+  "advanced-develop/do-e4/say": {
+    "file": "4d1970eb14d80072.mp3",
+    "hash": "4d1970eb14d80072",
+    "text": "Trước hết, bé cho Tốt vua tiến hai ô tới ngôi sao nhé."
+  },
+  "advanced-develop/do-nc3/praise": {
+    "file": "59b2e09e871bd081.mp3",
+    "hash": "59b2e09e871bd081",
+    "text": "Tuyệt vời! Các quân của bé đều đã ra trận."
+  },
+  "advanced-develop/do-nc3/retry": {
+    "file": "641f374dd71b8d8f.mp3",
+    "hash": "641f374dd71b8d8f",
+    "text": "Bé thử lại nhé, Mã còn lại nhảy tới ngôi sao."
+  },
+  "advanced-develop/do-nc3/say": {
+    "file": "2c8052b252dc4b5e.mp3",
+    "hash": "2c8052b252dc4b5e",
+    "text": "Bé hãy đưa nốt Mã còn lại ra ngôi sao nhé."
+  },
+  "advanced-develop/do-nf3/praise": {
+    "file": "b94bf5d90c7c786d.mp3",
+    "hash": "b94bf5d90c7c786d",
+    "text": "Tuyệt vời! Mã đã ra trận."
+  },
+  "advanced-develop/do-nf3/retry": {
+    "file": "48635f84ad66b55d.mp3",
+    "hash": "48635f84ad66b55d",
+    "text": "Bé thử lại nhé, cho Mã tới ngôi sao."
+  },
+  "advanced-develop/do-nf3/say": {
+    "file": "62eb126f6cfe7e13.mp3",
+    "hash": "62eb126f6cfe7e13",
+    "text": "Bé hãy cho Mã nhảy ra ngôi sao."
+  },
+  "advanced-develop/goodbye/say": {
+    "file": "cac35579fc7caec0.mp3",
+    "hash": "cac35579fc7caec0",
+    "text": "Bé đã học xong bài đưa quân ra trận. Hẹn gặp lại bé nhé!"
+  },
+  "advanced-develop/meet-pieces/say": {
+    "file": "dc37a3783f5ab6fd.mp3",
+    "hash": "dc37a3783f5ab6fd",
+    "text": "Mã và Tượng còn đứng ở nhà. Khai cuộc, bé cần đưa chúng ra trận."
+  },
+  "advanced-develop/one-move-each/say": {
+    "file": "16cf60c13146099a.mp3",
+    "hash": "16cf60c13146099a",
+    "text": "Đi một quân nhiều lần là phí lượt. Mã và Tượng trắng vẫn ngồi chờ ở nhà."
+  },
+  "advanced-develop/queen-chased/say": {
+    "file": "f0b8db4d4cffb16a.mp3",
+    "hash": "f0b8db4d4cffb16a",
+    "text": "Mã đen ra trận và đuổi Hậu. Hậu lại phải chạy tiếp."
+  },
+  "advanced-develop/recap/say": {
+    "file": "e78fc3c29ef5cbe7.mp3",
+    "hash": "e78fc3c29ef5cbe7",
+    "text": "Bé nhớ nhé: đưa Mã, Tượng ra sớm, mỗi quân một lần, chưa vội đưa Hậu ra."
+  },
+  "advanced-develop/why-develop/say": {
+    "file": "1fffd52f0e245ab6.mp3",
+    "hash": "1fffd52f0e245ab6",
+    "text": "Quân ra trận sớm thì cùng nhau đánh và bảo vệ được nhiều ô."
+  },
+  "advanced-italian/bishop-aims/say": {
+    "file": "5bfef278970c1a5c.mp3",
+    "hash": "5bfef278970c1a5c",
+    "text": "Tượng nhìn theo đường chéo tới ô sáng đỏ. Ô đó chỉ có Vua đen bảo vệ."
+  },
+  "advanced-italian/black-bc5/say": {
+    "file": "3aefc153e3b1123f.mp3",
+    "hash": "3aefc153e3b1123f",
+    "text": "Bên đen cũng đưa Tượng ra, giống hệt bên trắng."
+  },
+  "advanced-italian/black-e5/say": {
+    "file": "98cdfaecea40ee8f.mp3",
+    "hash": "98cdfaecea40ee8f",
+    "text": "Bên đen cũng đưa Tốt vào trung tâm."
+  },
+  "advanced-italian/black-nc6/say": {
+    "file": "4f3baa4cd583138d.mp3",
+    "hash": "4f3baa4cd583138d",
+    "text": "Bên đen đưa Mã ra để bảo vệ Tốt."
+  },
+  "advanced-italian/castle-done/say": {
+    "file": "ddeff7bb4bdbb6d8.mp3",
+    "hash": "ddeff7bb4bdbb6d8",
+    "text": "Vua đã vào góc an toàn. Xe nhảy qua đứng cạnh Vua."
+  },
+  "advanced-italian/do-bc4/praise": {
+    "file": "c4258a863bd3c3e4.mp3",
+    "hash": "c4258a863bd3c3e4",
+    "text": "Giỏi lắm! Tượng đã ra ngoài rồi."
+  },
+  "advanced-italian/do-bc4/retry": {
+    "file": "2aad8ab1898bae22.mp3",
+    "hash": "2aad8ab1898bae22",
+    "text": "Bé thử lại nhé, Tượng đi chéo tới ngôi sao."
+  },
+  "advanced-italian/do-bc4/say": {
+    "file": "ed3e632ed4082ed1.mp3",
+    "hash": "ed3e632ed4082ed1",
+    "text": "Giờ tới lượt Tượng. Bé cho Tượng đi chéo tới ngôi sao nhé."
+  },
+  "advanced-italian/do-castle/praise": {
+    "file": "41bda8b2bfb1e86b.mp3",
+    "hash": "41bda8b2bfb1e86b",
+    "text": "Giỏi quá! Bé đã nhập thành rồi."
+  },
+  "advanced-italian/do-castle/retry": {
+    "file": "8ee63e1a5e75b985.mp3",
+    "hash": "8ee63e1a5e75b985",
+    "text": "Bé thử lại nhé, Vua đi sang hai ô tới ngôi sao."
+  },
+  "advanced-italian/do-castle/say": {
+    "file": "155419f4e353fb85.mp3",
+    "hash": "155419f4e353fb85",
+    "text": "Đường đã trống. Bé hãy nhập thành: kéo Vua sang hai ô tới ngôi sao."
+  },
+  "advanced-italian/do-e4/praise": {
+    "file": "4950c8ebbe65807a.mp3",
+    "hash": "4950c8ebbe65807a",
+    "text": "Giỏi quá! Tốt đã vào trung tâm rồi."
+  },
+  "advanced-italian/do-e4/retry": {
+    "file": "cc9b00e0b46ac61e.mp3",
+    "hash": "cc9b00e0b46ac61e",
+    "text": "Bé thử lại nhé, Tốt vua đi tới ngôi sao."
+  },
+  "advanced-italian/do-e4/say": {
+    "file": "42c4f873220157dc.mp3",
+    "hash": "42c4f873220157dc",
+    "text": "Bé hãy cho Tốt vua tiến hai ô tới ngôi sao nhé."
+  },
+  "advanced-italian/do-nf3/praise": {
+    "file": "694fc101dd3ec04e.mp3",
+    "hash": "694fc101dd3ec04e",
+    "text": "Tuyệt vời! Mã đã ra trận rồi."
+  },
+  "advanced-italian/do-nf3/retry": {
+    "file": "48635f84ad66b55d.mp3",
+    "hash": "48635f84ad66b55d",
+    "text": "Bé thử lại nhé, cho Mã tới ngôi sao."
+  },
+  "advanced-italian/do-nf3/say": {
+    "file": "e9473d90f68fb006.mp3",
+    "hash": "e9473d90f68fb006",
+    "text": "Bé hãy cho Mã nhảy ra ngôi sao, nhìn vào Tốt đen."
+  },
+  "advanced-italian/goodbye/say": {
+    "file": "3dd500236788f89b.mp3",
+    "hash": "3dd500236788f89b",
+    "text": "Bé đã học xong khai cuộc Ý. Hẹn gặp lại bé nhé!"
+  },
+  "advanced-italian/recap/say": {
+    "file": "27134358224191e7.mp3",
+    "hash": "27134358224191e7",
+    "text": "Tốt vào trung tâm, Mã và Tượng ra ngoài, Vua nhập thành. Đó là khai cuộc Ý."
+  },
+  "advanced-italian/three-rules/say": {
+    "file": "e3f5476275e18dd7.mp3",
+    "hash": "e3f5476275e18dd7",
+    "text": "Khai cuộc có ba việc: chiếm trung tâm, đưa quân ra, rồi nhập thành."
+  },
+  "advanced-king-pawn/bad-push/say": {
+    "file": "cf2d222f04bd3ee3.mp3",
+    "hash": "cf2d222f04bd3ee3",
+    "text": "Nếu Tốt chạy vội mà Vua ở xa, Vua đen sẽ đứng chặn trước Tốt."
+  },
+  "advanced-king-pawn/black-1/say": {
+    "file": "4e93bc650edf3f2e.mp3",
+    "hash": "4e93bc650edf3f2e",
+    "text": "Vua đen chạy lại gần, nhưng các ô trước Tốt đã có Vua trắng giữ."
+  },
+  "advanced-king-pawn/black-2/say": {
+    "file": "873b860692a0b96d.mp3",
+    "hash": "873b860692a0b96d",
+    "text": "Bị chiếu, Vua đen phải lùi ra."
+  },
+  "advanced-king-pawn/black-3/say": {
+    "file": "3aaf01684728cb5d.mp3",
+    "hash": "3aaf01684728cb5d",
+    "text": "Vua đen quay lại, nhưng không ăn được Tốt vì có Vua trắng bảo vệ."
+  },
+  "advanced-king-pawn/goal/say": {
+    "file": "9dc80736fed9d7f5.mp3",
+    "hash": "9dc80736fed9d7f5",
+    "text": "Mình muốn đưa Tốt lên hàng cuối để phong cấp thành Hậu."
+  },
+  "advanced-king-pawn/goodbye/say": {
+    "file": "569dac21a591015d.mp3",
+    "hash": "569dac21a591015d",
+    "text": "Nhớ nhé, Vua đi trước, Tốt đi sau. Hẹn gặp lại bé nhé!"
+  },
+  "advanced-king-pawn/idea/say": {
+    "file": "3644dcfecf2a587e.mp3",
+    "hash": "3644dcfecf2a587e",
+    "text": "Bí quyết là Vua đi trước, dẫn đường cho Tốt."
+  },
+  "advanced-king-pawn/king-lead/praise": {
+    "file": "2bf14e9e8c891353.mp3",
+    "hash": "2bf14e9e8c891353",
+    "text": "Giỏi quá! Vua đã giữ đường cho Tốt."
+  },
+  "advanced-king-pawn/king-lead/retry": {
+    "file": "9e8cab1897ea4d0b.mp3",
+    "hash": "9e8cab1897ea4d0b",
+    "text": "Bé thử lại nhé, Vua đi chéo một ô lên ngôi sao."
+  },
+  "advanced-king-pawn/king-lead/say": {
+    "file": "0216845f868dda18.mp3",
+    "hash": "0216845f868dda18",
+    "text": "Vua mình ở gần. Bé cho Vua tới ngôi sao để giữ đường cho Tốt."
+  },
+  "advanced-king-pawn/meet/say": {
+    "file": "b500644eaa4a6c33.mp3",
+    "hash": "b500644eaa4a6c33",
+    "text": "Bên trắng còn Vua và một Tốt. Vua đen chỉ còn một mình."
+  },
+  "advanced-king-pawn/promote/praise": {
+    "file": "8dc384934c43abf3.mp3",
+    "hash": "8dc384934c43abf3",
+    "text": "Tuyệt quá! Tốt đã thành Hậu."
+  },
+  "advanced-king-pawn/promote/retry": {
+    "file": "0cee732feb3b3428.mp3",
+    "hash": "0cee732feb3b3428",
+    "text": "Bé thử lại nhé, Tốt đi thẳng lên ngôi sao."
+  },
+  "advanced-king-pawn/promote/say": {
+    "file": "ccedb965824f0c96.mp3",
+    "hash": "ccedb965824f0c96",
+    "text": "Bé đẩy Tốt lên hàng cuối để phong cấp thành Hậu nhé."
+  },
+  "advanced-king-pawn/push-1/praise": {
+    "file": "dfd4dc71d413e18a.mp3",
+    "hash": "dfd4dc71d413e18a",
+    "text": "Giỏi quá! Tốt còn chiếu Vua đen nữa."
+  },
+  "advanced-king-pawn/push-1/retry": {
+    "file": "9003c21e5bc97e15.mp3",
+    "hash": "9003c21e5bc97e15",
+    "text": "Bé thử lại nhé, Tốt đi thẳng một ô."
+  },
+  "advanced-king-pawn/push-1/say": {
+    "file": "317cebd0b9e816bb.mp3",
+    "hash": "317cebd0b9e816bb",
+    "text": "Giờ Tốt đi được rồi. Bé đẩy Tốt lên ngôi sao nhé."
+  },
+  "advanced-king-pawn/push-2/praise": {
+    "file": "b00ffc31f99d2b8d.mp3",
+    "hash": "b00ffc31f99d2b8d",
+    "text": "Giỏi quá! Tốt chỉ còn một bước nữa."
+  },
+  "advanced-king-pawn/push-2/retry": {
+    "file": "9003c21e5bc97e15.mp3",
+    "hash": "9003c21e5bc97e15",
+    "text": "Bé thử lại nhé, Tốt đi thẳng một ô."
+  },
+  "advanced-king-pawn/push-2/say": {
+    "file": "af77cbd1a33863dc.mp3",
+    "hash": "af77cbd1a33863dc",
+    "text": "Bé đẩy Tốt lên ngôi sao. Vua trắng đứng ngay cạnh bảo vệ."
+  },
+  "advanced-king-pawn/queen-done/say": {
+    "file": "63feec7041741963.mp3",
+    "hash": "63feec7041741963",
+    "text": "Bên trắng có Hậu mới rồi! Vua đã dẫn Tốt về đích."
+  },
+  "advanced-king-safety/bad-f-pawn/say": {
+    "file": "6fc28fe4f042b0fd.mp3",
+    "hash": "6fc28fe4f042b0fd",
+    "text": "Đẩy Tốt trước Vua cũng dở, vì mở ra đường chéo tới Vua."
+  },
+  "advanced-king-safety/bad-open-file/say": {
+    "file": "8a0792a77ff15dfd.mp3",
+    "hash": "8a0792a77ff15dfd",
+    "text": "Vua đứng giữa, trước Vua không có Tốt che. Xe đen chiếu ngay."
+  },
+  "advanced-king-safety/black-bc5/say": {
+    "file": "e383f2ab14d03104.mp3",
+    "hash": "e383f2ab14d03104",
+    "text": "Bên đen đưa Tượng ra."
+  },
+  "advanced-king-safety/castle-idea/say": {
+    "file": "277d2bcdaad5df8d.mp3",
+    "hash": "277d2bcdaad5df8d",
+    "text": "Cách hay nhất là nhập thành sớm, cho Vua vào góc có Tốt che."
+  },
+  "advanced-king-safety/do-bc4/praise": {
+    "file": "9a8eba7637b6f4ba.mp3",
+    "hash": "9a8eba7637b6f4ba",
+    "text": "Giỏi quá! Đường giữa Vua và Xe đã trống."
+  },
+  "advanced-king-safety/do-bc4/retry": {
+    "file": "2aad8ab1898bae22.mp3",
+    "hash": "2aad8ab1898bae22",
+    "text": "Bé thử lại nhé, Tượng đi chéo tới ngôi sao."
+  },
+  "advanced-king-safety/do-bc4/say": {
+    "file": "c9c0a60f27fffa2e.mp3",
+    "hash": "c9c0a60f27fffa2e",
+    "text": "Giờ bé chơi đúng nhé. Bé cho Tượng đi chéo tới ngôi sao."
+  },
+  "advanced-king-safety/do-castle/praise": {
+    "file": "584bb9cb43635cbf.mp3",
+    "hash": "584bb9cb43635cbf",
+    "text": "Tuyệt vời! Vua đã vào góc, Xe ra giữa."
+  },
+  "advanced-king-safety/do-castle/retry": {
+    "file": "da105e5d3a367252.mp3",
+    "hash": "da105e5d3a367252",
+    "text": "Bé thử lại nhé, Vua đi hai ô tới ngôi sao."
+  },
+  "advanced-king-safety/do-castle/say": {
+    "file": "fc3038d0ec071b7c.mp3",
+    "hash": "fc3038d0ec071b7c",
+    "text": "Bé hãy nhập thành: cho Vua đi hai ô tới ngôi sao."
+  },
+  "advanced-king-safety/do-d3/praise": {
+    "file": "3f9d64b05a4352fd.mp3",
+    "hash": "3f9d64b05a4352fd",
+    "text": "Giỏi lắm! Tốt hậu giữ Tốt trung tâm thật chắc."
+  },
+  "advanced-king-safety/do-d3/retry": {
+    "file": "72f89edcfdb27fcc.mp3",
+    "hash": "72f89edcfdb27fcc",
+    "text": "Bé thử lại nhé, Tốt hậu tiến một ô tới ngôi sao."
+  },
+  "advanced-king-safety/do-d3/say": {
+    "file": "c22e86b71da18182.mp3",
+    "hash": "c22e86b71da18182",
+    "text": "Bé để yên Tốt trước Vua. Bé cho Tốt hậu tiến một ô tới ngôi sao."
+  },
+  "advanced-king-safety/goodbye/say": {
+    "file": "b69ab06934519702.mp3",
+    "hash": "b69ab06934519702",
+    "text": "Bé đã học xong bài giữ Vua an toàn. Hẹn gặp lại bé nhé!"
+  },
+  "advanced-king-safety/meet-king/say": {
+    "file": "93bd7b381d9a1aef.mp3",
+    "hash": "93bd7b381d9a1aef",
+    "text": "Vua là quân quan trọng nhất. Bé phải giữ Vua thật an toàn."
+  },
+  "advanced-king-safety/no-castle/say": {
+    "file": "e3a185f929792328.mp3",
+    "hash": "e3a185f929792328",
+    "text": "Đang bị chiếu thì Vua không nhập thành được. Vua gặp nguy rồi."
+  },
+  "advanced-king-safety/pawn-shield/say": {
+    "file": "e0c82430cf896964.mp3",
+    "hash": "e0c82430cf896964",
+    "text": "Bên đen đưa Mã ra. Ba Tốt trước Vua trắng đứng che như bức tường."
+  },
+  "advanced-king-safety/queen-check/say": {
+    "file": "19c4d26bdcaaacc8.mp3",
+    "hash": "19c4d26bdcaaacc8",
+    "text": "Hậu đen chạy theo đường chéo đó và chiếu Vua ngay."
+  },
+  "advanced-king-safety/recap/say": {
+    "file": "a0804e909d9d604b.mp3",
+    "hash": "a0804e909d9d604b",
+    "text": "Bé nhớ nhé: nhập thành sớm và giữ yên các Tốt trước Vua."
+  },
+  "advanced-queen-mate/box-idea/say": {
+    "file": "0b78cfd13b0f032c.mp3",
+    "hash": "0b78cfd13b0f032c",
+    "text": "Hậu đứng ở cuối mũi tên sẽ làm một chiếc hộp nhỏ. Vua đen chỉ đi trong hộp."
+  },
+  "advanced-queen-mate/goal/say": {
+    "file": "67cedac40d4cf15f.mp3",
+    "hash": "67cedac40d4cf15f",
+    "text": "Mình sẽ nhốt Vua đen trong góc, rồi chiếu hết ở đó."
+  },
+  "advanced-queen-mate/goodbye/say": {
+    "file": "ab0d92972adbbc27.mp3",
+    "hash": "ab0d92972adbbc27",
+    "text": "Bé đã học xong cách chiếu hết bằng Vua và Hậu. Hẹn gặp lại bé nhé!"
+  },
+  "advanced-queen-mate/king-back/say": {
+    "file": "603edb1f1000f32b.mp3",
+    "hash": "603edb1f1000f32b",
+    "text": "Vua đen lại chạy về góc."
+  },
+  "advanced-queen-mate/king-in-box/say": {
+    "file": "8f7141422229a29d.mp3",
+    "hash": "8f7141422229a29d",
+    "text": "Vua đen chỉ còn hai ô sáng để đi qua đi lại."
+  },
+  "advanced-queen-mate/king-up-1/praise": {
+    "file": "25c806001e4d3d29.mp3",
+    "hash": "25c806001e4d3d29",
+    "text": "Giỏi lắm! Vua trắng đang tới gần."
+  },
+  "advanced-queen-mate/king-up-1/retry": {
+    "file": "4809346447f88c1f.mp3",
+    "hash": "4809346447f88c1f",
+    "text": "Bé thử lại nhé, Vua trắng đi một ô lên ngôi sao."
+  },
+  "advanced-queen-mate/king-up-1/say": {
+    "file": "cf55beed52df0360.mp3",
+    "hash": "cf55beed52df0360",
+    "text": "Hậu cần Vua trắng giúp. Bé cho Vua trắng tiến lên ngôi sao nhé."
+  },
+  "advanced-queen-mate/king-up-2/praise": {
+    "file": "2009a8f4f45786f1.mp3",
+    "hash": "2009a8f4f45786f1",
+    "text": "Tuyệt vời! Vua trắng đã tới nơi."
+  },
+  "advanced-queen-mate/king-up-2/retry": {
+    "file": "4809346447f88c1f.mp3",
+    "hash": "4809346447f88c1f",
+    "text": "Bé thử lại nhé, Vua trắng đi một ô lên ngôi sao."
+  },
+  "advanced-queen-mate/king-up-2/say": {
+    "file": "d44c0903225dfc7b.mp3",
+    "hash": "d44c0903225dfc7b",
+    "text": "Bé cho Vua trắng tiến lên ngôi sao, đứng sát cạnh Hậu nhé."
+  },
+  "advanced-queen-mate/make-box/praise": {
+    "file": "ccdb8ec4f7ee8506.mp3",
+    "hash": "ccdb8ec4f7ee8506",
+    "text": "Giỏi quá! Vua đen đã bị nhốt rồi."
+  },
+  "advanced-queen-mate/make-box/retry": {
+    "file": "23b9c17353fc2f1c.mp3",
+    "hash": "23b9c17353fc2f1c",
+    "text": "Bé thử lại nhé, Hậu đi thẳng lên ngôi sao."
+  },
+  "advanced-queen-mate/make-box/say": {
+    "file": "0e8ca52543163c74.mp3",
+    "hash": "0e8ca52543163c74",
+    "text": "Bé hãy cho Hậu tới ngôi sao để làm chiếc hộp nhé."
+  },
+  "advanced-queen-mate/mate-done/say": {
+    "file": "5b1996159183242b.mp3",
+    "hash": "5b1996159183242b",
+    "text": "Chiếu hết! Hậu chiếu Vua đen, Vua trắng đứng sau bảo vệ Hậu."
+  },
+  "advanced-queen-mate/mate-move/praise": {
+    "file": "3edc8f6837e0a87e.mp3",
+    "hash": "3edc8f6837e0a87e",
+    "text": "Giỏi quá! Bé đã chiếu hết rồi."
+  },
+  "advanced-queen-mate/mate-move/retry": {
+    "file": "23b9c17353fc2f1c.mp3",
+    "hash": "23b9c17353fc2f1c",
+    "text": "Bé thử lại nhé, Hậu đi thẳng lên ngôi sao."
+  },
+  "advanced-queen-mate/mate-move/say": {
+    "file": "31b9df9e0c55efdd.mp3",
+    "hash": "31b9df9e0c55efdd",
+    "text": "Bé cho Hậu tới ngôi sao, sát Vua đen, có Vua trắng bảo vệ nhé."
+  },
+  "advanced-queen-mate/meet/say": {
+    "file": "a40b7dc06303f429.mp3",
+    "hash": "a40b7dc06303f429",
+    "text": "Bên trắng còn Vua và Hậu. Vua đen đang ở trong góc."
+  },
+  "advanced-queen-mate/stalemate-warn/say": {
+    "file": "d6b808fe14e235dd.mp3",
+    "hash": "d6b808fe14e235dd",
+    "text": "Cẩn thận! Hậu đứng ở đây thì Vua đen hết đường đi mà không bị chiếu. Đó là hòa pat."
+  },
+  "advanced-queen-mate/walk-on/say": {
+    "file": "143c7eed6220b934.mp3",
+    "hash": "143c7eed6220b934",
+    "text": "Vua đen chạy qua lại trong hộp. Vua trắng tiến thêm một bước nữa."
+  },
+  "advanced-rook-mate/block-rank/praise": {
+    "file": "09efa414d7b0050a.mp3",
+    "hash": "09efa414d7b0050a",
+    "text": "Giỏi quá! Xe đã chặn hàng rồi."
+  },
+  "advanced-rook-mate/block-rank/retry": {
+    "file": "7d051d470ec05397.mp3",
+    "hash": "7d051d470ec05397",
+    "text": "Bé thử lại nhé, Xe đi thẳng lên ngôi sao."
+  },
+  "advanced-rook-mate/block-rank/say": {
+    "file": "5c98b3169e491070.mp3",
+    "hash": "5c98b3169e491070",
+    "text": "Bé hãy cho Xe tới ô có ngôi sao để chặn hàng này."
+  },
+  "advanced-rook-mate/face-1/praise": {
+    "file": "e0dfd299a75d950d.mp3",
+    "hash": "e0dfd299a75d950d",
+    "text": "Giỏi quá! Hai Vua đứng đối diện nhau rồi."
+  },
+  "advanced-rook-mate/face-1/retry": {
+    "file": "9e8cab1897ea4d0b.mp3",
+    "hash": "9e8cab1897ea4d0b",
+    "text": "Bé thử lại nhé, Vua đi chéo một ô lên ngôi sao."
+  },
+  "advanced-rook-mate/face-1/say": {
+    "file": "95333d40bd9484ce.mp3",
+    "hash": "95333d40bd9484ce",
+    "text": "Giờ Vua trắng lên giúp. Bé cho Vua tới ngôi sao, đứng đối diện Vua đen."
+  },
+  "advanced-rook-mate/face-2/praise": {
+    "file": "34719c57e3f50b0f.mp3",
+    "hash": "34719c57e3f50b0f",
+    "text": "Giỏi quá! Vua trắng bám sát Vua đen."
+  },
+  "advanced-rook-mate/face-2/retry": {
+    "file": "6a9bbb2a5612bf35.mp3",
+    "hash": "6a9bbb2a5612bf35",
+    "text": "Bé thử lại nhé, Vua đi ngang một ô sang ngôi sao."
+  },
+  "advanced-rook-mate/face-2/say": {
+    "file": "b7b28b8382e587fb.mp3",
+    "hash": "b7b28b8382e587fb",
+    "text": "Xe mình vẫn ở xa. Bé cho Vua tới ngôi sao, lại đứng đối diện nhé."
+  },
+  "advanced-rook-mate/goal/say": {
+    "file": "8f69533e990feb3c.mp3",
+    "hash": "8f69533e990feb3c",
+    "text": "Mình sẽ chiếu hết Vua đen ngay ở hàng cuối này."
+  },
+  "advanced-rook-mate/goodbye/say": {
+    "file": "672b4ae991046e04.mp3",
+    "hash": "672b4ae991046e04",
+    "text": "Bé đã học xong cách chiếu hết bằng Vua và Xe. Hẹn gặp lại bé nhé!"
+  },
+  "advanced-rook-mate/idea/say": {
+    "file": "2ae52cd2909e5d0d.mp3",
+    "hash": "2ae52cd2909e5d0d",
+    "text": "Trước hết, Xe đứng chặn hàng thứ hai. Vua đen không xuống được nữa."
+  },
+  "advanced-rook-mate/king-corner/say": {
+    "file": "da5b159766096f50.mp3",
+    "hash": "da5b159766096f50",
+    "text": "Vua đen chạy vào góc. Vua trắng đã giữ các ô phía dưới."
+  },
+  "advanced-rook-mate/king-side-1/say": {
+    "file": "5d867d8dac0d7c93.mp3",
+    "hash": "5d867d8dac0d7c93",
+    "text": "Vua đen chỉ đi ngang được thôi."
+  },
+  "advanced-rook-mate/king-side-2/say": {
+    "file": "df70a6677ac99ec3.mp3",
+    "hash": "df70a6677ac99ec3",
+    "text": "Vua đen né sang bên cạnh."
+  },
+  "advanced-rook-mate/mate-done/say": {
+    "file": "9f090aec98ec06dc.mp3",
+    "hash": "9f090aec98ec06dc",
+    "text": "Chiếu hết! Xe chiếu hàng cuối, Vua trắng chặn đường chạy xuống."
+  },
+  "advanced-rook-mate/mate-move/praise": {
+    "file": "3edc8f6837e0a87e.mp3",
+    "hash": "3edc8f6837e0a87e",
+    "text": "Giỏi quá! Bé đã chiếu hết rồi."
+  },
+  "advanced-rook-mate/mate-move/retry": {
+    "file": "5bc05e598d6646eb.mp3",
+    "hash": "5bc05e598d6646eb",
+    "text": "Bé thử lại nhé, Xe đi thẳng lên hàng cuối."
+  },
+  "advanced-rook-mate/mate-move/say": {
+    "file": "a01a7d923b17f577.mp3",
+    "hash": "a01a7d923b17f577",
+    "text": "Bé cho Xe tới ngôi sao ở hàng cuối để chiếu hết nhé."
+  },
+  "advanced-rook-mate/meet/say": {
+    "file": "4f5ee9424279eb7c.mp3",
+    "hash": "4f5ee9424279eb7c",
+    "text": "Bên trắng còn Vua và một Xe. Vua đen đã ở mép trên."
+  },
+  "advanced-rook-mate/stay-far/say": {
+    "file": "b4ab7cbffd1e7b2b.mp3",
+    "hash": "b4ab7cbffd1e7b2b",
+    "text": "Nhớ nhé, Xe đứng sát Vua đen mà không ai bảo vệ thì sẽ bị ăn mất."
+  },
   "advanced-two-rooks/block-rank/praise": {
     "file": "09efa414d7b0050a.mp3",
     "hash": "09efa414d7b0050a",

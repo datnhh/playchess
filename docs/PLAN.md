@@ -67,7 +67,7 @@ Giới hạn độ dài câu đọc: cơ bản ≤ 15 từ, nâng cao ≤ 25 t�
 
 | #   | Bước                                                                                                  | Trạng thái |
 | --- | ----------------------------------------------------------------------------------------------------- | ---------- |
-| 11  | **Học nâng cao**: 3 nguyên tắc khai cuộc + khai cuộc mẫu; tàn cuộc (Đôi Xe, Vua+Hậu, Vua+Xe, Vua+Tốt) | 🔄         |
+| 11  | **Học nâng cao**: 3 nguyên tắc khai cuộc + khai cuộc mẫu; tàn cuộc (Đôi Xe, Vua+Hậu, Vua+Xe, Vua+Tốt) | ✅         |
 
 ### Đợt 4: Hoàn thiện (tuần tự)
 
@@ -84,7 +84,7 @@ Giới hạn độ dài câu đọc: cơ bản ≤ 15 từ, nâng cao ≤ 25 t�
 | Mở `/smoke` trên iPhone/iPad và Android sau khi deploy, báo kết quả         | Bước 2     | ⬜         |
 | Duyệt các bước đổi lộ trình (7b)                                            | Bước 7b    | ✅         |
 | ~~Tạo Azure Speech F0~~: bỏ, chuyển sang Piper offline                      | Bước 6, 9  | ✅         |
-| Nghe duyệt bài học ở `/review`                                              | Bước 9, 11 | ⬜         |
+| Nghe duyệt bài học ở `/review`                                              | Bước 9, 11 | ✅         |
 
 ## Giả định chưa kiểm chứng
 
@@ -113,3 +113,5 @@ Giới hạn độ dài câu đọc: cơ bản ≤ 15 từ, nâng cao ≤ 25 t�
 | 2026-10-23 | Người dùng duyệt nội dung 16 bài ở `/review`, bật `reviewed: true`. Pipeline Piper: cấu hình theo nhà cung cấp, hash gồm model + `ls`/`ss`, `npm run tts:setup` tải Piper/giọng/ffmpeg vào `.tools/` (kiểm dung lượng + sha256), cờ `--only`. Thử 6 bài, người dùng nghe duyệt; sinh đủ 250 câu (245 file, 4,2 MB). Lint, typecheck, 174 unit test, validate 0 lỗi 0 cảnh báo, build, 39 e2e qua. Chờ người dùng nghe lướt rồi commit. |
 | 2026-10-23 | Commit Piper + audio 16 bài (`2832dd1`), push, kiểm tra Pages: 16 bài có tiếng.                                                                                                                                                                                                                                                                                                                                                        |
 | 2026-10-23 | Đợt 3 theo phương án A (không sửa schema). 11.1: 2 bài thí điểm Chiếm trung tâm, Chiếu hết bằng Đôi Xe (`reviewed: false`), audio Piper; hướng dẫn soạn bài nâng cao (mục 9 `lesson-authoring.md`). 174 unit test, validate 0 lỗi 0 cảnh báo, chạy trọn 2 bài trên dev. Người dùng duyệt, làm tiếp 11.2.                                                                                                                               |
+| 2026-10-23 | Commit thí điểm Đợt 3 (`f2de84c`). 11.2: soạn 6 bài (Đưa quân ra trận, Giữ Vua an toàn, Khai cuộc Ý, Vua + Hậu, Vua + Xe, Vua dẫn Tốt), rà luật cờ (sửa 2.Hh5 Mf6 thành 2.Hg4 Mf6, FEN không thể xảy ra, mũi tên Hậu xuyên Mã), sinh audio. Phụ đề bài học mặc định hiện theo yêu cầu. Lint, typecheck, 174 unit test, validate 0 lỗi 0 cảnh báo, build, 39 e2e qua; chạy trọn 6 bài trên dev. Chờ người dùng duyệt ở `/review`.       |
+| 2026-10-23 | Người dùng nghe duyệt 8 bài nâng cao ở `/review`, bật `reviewed: true`. Thêm e2e bản đồ nâng cao. Lint, typecheck, 174 unit test, validate 0 lỗi 0 cảnh báo, build, 42 e2e qua. Đợt 3 xong.                                                                                                                                                                                                                                            |

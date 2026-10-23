@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "id": "advanced-king-pawn",
+  "track": "advanced",
+  "order": 8,
+  "title": "Vua dẫn Tốt về đích",
+  "icon": "endgame",
+  "summary": "Vua đi trước dẫn đường, giữ các ô phía trước để Tốt lên phong cấp thành Hậu.",
+  "boardMode": "standard",
+  "orientation": "white",
+  "start": "4k3/8/3K4/3P4/8/8/8/8 w - - 0 1",
+  "reviewed": true,
+  "steps": [
+    {
+      "kind": "watch",
+      "id": "meet",
+      "say": "Bên trắng còn Vua và một Tốt. Vua đen chỉ còn một mình.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "highlight", "squares": ["d6", "d5"], "tone": "good" },
+        { "type": "highlight", "squares": ["e8"], "tone": "warn" }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "goal",
+      "say": "Mình muốn đưa Tốt lên hàng cuối để phong cấp thành Hậu.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "arrow", "from": "d5", "to": "d8", "tone": "info" },
+        { "type": "highlight", "squares": ["d8"], "tone": "good" }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "idea",
+      "say": "Bí quyết là Vua đi trước, dẫn đường cho Tốt.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "highlight", "squares": ["d6"], "tone": "good" },
+        { "type": "highlight", "squares": ["d7", "d8"], "tone": "info" }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "bad-push",
+      "say": "Nếu Tốt chạy vội mà Vua ở xa, Vua đen sẽ đứng chặn trước Tốt.",
+      "actions": [
+        { "type": "setPosition", "position": "8/3k4/3P4/8/3K4/8/8/8 w - - 0 1" },
+        { "type": "clear", "target": "all" },
+        { "type": "highlight", "squares": ["d7"], "tone": "warn" },
+        { "type": "arrow", "from": "d6", "to": "d7", "tone": "warn" }
+      ]
+    },
+    {
+      "kind": "interactMove",
+      "id": "king-lead",
+      "say": "Vua mình ở gần. Bé cho Vua tới ngôi sao để giữ đường cho Tốt.",
+      "actions": [
+        { "type": "setPosition", "position": "4k3/8/3K4/3P4/8/8/8/8 w - - 0 1" },
+        { "type": "clear", "target": "all" },
+        { "type": "stickers", "items": [{ "square": "c7", "kind": "star" }] }
+      ],
+      "accept": [{ "from": "d6", "to": "c7" }],
+      "praise": "Giỏi quá! Vua đã giữ đường cho Tốt.",
+      "retry": "Bé thử lại nhé, Vua đi chéo một ô lên ngôi sao."
+    },
+    {
+      "kind": "watch",
+      "id": "black-1",
+      "say": "Vua đen chạy lại gần, nhưng các ô trước Tốt đã có Vua trắng giữ.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "move", "from": "e8", "to": "e7" },
+        { "type": "highlight", "squares": ["d6", "d7", "d8"], "tone": "good" }
+      ],
+      "assert": [{ "type": "pieceAt", "square": "e7", "piece": "bK" }]
+    },
+    {
+      "kind": "interactMove",
+      "id": "push-1",
+      "say": "Giờ Tốt đi được rồi. Bé đẩy Tốt lên ngôi sao nhé.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "stickers", "items": [{ "square": "d6", "kind": "star" }] }
+      ],
+      "accept": [{ "from": "d5", "to": "d6" }],
+      "praise": "Giỏi quá! Tốt còn chiếu Vua đen nữa.",
+      "retry": "Bé thử lại nhé, Tốt đi thẳng một ô."
+    },
+    {
+      "kind": "watch",
+      "id": "black-2",
+      "say": "Bị chiếu, Vua đen phải lùi ra.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "move", "from": "e7", "to": "e6" }
+      ],
+      "assert": [{ "type": "pieceAt", "square": "e6", "piece": "bK" }]
+    },
+    {
+      "kind": "interactMove",
+      "id": "push-2",
+      "say": "Bé đẩy Tốt lên ngôi sao. Vua trắng đứng ngay cạnh bảo vệ.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "stickers", "items": [{ "square": "d7", "kind": "star" }] }
+      ],
+      "accept": [{ "from": "d6", "to": "d7" }],
+      "praise": "Giỏi quá! Tốt chỉ còn một bước nữa.",
+      "retry": "Bé thử lại nhé, Tốt đi thẳng một ô."
+    },
+    {
+      "kind": "watch",
+      "id": "black-3",
+      "say": "Vua đen quay lại, nhưng không ăn được Tốt vì có Vua trắng bảo vệ.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "move", "from": "e6", "to": "e7" },
+        { "type": "highlight", "squares": ["d7"], "tone": "good" }
+      ],
+      "assert": [{ "type": "pieceAt", "square": "e7", "piece": "bK" }]
+    },
+    {
+      "kind": "interactMove",
+      "id": "promote",
+      "say": "Bé đẩy Tốt lên hàng cuối để phong cấp thành Hậu nhé.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "stickers", "items": [{ "square": "d8", "kind": "star" }] }
+      ],
+      "accept": [{ "from": "d7", "to": "d8", "promotion": "queen" }],
+      "praise": "Tuyệt quá! Tốt đã thành Hậu.",
+      "retry": "Bé thử lại nhé, Tốt đi thẳng lên ngôi sao."
+    },
+    {
+      "kind": "watch",
+      "id": "queen-done",
+      "say": "Bên trắng có Hậu mới rồi! Vua đã dẫn Tốt về đích.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "highlight", "squares": ["d8"], "tone": "good" }
+      ],
+      "assert": [{ "type": "pieceAt", "square": "d8", "piece": "wQ" }]
+    },
+    {
+      "kind": "watch",
+      "id": "goodbye",
+      "say": "Nhớ nhé, Vua đi trước, Tốt đi sau. Hẹn gặp lại bé nhé!",
+      "actions": [{ "type": "clear", "target": "all" }]
+    }
+  ]
+}

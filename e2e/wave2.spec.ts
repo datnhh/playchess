@@ -24,6 +24,7 @@ const blackPieceSquares = (page: Page) =>
 
 // Reviewed lessons ship in production; the manifest tells which audio files they use.
 const lessonFiles = readdirSync('content/lessons/basic');
+const advancedLessonFiles = readdirSync('content/lessons/advanced');
 const manifest = JSON.parse(readFileSync('content/audio/manifest.json', 'utf8')) as Record<
   string,
   { file: string }
@@ -39,6 +40,17 @@ test('home tiles lead to the learning map with every reviewed lesson', async ({ 
   await expect(page.getByRole('button', { name: '▶ Bắt đầu' })).toBeVisible();
 });
 
+test('the advanced map lists every reviewed advanced lesson', async ({ page }) => {
+  await page.goto('/');
+  await page.getByRole('link', { name: /Học nâng cao/ }).click();
+  await expect(page).toHaveURL(/\/learn\/advanced$/);
+  await expect(page.locator('a[href^="/lesson/advanced-"]')).toHaveCount(
+    advancedLessonFiles.length,
+  );
+  await page.locator('a[href="/lesson/advanced-center"]').click();
+  await expect(page.getByRole('button', { name: '▶ Bắt đầu' })).toBeVisible();
+});
+
 test('unknown tracks and lessons show the not-found pages', async ({ page }) => {
   await page.goto('/learn/khong-co');
   await expect(page.getByRole('heading', { name: 'Không tìm thấy trang' })).toBeVisible();
@@ -47,7 +59,14 @@ test('unknown tracks and lessons show the not-found pages', async ({ page }) => 
 });
 
 test('lesson audio is served as MP3', async ({ request }) => {
-  const files = [...new Set(Object.values(manifest).map((entry) => entry.file))];
+  // Basic lessons are reviewed; the build drops the audio of any unreviewed lesson.
+  const files = [
+    ...new Set(
+      Object.entries(manifest)
+        .filter(([key]) => key.startsWith('basic-'))
+        .map(([, entry]) => entry.file),
+    ),
+  ];
   expect(files.length).toBeGreaterThan(0);
   for (const file of [files[0]!, files[files.length - 1]!]) {
     const response = await request.get(`/audio/${file}`);
@@ -82,13 +101,13 @@ test('settings are behind the parental gate', async ({ page }) => {
   await expect(page.getByRole('button', { name: /Đang bật tiếng/ })).toBeVisible();
 });
 
-test('lesson caption is hidden until an adult asks for it', async ({ page }) => {
+test('lesson caption is shown by default and can be hidden', async ({ page }) => {
   await page.goto('/dev/lesson');
   await page.getByRole('button', { name: '▶ Bắt đầu' }).click();
   const caption = page.getByText('Đây là quân Xe. Xe trông giống một lâu đài nhỏ.');
-  await expect(caption).toHaveCount(0);
-  await page.getByRole('button', { name: 'Hiện chữ' }).click();
   await expect(caption).toBeVisible();
   await page.getByRole('button', { name: 'Ẩn chữ' }).click();
   await expect(caption).toHaveCount(0);
+  await page.getByRole('button', { name: 'Hiện chữ' }).click();
+  await expect(caption).toBeVisible();
 });

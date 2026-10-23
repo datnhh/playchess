@@ -1,0 +1,351 @@
+{
+  "schemaVersion": 1,
+  "id": "advanced-king-safety",
+  "track": "advanced",
+  "order": 3,
+  "title": "Giữ Vua an toàn",
+  "icon": "opening",
+  "summary": "Khai cuộc, bé nhập thành sớm và giữ yên các Tốt đứng trước Vua.",
+  "boardMode": "standard",
+  "orientation": "white",
+  "start": "r1bqkbnr/pppp1ppp/2n5/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R w KQkq - 2 3",
+  "reviewed": true,
+  "steps": [
+    {
+      "kind": "watch",
+      "id": "meet-king",
+      "say": "Vua là quân quan trọng nhất. Bé phải giữ Vua thật an toàn.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "highlight",
+          "squares": ["e1"],
+          "tone": "good"
+        }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "castle-idea",
+      "say": "Cách hay nhất là nhập thành sớm, cho Vua vào góc có Tốt che.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "arrow",
+          "from": "e1",
+          "to": "g1",
+          "tone": "good"
+        },
+        {
+          "type": "highlight",
+          "squares": ["f2", "g2", "h2"],
+          "tone": "good"
+        }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "bad-open-file",
+      "say": "Vua đứng giữa, trước Vua không có Tốt che. Xe đen chiếu ngay.",
+      "actions": [
+        {
+          "type": "setPosition",
+          "position": "r5k1/5ppp/8/8/8/8/PPPP1PPP/RNBQKBNR b KQ - 0 1"
+        },
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "move",
+          "from": "a8",
+          "to": "e8"
+        },
+        {
+          "type": "arrow",
+          "from": "e8",
+          "to": "e1",
+          "tone": "warn"
+        }
+      ],
+      "assert": [
+        {
+          "type": "pieceAt",
+          "square": "e8",
+          "piece": "bR"
+        },
+        {
+          "type": "check"
+        }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "no-castle",
+      "say": "Đang bị chiếu thì Vua không nhập thành được. Vua gặp nguy rồi.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "highlight",
+          "squares": ["e1"],
+          "tone": "warn"
+        }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "bad-f-pawn",
+      "say": "Đẩy Tốt trước Vua cũng dở, vì mở ra đường chéo tới Vua.",
+      "actions": [
+        {
+          "type": "setPosition",
+          "position": "rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 2"
+        },
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "move",
+          "from": "f2",
+          "to": "f3"
+        },
+        {
+          "type": "arrow",
+          "from": "h4",
+          "to": "e1",
+          "tone": "warn"
+        }
+      ],
+      "assert": [
+        {
+          "type": "pieceAt",
+          "square": "f3",
+          "piece": "wP"
+        }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "queen-check",
+      "say": "Hậu đen chạy theo đường chéo đó và chiếu Vua ngay.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "move",
+          "from": "d8",
+          "to": "h4"
+        },
+        {
+          "type": "arrow",
+          "from": "h4",
+          "to": "e1",
+          "tone": "warn"
+        }
+      ],
+      "assert": [
+        {
+          "type": "pieceAt",
+          "square": "h4",
+          "piece": "bQ"
+        },
+        {
+          "type": "check"
+        }
+      ]
+    },
+    {
+      "kind": "interactMove",
+      "id": "do-bc4",
+      "say": "Giờ bé chơi đúng nhé. Bé cho Tượng đi chéo tới ngôi sao.",
+      "actions": [
+        {
+          "type": "setPosition",
+          "position": "r1bqkbnr/pppp1ppp/2n5/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R w KQkq - 2 3"
+        },
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "stickers",
+          "items": [
+            {
+              "square": "c4",
+              "kind": "star"
+            }
+          ]
+        }
+      ],
+      "accept": [
+        {
+          "from": "f1",
+          "to": "c4"
+        }
+      ],
+      "praise": "Giỏi quá! Đường giữa Vua và Xe đã trống.",
+      "retry": "Bé thử lại nhé, Tượng đi chéo tới ngôi sao."
+    },
+    {
+      "kind": "watch",
+      "id": "black-bc5",
+      "say": "Bên đen đưa Tượng ra.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "move",
+          "from": "f8",
+          "to": "c5"
+        }
+      ],
+      "assert": [
+        {
+          "type": "pieceAt",
+          "square": "c5",
+          "piece": "bB"
+        }
+      ]
+    },
+    {
+      "kind": "interactMove",
+      "id": "do-castle",
+      "say": "Bé hãy nhập thành: cho Vua đi hai ô tới ngôi sao.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "stickers",
+          "items": [
+            {
+              "square": "g1",
+              "kind": "star"
+            }
+          ]
+        }
+      ],
+      "accept": [
+        {
+          "from": "e1",
+          "to": "g1"
+        }
+      ],
+      "praise": "Tuyệt vời! Vua đã vào góc, Xe ra giữa.",
+      "retry": "Bé thử lại nhé, Vua đi hai ô tới ngôi sao."
+    },
+    {
+      "kind": "watch",
+      "id": "pawn-shield",
+      "say": "Bên đen đưa Mã ra. Ba Tốt trước Vua trắng đứng che như bức tường.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "move",
+          "from": "g8",
+          "to": "f6"
+        },
+        {
+          "type": "highlight",
+          "squares": ["f2", "g2", "h2"],
+          "tone": "good"
+        }
+      ],
+      "assert": [
+        {
+          "type": "pieceAt",
+          "square": "f6",
+          "piece": "bN"
+        },
+        {
+          "type": "pieceAt",
+          "square": "g1",
+          "piece": "wK"
+        },
+        {
+          "type": "pieceAt",
+          "square": "f1",
+          "piece": "wR"
+        }
+      ]
+    },
+    {
+      "kind": "interactMove",
+      "id": "do-d3",
+      "say": "Bé để yên Tốt trước Vua. Bé cho Tốt hậu tiến một ô tới ngôi sao.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "stickers",
+          "items": [
+            {
+              "square": "d3",
+              "kind": "star"
+            }
+          ]
+        }
+      ],
+      "accept": [
+        {
+          "from": "d2",
+          "to": "d3"
+        }
+      ],
+      "praise": "Giỏi lắm! Tốt hậu giữ Tốt trung tâm thật chắc.",
+      "retry": "Bé thử lại nhé, Tốt hậu tiến một ô tới ngôi sao."
+    },
+    {
+      "kind": "watch",
+      "id": "recap",
+      "say": "Bé nhớ nhé: nhập thành sớm và giữ yên các Tốt trước Vua.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "highlight",
+          "squares": ["g1"],
+          "tone": "good"
+        },
+        {
+          "type": "highlight",
+          "squares": ["f2", "g2", "h2"],
+          "tone": "good"
+        }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "goodbye",
+      "say": "Bé đã học xong bài giữ Vua an toàn. Hẹn gặp lại bé nhé!",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        }
+      ]
+    }
+  ]
+}

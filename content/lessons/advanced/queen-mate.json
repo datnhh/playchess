@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "id": "advanced-queen-mate",
+  "track": "advanced",
+  "order": 6,
+  "title": "Chiếu hết bằng Vua và Hậu",
+  "icon": "endgame",
+  "summary": "Hậu nhốt Vua đen vào góc, Vua trắng tiến lại giúp, rồi chiếu hết. Cẩn thận kẻo hòa pat.",
+  "boardMode": "standard",
+  "orientation": "white",
+  "start": "7k/8/8/8/8/5K2/6Q1/8 w - - 0 1",
+  "reviewed": true,
+  "steps": [
+    {
+      "kind": "watch",
+      "id": "meet",
+      "say": "Bên trắng còn Vua và Hậu. Vua đen đang ở trong góc.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "highlight", "squares": ["f3", "g2"], "tone": "good" },
+        { "type": "highlight", "squares": ["h8"], "tone": "warn" }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "goal",
+      "say": "Mình sẽ nhốt Vua đen trong góc, rồi chiếu hết ở đó.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "highlight", "squares": ["h8", "h7"], "tone": "info" }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "box-idea",
+      "say": "Hậu đứng ở cuối mũi tên sẽ làm một chiếc hộp nhỏ. Vua đen chỉ đi trong hộp.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "arrow", "from": "g2", "to": "g5", "tone": "good" },
+        { "type": "highlight", "squares": ["h8", "h7"], "tone": "info" }
+      ]
+    },
+    {
+      "kind": "interactMove",
+      "id": "make-box",
+      "say": "Bé hãy cho Hậu tới ngôi sao để làm chiếc hộp nhé.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "stickers", "items": [{ "square": "g5", "kind": "star" }] }
+      ],
+      "accept": [{ "from": "g2", "to": "g5" }],
+      "praise": "Giỏi quá! Vua đen đã bị nhốt rồi.",
+      "retry": "Bé thử lại nhé, Hậu đi thẳng lên ngôi sao."
+    },
+    {
+      "kind": "watch",
+      "id": "king-in-box",
+      "say": "Vua đen chỉ còn hai ô sáng để đi qua đi lại.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "move", "from": "h8", "to": "h7" },
+        { "type": "highlight", "squares": ["h8", "h7"], "tone": "good" }
+      ],
+      "assert": [{ "type": "pieceAt", "square": "h7", "piece": "bK" }]
+    },
+    {
+      "kind": "interactMove",
+      "id": "king-up-1",
+      "say": "Hậu cần Vua trắng giúp. Bé cho Vua trắng tiến lên ngôi sao nhé.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "stickers", "items": [{ "square": "f4", "kind": "star" }] }
+      ],
+      "accept": [{ "from": "f3", "to": "f4" }],
+      "praise": "Giỏi lắm! Vua trắng đang tới gần.",
+      "retry": "Bé thử lại nhé, Vua trắng đi một ô lên ngôi sao."
+    },
+    {
+      "kind": "watch",
+      "id": "walk-on",
+      "say": "Vua đen chạy qua lại trong hộp. Vua trắng tiến thêm một bước nữa.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "move", "from": "h7", "to": "h8" },
+        { "type": "move", "from": "f4", "to": "f5" },
+        { "type": "move", "from": "h8", "to": "h7" }
+      ],
+      "assert": [
+        { "type": "pieceAt", "square": "f5", "piece": "wK" },
+        { "type": "pieceAt", "square": "h7", "piece": "bK" }
+      ]
+    },
+    {
+      "kind": "interactMove",
+      "id": "king-up-2",
+      "say": "Bé cho Vua trắng tiến lên ngôi sao, đứng sát cạnh Hậu nhé.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "stickers", "items": [{ "square": "f6", "kind": "star" }] }
+      ],
+      "accept": [{ "from": "f5", "to": "f6" }],
+      "praise": "Tuyệt vời! Vua trắng đã tới nơi.",
+      "retry": "Bé thử lại nhé, Vua trắng đi một ô lên ngôi sao."
+    },
+    {
+      "kind": "watch",
+      "id": "king-back",
+      "say": "Vua đen lại chạy về góc.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "move", "from": "h7", "to": "h8" }
+      ],
+      "assert": [{ "type": "pieceAt", "square": "h8", "piece": "bK" }]
+    },
+    {
+      "kind": "watch",
+      "id": "stalemate-warn",
+      "say": "Cẩn thận! Hậu đứng ở đây thì Vua đen hết đường đi mà không bị chiếu. Đó là hòa pat.",
+      "actions": [
+        { "type": "setPosition", "position": "7k/8/5KQ1/8/8/8/8/8 b - - 0 1" },
+        { "type": "clear", "target": "all" },
+        { "type": "arrow", "from": "g5", "to": "g6", "tone": "warn" },
+        { "type": "highlight", "squares": ["h8"], "tone": "warn" }
+      ],
+      "assert": [{ "type": "stalemate" }]
+    },
+    {
+      "kind": "interactMove",
+      "id": "mate-move",
+      "say": "Bé cho Hậu tới ngôi sao, sát Vua đen, có Vua trắng bảo vệ nhé.",
+      "actions": [
+        { "type": "setPosition", "position": "7k/8/5K2/6Q1/8/8/8/8 w - - 0 1" },
+        { "type": "clear", "target": "all" },
+        { "type": "stickers", "items": [{ "square": "g7", "kind": "star" }] }
+      ],
+      "accept": [{ "from": "g5", "to": "g7" }],
+      "praise": "Giỏi quá! Bé đã chiếu hết rồi.",
+      "retry": "Bé thử lại nhé, Hậu đi thẳng lên ngôi sao."
+    },
+    {
+      "kind": "watch",
+      "id": "mate-done",
+      "say": "Chiếu hết! Hậu chiếu Vua đen, Vua trắng đứng sau bảo vệ Hậu.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "highlight", "squares": ["h8"], "tone": "warn" },
+        { "type": "arrow", "from": "f6", "to": "g7", "tone": "good" }
+      ],
+      "assert": [{ "type": "checkmate" }]
+    },
+    {
+      "kind": "watch",
+      "id": "goodbye",
+      "say": "Bé đã học xong cách chiếu hết bằng Vua và Hậu. Hẹn gặp lại bé nhé!",
+      "actions": [{ "type": "clear", "target": "all" }]
+    }
+  ]
+}

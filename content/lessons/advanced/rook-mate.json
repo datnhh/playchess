@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "id": "advanced-rook-mate",
+  "track": "advanced",
+  "order": 7,
+  "title": "Chiếu hết bằng Vua và Xe",
+  "icon": "endgame",
+  "summary": "Xe chặn một hàng, Vua trắng đứng đối diện giúp sức, rồi Xe chiếu hết ở mép bàn cờ.",
+  "boardMode": "standard",
+  "orientation": "white",
+  "start": "4k3/8/8/4K3/8/8/8/R7 w - - 0 1",
+  "reviewed": true,
+  "steps": [
+    {
+      "kind": "watch",
+      "id": "meet",
+      "say": "Bên trắng còn Vua và một Xe. Vua đen đã ở mép trên.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "highlight", "squares": ["a1", "e5"], "tone": "good" },
+        { "type": "highlight", "squares": ["e8"], "tone": "warn" }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "goal",
+      "say": "Mình sẽ chiếu hết Vua đen ngay ở hàng cuối này.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        {
+          "type": "highlight",
+          "squares": ["a8", "b8", "c8", "d8", "e8", "f8", "g8", "h8"],
+          "tone": "info"
+        }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "idea",
+      "say": "Trước hết, Xe đứng chặn hàng thứ hai. Vua đen không xuống được nữa.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        {
+          "type": "highlight",
+          "squares": ["a7", "b7", "c7", "d7", "e7", "f7", "g7", "h7"],
+          "tone": "info"
+        },
+        { "type": "arrow", "from": "a1", "to": "a7", "tone": "good" }
+      ]
+    },
+    {
+      "kind": "interactMove",
+      "id": "block-rank",
+      "say": "Bé hãy cho Xe tới ô có ngôi sao để chặn hàng này.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "stickers", "items": [{ "square": "a7", "kind": "star" }] }
+      ],
+      "accept": [{ "from": "a1", "to": "a7" }],
+      "praise": "Giỏi quá! Xe đã chặn hàng rồi.",
+      "retry": "Bé thử lại nhé, Xe đi thẳng lên ngôi sao."
+    },
+    {
+      "kind": "watch",
+      "id": "king-side-1",
+      "say": "Vua đen chỉ đi ngang được thôi.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "move", "from": "e8", "to": "f8" },
+        {
+          "type": "highlight",
+          "squares": ["a7", "b7", "c7", "d7", "e7", "f7", "g7", "h7"],
+          "tone": "good"
+        }
+      ],
+      "assert": [{ "type": "pieceAt", "square": "f8", "piece": "bK" }]
+    },
+    {
+      "kind": "interactMove",
+      "id": "face-1",
+      "say": "Giờ Vua trắng lên giúp. Bé cho Vua tới ngôi sao, đứng đối diện Vua đen.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "stickers", "items": [{ "square": "f6", "kind": "star" }] }
+      ],
+      "accept": [{ "from": "e5", "to": "f6" }],
+      "praise": "Giỏi quá! Hai Vua đứng đối diện nhau rồi.",
+      "retry": "Bé thử lại nhé, Vua đi chéo một ô lên ngôi sao."
+    },
+    {
+      "kind": "watch",
+      "id": "king-side-2",
+      "say": "Vua đen né sang bên cạnh.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "move", "from": "f8", "to": "g8" }
+      ],
+      "assert": [{ "type": "pieceAt", "square": "g8", "piece": "bK" }]
+    },
+    {
+      "kind": "watch",
+      "id": "stay-far",
+      "say": "Nhớ nhé, Xe đứng sát Vua đen mà không ai bảo vệ thì sẽ bị ăn mất.",
+      "actions": [
+        { "type": "setPosition", "position": "6k1/7R/5K2/8/8/8/8/8 b - - 0 1" },
+        { "type": "clear", "target": "all" },
+        { "type": "arrow", "from": "g8", "to": "h7", "tone": "warn" },
+        { "type": "highlight", "squares": ["h7"], "tone": "warn" }
+      ]
+    },
+    {
+      "kind": "interactMove",
+      "id": "face-2",
+      "say": "Xe mình vẫn ở xa. Bé cho Vua tới ngôi sao, lại đứng đối diện nhé.",
+      "actions": [
+        { "type": "setPosition", "position": "6k1/R7/5K2/8/8/8/8/8 w - - 0 1" },
+        { "type": "clear", "target": "all" },
+        { "type": "stickers", "items": [{ "square": "g6", "kind": "star" }] }
+      ],
+      "accept": [{ "from": "f6", "to": "g6" }],
+      "praise": "Giỏi quá! Vua trắng bám sát Vua đen.",
+      "retry": "Bé thử lại nhé, Vua đi ngang một ô sang ngôi sao."
+    },
+    {
+      "kind": "watch",
+      "id": "king-corner",
+      "say": "Vua đen chạy vào góc. Vua trắng đã giữ các ô phía dưới.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "move", "from": "g8", "to": "h8" },
+        { "type": "highlight", "squares": ["g7", "h7"], "tone": "good" }
+      ],
+      "assert": [{ "type": "pieceAt", "square": "h8", "piece": "bK" }]
+    },
+    {
+      "kind": "interactMove",
+      "id": "mate-move",
+      "say": "Bé cho Xe tới ngôi sao ở hàng cuối để chiếu hết nhé.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "stickers", "items": [{ "square": "a8", "kind": "star" }] }
+      ],
+      "accept": [{ "from": "a7", "to": "a8" }],
+      "praise": "Giỏi quá! Bé đã chiếu hết rồi.",
+      "retry": "Bé thử lại nhé, Xe đi thẳng lên hàng cuối."
+    },
+    {
+      "kind": "watch",
+      "id": "mate-done",
+      "say": "Chiếu hết! Xe chiếu hàng cuối, Vua trắng chặn đường chạy xuống.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "highlight", "squares": ["h8"], "tone": "warn" },
+        { "type": "arrow", "from": "a8", "to": "h8", "tone": "good" },
+        { "type": "highlight", "squares": ["g7", "h7"], "tone": "good" }
+      ],
+      "assert": [{ "type": "checkmate" }]
+    },
+    {
+      "kind": "watch",
+      "id": "goodbye",
+      "say": "Bé đã học xong cách chiếu hết bằng Vua và Xe. Hẹn gặp lại bé nhé!",
+      "actions": [{ "type": "clear", "target": "all" }]
+    }
+  ]
+}

@@ -42,8 +42,8 @@ export function LessonPlayer({
   allowSkip = false,
 }: LessonPlayerProps) {
   const [state, setState] = useState<LessonMachineState>(() => createLessonState(lesson));
-  // Text of the narration for adults (reading without sound). Hidden by default: children use audio.
-  const [showCaption, setShowCaption] = useState(false);
+  // Text of the narration, so adults can follow without sound. Shown by default; the Aa button hides it.
+  const [showCaption, setShowCaption] = useState(true);
   // Source of truth for dispatch: effects run synchronously, before React re-renders.
   const stateRef = useRef(state);
   const timersRef = useRef(new Set<ReturnType<typeof setTimeout>>());

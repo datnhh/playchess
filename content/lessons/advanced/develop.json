@@ -1,0 +1,344 @@
+{
+  "schemaVersion": 1,
+  "id": "advanced-develop",
+  "track": "advanced",
+  "order": 2,
+  "title": "Đưa quân ra trận",
+  "icon": "opening",
+  "summary": "Khai cuộc, bé đưa Mã và Tượng ra sớm, mỗi quân đi một lần, chưa vội đưa Hậu ra.",
+  "boardMode": "standard",
+  "orientation": "white",
+  "start": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+  "reviewed": true,
+  "steps": [
+    {
+      "kind": "watch",
+      "id": "meet-pieces",
+      "say": "Mã và Tượng còn đứng ở nhà. Khai cuộc, bé cần đưa chúng ra trận.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "highlight",
+          "squares": ["b1", "g1", "c1", "f1"],
+          "tone": "good"
+        }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "why-develop",
+      "say": "Quân ra trận sớm thì cùng nhau đánh và bảo vệ được nhiều ô.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "arrow",
+          "from": "g1",
+          "to": "f3",
+          "tone": "good"
+        },
+        {
+          "type": "arrow",
+          "from": "b1",
+          "to": "c3",
+          "tone": "good"
+        }
+      ]
+    },
+    {
+      "kind": "interactMove",
+      "id": "do-e4",
+      "say": "Trước hết, bé cho Tốt vua tiến hai ô tới ngôi sao nhé.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "stickers",
+          "items": [
+            {
+              "square": "e4",
+              "kind": "star"
+            }
+          ]
+        }
+      ],
+      "accept": [
+        {
+          "from": "e2",
+          "to": "e4"
+        }
+      ],
+      "praise": "Giỏi quá! Đường cho Tượng đã mở rồi.",
+      "retry": "Bé thử lại nhé, Tốt vua đi tới ngôi sao."
+    },
+    {
+      "kind": "watch",
+      "id": "black-e5",
+      "say": "Bên đen cũng đưa Tốt vào trung tâm.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "move",
+          "from": "e7",
+          "to": "e5"
+        }
+      ],
+      "assert": [
+        {
+          "type": "pieceAt",
+          "square": "e5",
+          "piece": "bP"
+        }
+      ]
+    },
+    {
+      "kind": "interactMove",
+      "id": "do-nf3",
+      "say": "Bé hãy cho Mã nhảy ra ngôi sao.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "stickers",
+          "items": [
+            {
+              "square": "f3",
+              "kind": "star"
+            }
+          ]
+        }
+      ],
+      "accept": [
+        {
+          "from": "g1",
+          "to": "f3"
+        }
+      ],
+      "praise": "Tuyệt vời! Mã đã ra trận.",
+      "retry": "Bé thử lại nhé, cho Mã tới ngôi sao."
+    },
+    {
+      "kind": "watch",
+      "id": "black-nc6",
+      "say": "Bên đen cũng đưa Mã ra.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "move",
+          "from": "b8",
+          "to": "c6"
+        }
+      ],
+      "assert": [
+        {
+          "type": "pieceAt",
+          "square": "c6",
+          "piece": "bN"
+        }
+      ]
+    },
+    {
+      "kind": "interactMove",
+      "id": "do-bc4",
+      "say": "Bé hãy cho Tượng đi chéo tới ngôi sao.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "stickers",
+          "items": [
+            {
+              "square": "c4",
+              "kind": "star"
+            }
+          ]
+        }
+      ],
+      "accept": [
+        {
+          "from": "f1",
+          "to": "c4"
+        }
+      ],
+      "praise": "Giỏi lắm! Tượng đã ra trận.",
+      "retry": "Bé thử lại nhé, Tượng đi chéo tới ngôi sao."
+    },
+    {
+      "kind": "watch",
+      "id": "black-bc5",
+      "say": "Bên đen đưa Tượng ra. Hai bên đều ra quân thật nhanh.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "move",
+          "from": "f8",
+          "to": "c5"
+        }
+      ],
+      "assert": [
+        {
+          "type": "pieceAt",
+          "square": "c5",
+          "piece": "bB"
+        }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "bad-queen",
+      "say": "Còn đây là nước dở: Hậu chạy ra quá sớm.",
+      "actions": [
+        {
+          "type": "setPosition",
+          "position": "rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 2"
+        },
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "move",
+          "from": "d1",
+          "to": "g4"
+        },
+        {
+          "type": "arrow",
+          "from": "d1",
+          "to": "g4",
+          "tone": "warn"
+        }
+      ],
+      "assert": [
+        {
+          "type": "pieceAt",
+          "square": "g4",
+          "piece": "wQ"
+        }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "queen-chased",
+      "say": "Mã đen ra trận và đuổi Hậu. Hậu lại phải chạy tiếp.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "move",
+          "from": "g8",
+          "to": "f6"
+        },
+        {
+          "type": "arrow",
+          "from": "f6",
+          "to": "g4",
+          "tone": "warn"
+        }
+      ],
+      "assert": [
+        {
+          "type": "pieceAt",
+          "square": "f6",
+          "piece": "bN"
+        }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "one-move-each",
+      "say": "Đi một quân nhiều lần là phí lượt. Mã và Tượng trắng vẫn ngồi chờ ở nhà.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "highlight",
+          "squares": ["b1", "c1", "f1", "g1"],
+          "tone": "warn"
+        }
+      ]
+    },
+    {
+      "kind": "interactMove",
+      "id": "do-nc3",
+      "say": "Bé hãy đưa nốt Mã còn lại ra ngôi sao nhé.",
+      "actions": [
+        {
+          "type": "setPosition",
+          "position": "r1bqk1nr/pppp1ppp/2n5/2b1p3/2B1P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 4 4"
+        },
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "stickers",
+          "items": [
+            {
+              "square": "c3",
+              "kind": "star"
+            }
+          ]
+        }
+      ],
+      "accept": [
+        {
+          "from": "b1",
+          "to": "c3"
+        }
+      ],
+      "praise": "Tuyệt vời! Các quân của bé đều đã ra trận.",
+      "retry": "Bé thử lại nhé, Mã còn lại nhảy tới ngôi sao."
+    },
+    {
+      "kind": "watch",
+      "id": "recap",
+      "say": "Bé nhớ nhé: đưa Mã, Tượng ra sớm, mỗi quân một lần, chưa vội đưa Hậu ra.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "highlight",
+          "squares": ["c3", "f3", "c4"],
+          "tone": "good"
+        }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "goodbye",
+      "say": "Bé đã học xong bài đưa quân ra trận. Hẹn gặp lại bé nhé!",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        }
+      ]
+    }
+  ]
+}

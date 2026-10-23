@@ -1,0 +1,306 @@
+{
+  "schemaVersion": 1,
+  "id": "advanced-italian",
+  "track": "advanced",
+  "order": 4,
+  "title": "Khai cuộc Ý",
+  "icon": "opening",
+  "summary": "Khai cuộc mẫu: Tốt vào trung tâm, đưa Mã và Tượng ra, rồi nhập thành cho Vua an toàn.",
+  "boardMode": "standard",
+  "orientation": "white",
+  "start": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+  "reviewed": true,
+  "steps": [
+    {
+      "kind": "watch",
+      "id": "three-rules",
+      "say": "Khai cuộc có ba việc: chiếm trung tâm, đưa quân ra, rồi nhập thành.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "highlight",
+          "squares": ["d4", "e4", "d5", "e5"],
+          "tone": "good"
+        }
+      ]
+    },
+    {
+      "kind": "interactMove",
+      "id": "do-e4",
+      "say": "Bé hãy cho Tốt vua tiến hai ô tới ngôi sao nhé.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "stickers",
+          "items": [
+            {
+              "square": "e4",
+              "kind": "star"
+            }
+          ]
+        }
+      ],
+      "accept": [
+        {
+          "from": "e2",
+          "to": "e4"
+        }
+      ],
+      "praise": "Giỏi quá! Tốt đã vào trung tâm rồi.",
+      "retry": "Bé thử lại nhé, Tốt vua đi tới ngôi sao."
+    },
+    {
+      "kind": "watch",
+      "id": "black-e5",
+      "say": "Bên đen cũng đưa Tốt vào trung tâm.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "move",
+          "from": "e7",
+          "to": "e5"
+        }
+      ],
+      "assert": [
+        {
+          "type": "pieceAt",
+          "square": "e5",
+          "piece": "bP"
+        }
+      ]
+    },
+    {
+      "kind": "interactMove",
+      "id": "do-nf3",
+      "say": "Bé hãy cho Mã nhảy ra ngôi sao, nhìn vào Tốt đen.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "stickers",
+          "items": [
+            {
+              "square": "f3",
+              "kind": "star"
+            }
+          ]
+        }
+      ],
+      "accept": [
+        {
+          "from": "g1",
+          "to": "f3"
+        }
+      ],
+      "praise": "Tuyệt vời! Mã đã ra trận rồi.",
+      "retry": "Bé thử lại nhé, cho Mã tới ngôi sao."
+    },
+    {
+      "kind": "watch",
+      "id": "black-nc6",
+      "say": "Bên đen đưa Mã ra để bảo vệ Tốt.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "move",
+          "from": "b8",
+          "to": "c6"
+        },
+        {
+          "type": "arrow",
+          "from": "c6",
+          "to": "e5",
+          "tone": "good"
+        }
+      ],
+      "assert": [
+        {
+          "type": "pieceAt",
+          "square": "c6",
+          "piece": "bN"
+        }
+      ]
+    },
+    {
+      "kind": "interactMove",
+      "id": "do-bc4",
+      "say": "Giờ tới lượt Tượng. Bé cho Tượng đi chéo tới ngôi sao nhé.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "stickers",
+          "items": [
+            {
+              "square": "c4",
+              "kind": "star"
+            }
+          ]
+        }
+      ],
+      "accept": [
+        {
+          "from": "f1",
+          "to": "c4"
+        }
+      ],
+      "praise": "Giỏi lắm! Tượng đã ra ngoài rồi.",
+      "retry": "Bé thử lại nhé, Tượng đi chéo tới ngôi sao."
+    },
+    {
+      "kind": "watch",
+      "id": "bishop-aims",
+      "say": "Tượng nhìn theo đường chéo tới ô sáng đỏ. Ô đó chỉ có Vua đen bảo vệ.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "arrow",
+          "from": "c4",
+          "to": "f7",
+          "tone": "good"
+        },
+        {
+          "type": "highlight",
+          "squares": ["f7"],
+          "tone": "warn"
+        }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "black-bc5",
+      "say": "Bên đen cũng đưa Tượng ra, giống hệt bên trắng.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "move",
+          "from": "f8",
+          "to": "c5"
+        },
+        {
+          "type": "arrow",
+          "from": "c5",
+          "to": "f2",
+          "tone": "info"
+        }
+      ],
+      "assert": [
+        {
+          "type": "pieceAt",
+          "square": "c5",
+          "piece": "bB"
+        }
+      ]
+    },
+    {
+      "kind": "interactMove",
+      "id": "do-castle",
+      "say": "Đường đã trống. Bé hãy nhập thành: kéo Vua sang hai ô tới ngôi sao.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "highlight",
+          "squares": ["f1", "g1"],
+          "tone": "good"
+        },
+        {
+          "type": "stickers",
+          "items": [
+            {
+              "square": "g1",
+              "kind": "star"
+            }
+          ]
+        }
+      ],
+      "accept": [
+        {
+          "from": "e1",
+          "to": "g1"
+        }
+      ],
+      "praise": "Giỏi quá! Bé đã nhập thành rồi.",
+      "retry": "Bé thử lại nhé, Vua đi sang hai ô tới ngôi sao."
+    },
+    {
+      "kind": "watch",
+      "id": "castle-done",
+      "say": "Vua đã vào góc an toàn. Xe nhảy qua đứng cạnh Vua.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "highlight",
+          "squares": ["g1", "f1"],
+          "tone": "good"
+        }
+      ],
+      "assert": [
+        {
+          "type": "pieceAt",
+          "square": "g1",
+          "piece": "wK"
+        },
+        {
+          "type": "pieceAt",
+          "square": "f1",
+          "piece": "wR"
+        }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "recap",
+      "say": "Tốt vào trung tâm, Mã và Tượng ra ngoài, Vua nhập thành. Đó là khai cuộc Ý.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "highlight",
+          "squares": ["e4", "f3", "c4", "g1"],
+          "tone": "good"
+        }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "goodbye",
+      "say": "Bé đã học xong khai cuộc Ý. Hẹn gặp lại bé nhé!",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        }
+      ]
+    }
+  ]
+}
