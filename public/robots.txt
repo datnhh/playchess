@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /dev
+Disallow: /smoke
+
+Sitemap: https://chess-dat.pages.dev/sitemap.xml

@@ -12,15 +12,26 @@ import { readManifest, REPO_ROOT } from '../content/files.ts';
 
 const SW_ENTRY = 'src/sw/sw.ts';
 const SW_FILE = 'sw.js';
+const NON_PRECACHE_FILES = new Set([
+  SW_FILE,
+  '_headers',
+  '_redirects',
+  'robots.txt',
+  'sitemap.xml',
+  'llms.txt',
+  'og-image.png',
+  'favicon.ico',
+]);
 
 /**
  * URL to precache for a file of dist/ (relative, forward slashes), or null to skip it.
  * Lesson audio is cached when heard or downloaded from Settings, not at install.
+ * Crawler and social preview files are not needed offline.
  */
 export function precacheUrl(file: string): string | null {
   if (file === 'index.html') return '/';
   if (file.endsWith('.map') || file.startsWith('audio/')) return null;
-  if (file === SW_FILE || file === '_headers' || file === '_redirects') return null;
+  if (NON_PRECACHE_FILES.has(file)) return null;
   return `/${file}`;
 }
 

@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { precacheList, precacheUrl, precacheVersion } from './serviceWorkerPlugin.ts';
 
 describe('precache list', () => {
-  it('maps index.html to / and skips maps, audio and host files', () => {
+  it('maps index.html to / and skips maps, audio, crawler and host files', () => {
     expect(precacheUrl('index.html')).toBe('/');
     expect(precacheUrl('assets/index-abc.js')).toBe('/assets/index-abc.js');
     expect(precacheUrl('engine/stockfish.wasm')).toBe('/engine/stockfish.wasm');
@@ -10,6 +10,11 @@ describe('precache list', () => {
     expect(precacheUrl('audio/0fa67fb509d4f53c.mp3')).toBeNull();
     expect(precacheUrl('_headers')).toBeNull();
     expect(precacheUrl('sw.js')).toBeNull();
+    expect(precacheUrl('robots.txt')).toBeNull();
+    expect(precacheUrl('sitemap.xml')).toBeNull();
+    expect(precacheUrl('llms.txt')).toBeNull();
+    expect(precacheUrl('og-image.png')).toBeNull();
+    expect(precacheUrl('favicon.ico')).toBeNull();
   });
 
   it('adds the common clips, without duplicates, sorted', () => {

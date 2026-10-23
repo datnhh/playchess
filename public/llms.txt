@@ -1,0 +1,11 @@
+# Bé học cờ vua
+
+> Website dạy cờ vua miễn phí cho trẻ em mới bắt đầu bằng tiếng Việt, có giọng đọc và hoạt cảnh trực quan, kèm chế độ đấu với máy 10 cấp độ và chạy được cả khi không có mạng (PWA).
+
+## Các phần chính
+
+- [Trang chủ](https://chess-dat.pages.dev/): Chọn lộ trình học hoặc đấu với máy.
+- [Học cơ bản](https://chess-dat.pages.dev/learn/basic): 16 bài học từ bàn cờ, cách đi 6 quân cờ, ăn quân, chiếu, chiếu hết, hòa pat, nhập thành, phong cấp đến bắt tốt qua đường.
+- [Học nâng cao](https://chess-dat.pages.dev/learn/advanced): 8 bài học về nguyên tắc khai cuộc, khai cuộc mẫu và tàn cuộc cơ bản (Đôi Xe, Vua + Hậu, Vua + Xe, Vua dẫn Tốt).
+- [Đấu với máy](https://chess-dat.pages.dev/play): 10 cấp độ từ dễ đến khó, có gợi ý nước đi và đi lại.
+- [Mã nguồn (GPL-3.0-or-later)](https://github.com/datnhh/playchess): Phần mềm tự do, không quảng cáo, không theo dõi người dùng.
