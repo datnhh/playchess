@@ -120,3 +120,30 @@ test('lesson caption is shown by default and can be hidden', async ({ page }) =>
   await page.getByRole('button', { name: 'Hiện chữ' }).click();
   await expect(caption).toBeVisible();
 });
+
+test('back from a lesson always returns to the map of its level', async ({ page }) => {
+  await page.goto('/');
+  await page.getByRole('link', { name: /Học cơ bản/ }).click();
+  await page.locator('a[href="/lesson/basic-rook"]').click();
+  await expect(page.locator('.lesson-caption')).toBeVisible();
+  await page.goBack();
+  await expect(page).toHaveURL(/\/learn\/basic$/);
+
+  // ✕ goes back to the map too, and the map's back leads home, not into the lesson again.
+  await page.locator('a[href="/lesson/basic-rook"]').click();
+  await page.getByRole('button', { name: 'Thoát' }).click();
+  await expect(page).toHaveURL(/\/learn\/basic$/);
+  await page.goBack();
+  await expect(page).toHaveURL(/\/$/);
+});
+
+test('a lesson opened from a link goes back to its map', async ({ page }) => {
+  await page.goto('/lesson/advanced-italian');
+  // The start tap is also the user's first touch of the page (Chrome skips untouched entries).
+  await page.getByRole('button', { name: '▶ Bắt đầu' }).click();
+  await expect(page.locator('.lesson-caption')).toBeVisible();
+  await page.goBack();
+  await expect(page).toHaveURL(/\/learn\/advanced$/);
+  await page.goBack();
+  await expect(page).toHaveURL(/\/$/);
+});

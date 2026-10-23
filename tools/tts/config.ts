@@ -9,10 +9,10 @@ export const TTS_VOICES = {
   piper: {
     /** Model id: the .onnx file must be named `<model>.onnx` (checked before synthesis). */
     model: 'vi_VN-vais1000-medium',
-    /** > 1 speaks slower: 1.1 is about 10% slower, for young children. */
-    lengthScale: 1.1,
+    /** > 1 speaks slower: 1.25 is about 25% slower, so young children can follow. */
+    lengthScale: 1.25,
     /** Pause between sentences, in seconds. */
-    sentenceSilence: 0.25,
+    sentenceSilence: 0.5,
   },
 } as const;
 

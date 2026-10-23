@@ -11,13 +11,13 @@ export function HomePage() {
       </Link>
       <h1 className="page-title">Bé học cờ vua</h1>
       <div className="tile-grid">
-        <Link to="/learn/basic" className="tile tile--basic">
+        <Link to="/learn/basic" parent="/" className="tile tile--basic">
           <span className="tile-icon" aria-hidden="true">
             🌱
           </span>
           <span>Học cơ bản</span>
         </Link>
-        <Link to="/learn/advanced" className="tile tile--advanced">
+        <Link to="/learn/advanced" parent="/" className="tile tile--advanced">
           <span className="tile-icon" aria-hidden="true">
             ⭐
           </span>

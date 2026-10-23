@@ -1,8 +1,8 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { getAudioController, canStartWithSound, unlockAudio } from '../audio/useAudio.ts';
 import { ChessBoard } from '../board/ChessBoard.tsx';
 import { Link } from '../app/Link.tsx';
-import { navigate } from '../app/router.ts';
+import { ensureAncestors, goToParent } from '../app/router.ts';
 import { getAudioManifest, getLesson, getLessons } from '../content/lessons.ts';
 import { LessonPlayer, type LessonResult } from '../lesson/LessonPlayer.tsx';
 import { loadProgress, saveProgress } from '../services/storage.ts';
@@ -19,6 +19,13 @@ export function LessonPage({ lessonId }: LessonPageProps) {
   const [completed, setCompleted] = useState(false);
   // Opened from the map or "Bài tiếp": the tap already unlocked sound, so skip the ▶ screen.
   const [autoStart] = useState(canStartWithSound);
+
+  const mapPath = lesson ? `/learn/${lesson.track}` : null;
+
+  // Back (system button or ✕) always leads to the map of the level, even from a link or a reload.
+  useEffect(() => {
+    if (mapPath) ensureAncestors(['/', mapPath]);
+  }, [mapPath]);
 
   const handleComplete = useCallback((result: LessonResult) => {
     saveProgress(
@@ -52,13 +59,15 @@ export function LessonPage({ lessonId }: LessonPageProps) {
         audio={getAudioController()}
         Board={ChessBoard}
         onComplete={handleComplete}
-        onExit={() => navigate(`/learn/${lesson.track}`)}
+        onExit={() => goToParent(`/learn/${lesson.track}`)}
         autoStart={autoStart}
       />
       {next && (
         <Link
           to={`/lesson/${encodeURIComponent(next.id)}`}
           className="button lesson-next"
+          replace
+          parent={`/learn/${lesson.track}`}
           onNavigate={unlockAudio}
         >
           Bài tiếp ▶

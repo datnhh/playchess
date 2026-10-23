@@ -84,7 +84,7 @@ export interface Transition {
 }
 
 /** Pause after a watch step's narration before moving on, so the child can look at the board. */
-export const WATCH_ADVANCE_DELAY_MS = 600;
+export const WATCH_ADVANCE_DELAY_MS = 1500;
 /** Wrong tries in a step before the hint appears. */
 export const HINT_AFTER_WRONG = 2;
 

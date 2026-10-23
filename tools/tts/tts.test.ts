@@ -12,7 +12,7 @@ import { applyPronunciation, buildSsml, escapeXml } from './ssml.ts';
 describe('audioHash', () => {
   it('follows the contract: first 16 hex chars of sha256(provider|voice|rate|spoken text)', () => {
     const expected = createHash('sha256')
-      .update('piper|vi_VN-vais1000-medium|ls=1.1,ss=0.25|Giỏi quá!')
+      .update('piper|vi_VN-vais1000-medium|ls=1.25,ss=0.5|Giỏi quá!')
       .digest('hex')
       .slice(0, 16);
     expect(audioHash('Giỏi quá!')).toBe(expected);
@@ -30,11 +30,11 @@ describe('audioHash', () => {
     expect(audioHash('Giỏi quá!', 'azure')).not.toBe(base);
     expect(voiceSettings('piper')).toEqual({
       voice: TTS_VOICES.piper.model,
-      rate: 'ls=1.1,ss=0.25',
+      rate: 'ls=1.25,ss=0.5',
     });
     expect(audioHash('Giỏi quá!', 'piper', 'vi_VN-other-medium')).not.toBe(base);
-    expect(audioHash('Giỏi quá!', 'piper', undefined, 'ls=1.2,ss=0.25')).not.toBe(base);
-    expect(audioHash('Giỏi quá!', 'piper', undefined, 'ls=1.1,ss=0.4')).not.toBe(base);
+    expect(audioHash('Giỏi quá!', 'piper', undefined, 'ls=1.4,ss=0.5')).not.toBe(base);
+    expect(audioHash('Giỏi quá!', 'piper', undefined, 'ls=1.25,ss=0.4')).not.toBe(base);
   });
 });
 

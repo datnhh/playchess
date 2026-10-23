@@ -1,5 +1,6 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { Link } from '../app/Link.tsx';
+import { ensureAncestors } from '../app/router.ts';
 import { unlockAudio } from '../audio/useAudio.ts';
 import { getLessons } from '../content/lessons.ts';
 import type { Track } from '../content/schema.ts';
@@ -19,11 +20,15 @@ export function TrackPage({ track }: TrackPageProps) {
   const lessons = useMemo(() => lessonsOfTrack(getLessons(), track), [track]);
   const progress = useMemo(() => loadProgress(), []);
   const next = recommendedLesson(lessons, progress);
+  const mapPath = `/learn/${track}`;
+
+  // Back from the map always leads home, even when the map was opened from a link.
+  useEffect(() => ensureAncestors(['/']), []);
 
   return (
     <main className="page" style={{ ['--map-color' as string]: TRACK_COLORS[track] }}>
       <header className="map-header">
-        <Link to="/" className="icon-button">
+        <Link to="/" toParent className="icon-button">
           <span aria-hidden="true">🏠</span>
           <span className="visually-hidden">Về trang chủ</span>
         </Link>
@@ -46,6 +51,7 @@ export function TrackPage({ track }: TrackPageProps) {
                 <Link
                   to={`/lesson/${encodeURIComponent(lesson.id)}`}
                   className={isNext ? 'map-node map-node--next' : 'map-node'}
+                  parent={mapPath}
                   onNavigate={unlockAudio}
                 >
                   <span className="map-node-circle" aria-hidden="true">

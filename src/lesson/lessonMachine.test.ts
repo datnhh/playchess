@@ -8,6 +8,7 @@ import {
   estimateNarrationMs,
   lessonTransition,
   starsForMistakes,
+  WATCH_ADVANCE_DELAY_MS,
   type LessonEffect,
   type LessonEvent,
   type LessonMachineState,
@@ -58,7 +59,9 @@ describe('lessonMachine on the rook lesson', () => {
     expect(p.state.board.shapes).toHaveLength(1);
 
     p.narrationDone();
-    expect(p.effects).toEqual([{ type: 'schedule', ms: 600, token: p.state.token }]);
+    expect(p.effects).toEqual([
+      { type: 'schedule', ms: WATCH_ADVANCE_DELAY_MS, token: p.state.token },
+    ]);
     p.timer();
     expect(p.state.stepIndex).toBe(1);
     p.watch(); // enters rook-goes-far, which moves d4-d7
