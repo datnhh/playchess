@@ -131,7 +131,8 @@ export const stepSchema = z.discriminatedUnion('kind', [
 
 // ---------- Lesson ----------
 
-export const trackSchema = z.enum(['sprout', 'junior']);
+/** basic = "Học cơ bản" (all rules needed to play a game), advanced = "Học nâng cao" (openings, endgames). */
+export const trackSchema = z.enum(['basic', 'advanced']);
 
 export const lessonSchema = z
   .object({

@@ -3,7 +3,7 @@ import { validateFen } from 'chess.js';
 /**
  * Two position formats, matching the lesson `boardMode`:
  * - standard: a full 6-field FEN that chess.js accepts (both kings present, legal side to move…).
- * - sandbox: only the piece-placement field (e.g. "8/8/8/3R4/8/8/8/8"). Used by sprout lessons that
+ * - sandbox: only the piece-placement field (e.g. "8/8/8/3R4/8/8/8/8"). Used by basic lessons that
  *   show a single piece on an empty board, which chess.js would reject for missing kings.
  */
 

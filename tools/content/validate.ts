@@ -51,7 +51,7 @@ export interface ValidationResult {
   lessons: { file: string; lesson: Lesson }[];
 }
 
-export const MAX_WORDS: Readonly<Record<Lesson['track'], number>> = { sprout: 15, junior: 25 };
+export const MAX_WORDS: Readonly<Record<Lesson['track'], number>> = { basic: 15, advanced: 25 };
 
 const FILE_PATTERN = /^content\/lessons\/([^/]+)\/([^/]+)\.json$/;
 

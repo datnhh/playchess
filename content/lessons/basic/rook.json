@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "id": "sprout-rook",
-  "track": "sprout",
+  "id": "basic-rook",
+  "track": "basic",
   "order": 4,
   "title": "Quân Xe",
   "summary": "Bài mẫu viết tay: Xe đi thẳng theo hàng ngang và cột dọc, không đi chéo.",

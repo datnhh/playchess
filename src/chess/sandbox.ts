@@ -10,7 +10,7 @@ import {
 /**
  * Move geometry for sandbox boards (placement-only FEN, kings optional).
  * Pieces move by their normal pattern, are blocked by other pieces and may capture the other colour.
- * There is no check, castling, en passant or turn order: sprout lessons only teach how pieces move.
+ * There is no check, castling, en passant or turn order: sandbox lessons only teach how pieces move.
  * Shared by the lesson player (legal destinations) and the content validator (BFS, assertions).
  */
 

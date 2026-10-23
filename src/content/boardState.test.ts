@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { applyActions, applyMove, createBoardState } from './boardState.ts';
 import { lessonSchema } from './schema.ts';
-import rookLesson from '../../content/lessons/sprout/rook.json';
+import rookLesson from '../../content/lessons/basic/rook.json';
 
 describe('applyActions', () => {
   it('replays every step of the sample lesson without errors', () => {

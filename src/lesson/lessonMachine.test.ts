@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import rookLesson from '../../content/lessons/sprout/rook.json';
+import rookLesson from '../../content/lessons/basic/rook.json';
 import type { Square } from '../chess/types.ts';
 import { lessonSchema, type Lesson } from '../content/schema.ts';
 import {
@@ -54,7 +54,7 @@ describe('lessonMachine on the rook lesson', () => {
   it('plays the happy path to 3 stars', () => {
     const p = run(rook);
     expect(p.state.phase).toBe('idle');
-    expect(narrated(p.send({ type: 'START' }))).toEqual(['sprout-rook/meet-rook/say']);
+    expect(narrated(p.send({ type: 'START' }))).toEqual(['basic-rook/meet-rook/say']);
     expect(p.state.board.shapes).toHaveLength(1);
 
     p.narrationDone();
@@ -71,7 +71,7 @@ describe('lessonMachine on the rook lesson', () => {
     p.narrationDone();
     expect(p.state.phase).toBe('waitingInteraction');
     expect(boardMovable(rook, p.state)?.dests.get('d4')).toContain('d8');
-    expect(narrated(p.move('d4', 'd8'))).toEqual(['sprout-rook/move-to-star/praise']);
+    expect(narrated(p.move('d4', 'd8'))).toEqual(['basic-rook/move-to-star/praise']);
     expect(p.state.phase).toBe('feedback');
     expect(p.state.board.position).toBe('3R4/8/8/8/8/8/8/8');
     p.narrationDone();
@@ -81,7 +81,7 @@ describe('lessonMachine on the rook lesson', () => {
     p.move('d4', 'd7');
     p.move('d7', 'a7');
     expect(p.state.board.stickers.map((s) => s.square)).toEqual(['a2']);
-    expect(narrated(p.move('a7', 'a2'))).toEqual(['sprout-rook/eat-apples/praise']);
+    expect(narrated(p.move('a7', 'a2'))).toEqual(['basic-rook/eat-apples/praise']);
     p.narrationDone();
 
     expect(rook.steps[p.state.stepIndex]!.id).toBe('goodbye');
@@ -99,7 +99,7 @@ describe('lessonMachine on the rook lesson', () => {
     const before = p.state.board.position;
 
     const first = p.move('d4', 'd5');
-    expect(narrated(first)).toEqual(['sprout-rook/move-to-star/retry']);
+    expect(narrated(first)).toEqual(['basic-rook/move-to-star/retry']);
     expect(first).toContainEqual({ type: 'sfx', name: 'retry' });
     expect(p.state.board.position).toBe(before);
     expect(p.state.board.shapes).toEqual([]);
@@ -158,7 +158,7 @@ describe('lessonMachine on the rook lesson', () => {
     p.send({ type: 'START' });
     const staleToken = p.state.token;
     const replay = p.send({ type: 'REPLAY' });
-    expect(narrated(replay)).toEqual(['sprout-rook/meet-rook/say']);
+    expect(narrated(replay)).toEqual(['basic-rook/meet-rook/say']);
     expect(replay[0]).toEqual({ type: 'cancel' });
     p.send({ type: 'NARRATION_DONE', token: staleToken });
     expect(p.state.phase).toBe('playingStep');
@@ -189,7 +189,7 @@ describe('tapSquare and shared feedback clips', () => {
   const tapLesson = lessonSchema.parse({
     schemaVersion: 1,
     id: 'tap-demo',
-    track: 'sprout',
+    track: 'basic',
     order: 1,
     title: 'Chạm',
     boardMode: 'sandbox',

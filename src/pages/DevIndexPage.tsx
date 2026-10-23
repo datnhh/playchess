@@ -9,17 +9,17 @@ export function DevIndexPage() {
         <Link to="/dev/board" className="tile tile--play">
           Bàn cờ và âm thanh
         </Link>
-        <Link to="/dev/lesson" className="tile tile--sprout">
+        <Link to="/dev/lesson" className="tile tile--basic">
           Bài học mẫu (quân Xe)
         </Link>
-        <Link to="/dev/engine" className="tile tile--junior">
+        <Link to="/dev/engine" className="tile tile--advanced">
           Máy đánh cờ 10 cấp
         </Link>
         <Link to="/smoke" className="tile tile--play">
           Kiểm tra kỹ thuật
         </Link>
         {import.meta.env.DEV ? (
-          <Link to="/review" className="tile tile--sprout">
+          <Link to="/review" className="tile tile--basic">
             Duyệt bài học (chỉ bản dev)
           </Link>
         ) : null}

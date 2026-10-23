@@ -6,13 +6,13 @@ import { audioHash } from '../tts/hash.ts';
 import { readLessonFiles, readManifest, listAudioFiles } from './files.ts';
 import { validateLessons, type ValidationInput } from './validate.ts';
 
-const FILE = 'content/lessons/sprout/test.json';
+const FILE = 'content/lessons/basic/test.json';
 
 function baseLesson(): Record<string, unknown> {
   return {
     schemaVersion: 1,
-    id: 'sprout-test',
-    track: 'sprout',
+    id: 'basic-test',
+    track: 'basic',
     order: 1,
     title: 'Bài thử',
     boardMode: 'sandbox',
@@ -166,17 +166,17 @@ describe('validateLessons', () => {
 
   it('flags path, id and order mismatches', () => {
     const a = baseLesson();
-    const b = { ...baseLesson(), id: 'junior-test' };
+    const b = { ...baseLesson(), id: 'advanced-test' };
     const result = validateLessons({
       files: [
         { file: FILE, data: a },
-        { file: 'content/lessons/junior/test.json', data: b },
+        { file: 'content/lessons/advanced/test.json', data: b },
       ],
       manifest: {},
       audioFiles: new Set(),
     });
     const messages = result.issues.filter((i) => i.severity === 'error').map((i) => i.message);
-    expect(messages.some((m) => /Thư mục "junior" không khớp track "sprout"/.test(m))).toBe(true);
+    expect(messages.some((m) => /Thư mục "advanced" không khớp track "basic"/.test(m))).toBe(true);
     expect(messages.some((m) => /Trùng order 1/.test(m))).toBe(true);
   });
 
@@ -187,7 +187,7 @@ describe('validateLessons', () => {
     for (const step of steps(lesson)) {
       const text = step.say as string;
       const hash = audioHash(text);
-      manifest[`sprout-test/${step.id as string}/say`] = { file: audioFileName(hash), hash, text };
+      manifest[`basic-test/${step.id as string}/say`] = { file: audioFileName(hash), hash, text };
       audioFiles.add(audioFileName(hash));
     }
     lesson.reviewed = true;

@@ -3,7 +3,7 @@ import type { AudioController } from '../audio/types.ts';
 import type { BoardProps } from '../board/types.ts';
 import type { AudioManifest } from '../content/audio.ts';
 import { lessonSchema } from '../content/schema.ts';
-import rookLesson from '../../content/lessons/sprout/rook.json';
+import rookLesson from '../../content/lessons/basic/rook.json';
 import { LessonPlayer } from './LessonPlayer.tsx';
 import { MockBoard } from './mocks.tsx';
 import { createSilentAudioController } from './silentAudio.ts';

@@ -32,7 +32,7 @@ afterEach(() => {
 describe('storage service', () => {
   it('round-trips progress and settings', () => {
     installStorage(new MemoryStorage());
-    const progress = { lessons: { 'sprout-rook': { stars: 3, completedAt: '2026-10-23' } } };
+    const progress = { lessons: { 'basic-rook': { stars: 3, completedAt: '2026-10-23' } } };
     expect(saveProgress(progress)).toBe(true);
     expect(loadProgress()).toEqual(progress);
     expect(saveSettings({ muted: true, volume: 0.5 })).toBe(true);

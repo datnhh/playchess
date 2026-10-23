@@ -47,13 +47,13 @@ Giới hạn độ dài câu đọc: cơ bản ≤ 15 từ, nâng cao ≤ 25 t�
 
 ### Đợt 1: Bốn nhánh lõi (song song)
 
-| #   | Bước                                                                                                    | Thư mục                        | Phụ thuộc | Trạng thái  |
-| --- | ------------------------------------------------------------------------------------------------------- | ------------------------------ | --------- | ----------- |
-| 4   | A1: bàn cờ chessground + `AudioController`                                                              | `src/board/`, `src/audio/`     | Bước 3    | ✅          |
-| 5   | A2: `LessonPlayer` (state machine), dùng bản giả lập Board/Audio                                        | `src/lesson/`                  | Bước 3    | ✅          |
-| 6   | B: validator nội dung, pipeline TTS, trang `/review` chỉ ở dev, lọc khi build                           | `tools/content/`, `tools/tts/` | Bước 3    | ✅          |
-| 7   | C: engine 10 cấp, gợi ý có mã lý do, script tự đấu                                                      | `src/engine/`, `tools/engine/` | Bước 3    | ✅          |
-| 7b  | Đổi lộ trình Mầm/Nhí → Cơ bản/Nâng cao trong code (schema, thư mục bài, validator, trang chủ, tài liệu) | nhiều file                     | 4–7       | ⏸ chờ duyệt |
+| #   | Bước                                                                                                    | Thư mục                        | Phụ thuộc | Trạng thái |
+| --- | ------------------------------------------------------------------------------------------------------- | ------------------------------ | --------- | ---------- |
+| 4   | A1: bàn cờ chessground + `AudioController`                                                              | `src/board/`, `src/audio/`     | Bước 3    | ✅         |
+| 5   | A2: `LessonPlayer` (state machine), dùng bản giả lập Board/Audio                                        | `src/lesson/`                  | Bước 3    | ✅         |
+| 6   | B: validator nội dung, pipeline TTS, trang `/review` chỉ ở dev, lọc khi build                           | `tools/content/`, `tools/tts/` | Bước 3    | ✅         |
+| 7   | C: engine 10 cấp, gợi ý có mã lý do, script tự đấu                                                      | `src/engine/`, `tools/engine/` | Bước 3    | ✅         |
+| 7b  | Đổi lộ trình Mầm/Nhí → Cơ bản/Nâng cao trong code (schema, thư mục bài, validator, trang chủ, tài liệu) | nhiều file                     | 4–7       | ✅         |
 
 ### Đợt 2: Lắp ghép + nội dung cơ bản (song song)
 
@@ -82,7 +82,7 @@ Giới hạn độ dài câu đọc: cơ bản ≤ 15 từ, nâng cao ≤ 25 t�
 | ------------------------------------------------------------------------------------- | ---------- | ---------- |
 | Nối repo GitHub với Cloudflare Pages (build `npm run build`, output `dist`)           | Bước 2     | ✅         |
 | Mở `/smoke` trên iPhone/iPad và Android sau khi deploy, báo kết quả                   | Bước 2     | ⬜         |
-| Duyệt các bước đổi lộ trình (7b)                                                      | Bước 7b    | ⬜         |
+| Duyệt các bước đổi lộ trình (7b)                                                      | Bước 7b    | ✅         |
 | Tạo Azure Speech free tier (F0), đặt khóa vào biến môi trường trên máy (không commit) | Bước 6, 9  | ⬜         |
 | Nghe duyệt bài học ở `/review`                                                        | Bước 9, 11 | ⬜         |
 
@@ -104,3 +104,4 @@ Giới hạn độ dài câu đọc: cơ bản ≤ 15 từ, nâng cao ≤ 25 t�
 | 2026-10-23 | Bắt đầu Đợt 1: thêm module dùng chung (`59635d6`), giao 4 nhánh song song.                                                                                                                                                                                                                                                                                                        |
 | 2026-10-23 | Đổi yêu cầu: bỏ chia Mầm/Nhí theo tuổi, thay bằng **Học cơ bản** / **Học nâng cao** theo trình độ. Cập nhật lộ trình, bước 9–11; thêm bước 7b sửa code, chờ duyệt.                                                                                                                                                                                                                |
 | 2026-10-23 | Đợt 1 xong (chưa commit): 4 nhánh + ghép nối (route `/dev/*`, quân trượt về khi đi sai, mở khóa âm thanh bằng `/media/silence.wav`, hash audio gồm nhà cung cấp + cách đọc, `setPosition` sau bước tương tác là lỗi cứng). Lint, typecheck, 109 unit test, validate (0 lỗi), build, 21 e2e đều qua. Chạy tay trong trình duyệt: bài Xe từ đầu đến cuối, Stockfish cấp 10 + gợi ý. |
+| 2026-10-23 | Commit Đợt 1 (`667af14`). Làm 7b: track `basic` / `advanced`, bài mẫu chuyển sang `content/lessons/basic/rook.json` (id `basic-rook`), trang chủ hiện "Học cơ bản" / "Học nâng cao". 109 unit test, validate, 21 e2e qua.                                                                                                                                                         |

@@ -2,9 +2,11 @@
 
 Website tĩnh dạy cờ vua cho trẻ mới bắt đầu, viết bằng tiếng Việt:
 
-- **Lộ trình Mầm (3–5 tuổi):** bàn cờ, 6 quân cờ, trò chơi nhỏ. Có giọng đọc và hoạt cảnh nên trẻ chưa biết chữ vẫn học được.
-- **Lộ trình Nhí (6 tuổi trở lên):** luật đặc biệt, chiếu hết, nguyên tắc khai cuộc, tàn cuộc cơ bản.
+- **Học cơ bản:** đủ luật để chơi một ván: bàn cờ, 6 quân cờ (kèm trò chơi nhỏ), ăn quân, chiếu và thoát chiếu, chiếu hết, hòa pat, nhập thành, phong cấp, bắt tốt qua đường.
+- **Học nâng cao:** nguyên tắc khai cuộc, khai cuộc mẫu, tàn cuộc cơ bản.
 - **Đấu với máy:** 10 cấp độ, có nút gợi ý nước đi và nút đi lại.
+
+Mọi bài đều có giọng đọc và hoạt cảnh, nên trẻ chưa biết chữ vẫn học được.
 
 Không tài khoản, không quảng cáo, không theo dõi người dùng. Mọi tài nguyên đều do chính trang phục vụ.
 
@@ -42,7 +44,7 @@ Header bảo mật và cache nằm trong `public/_headers`. GitHub Actions (`.gi
 
 | Thư mục                                   | Nội dung                                                            |
 | ----------------------------------------- | ------------------------------------------------------------------- |
-| `content/lessons/<track>/`                | Bài học dạng JSON (`sprout` = Mầm, `junior` = Nhí)                  |
+| `content/lessons/<track>/`                | Bài học dạng JSON (`basic` = Học cơ bản, `advanced` = Học nâng cao) |
 | `src/content/`                            | Schema bài học (Zod), bảng thuật ngữ cờ tiếng Việt                  |
 | `src/chess/`                              | Kiểu dữ liệu và hàm kiểm thế cờ dùng chung                          |
 | `src/board/`, `src/audio/`, `src/engine/` | Interface bàn cờ, âm thanh, engine (phần cài đặt làm ở các đợt sau) |

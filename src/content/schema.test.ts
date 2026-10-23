@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { lessonSchema, type LessonInput } from './schema.ts';
-import rookLesson from '../../content/lessons/sprout/rook.json';
+import rookLesson from '../../content/lessons/basic/rook.json';
 
 const lessonFiles = import.meta.glob<unknown>('../../content/lessons/**/*.json', {
   eager: true,

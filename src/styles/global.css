@@ -5,8 +5,8 @@
   --color-text-muted: #5f5f5f;
   --color-primary: #2f7d4f;
   --color-primary-contrast: #ffffff;
-  --color-sprout: #6cbf4b;
-  --color-junior: #f2a33a;
+  --color-basic: #6cbf4b;
+  --color-advanced: #f2a33a;
   --color-play: #4a8fd9;
   --color-danger: #c4453c;
   --color-border: #e6dcc3;
@@ -97,12 +97,12 @@ button {
   opacity: 0.9;
 }
 
-.tile--sprout {
-  background: var(--color-sprout);
+.tile--basic {
+  background: var(--color-basic);
 }
 
-.tile--junior {
-  background: var(--color-junior);
+.tile--advanced {
+  background: var(--color-advanced);
 }
 
 .tile--play {

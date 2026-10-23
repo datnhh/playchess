@@ -12,7 +12,7 @@ export const MANIFEST_FILE = 'content/audio/manifest.json';
 export const AUDIO_DIR = 'public/audio';
 
 export interface RawLessonFile {
-  /** e.g. "content/lessons/sprout/rook.json" */
+  /** e.g. "content/lessons/basic/rook.json" */
   file: string;
   /** Parsed JSON, or undefined when the file is not valid JSON. */
   data: unknown;

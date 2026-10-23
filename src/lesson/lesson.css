@@ -52,7 +52,7 @@
 }
 
 .lesson-dots .lesson-dot-done {
-  background: var(--color-sprout);
+  background: var(--color-basic);
 }
 
 .lesson-dots .lesson-dot-current {
