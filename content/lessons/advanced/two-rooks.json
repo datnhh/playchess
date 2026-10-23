@@ -1,0 +1,180 @@
+{
+  "schemaVersion": 1,
+  "id": "advanced-two-rooks",
+  "track": "advanced",
+  "order": 5,
+  "title": "Chiếu hết bằng Đôi Xe",
+  "icon": "endgame",
+  "summary": "Hai Xe thay nhau chặn và chiếu, đẩy Vua đen ra mép bàn cờ rồi chiếu hết.",
+  "boardMode": "standard",
+  "orientation": "white",
+  "start": "8/8/4k3/8/8/8/8/RR4K1 w - - 0 1",
+  "reviewed": false,
+  "steps": [
+    {
+      "kind": "watch",
+      "id": "meet",
+      "say": "Bên trắng còn hai Xe. Vua đen chỉ còn một mình.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "highlight", "squares": ["a1", "b1"], "tone": "good" },
+        { "type": "highlight", "squares": ["e6"], "tone": "warn" }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "goal",
+      "say": "Mình sẽ đẩy Vua đen lên mép trên, rồi chiếu hết ở đó.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        {
+          "type": "highlight",
+          "squares": ["a8", "b8", "c8", "d8", "e8", "f8", "g8", "h8"],
+          "tone": "info"
+        }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "idea",
+      "say": "Một Xe đứng chặn một hàng ngang. Vua đen không bước qua hàng đó được.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        {
+          "type": "highlight",
+          "squares": ["a5", "b5", "c5", "d5", "e5", "f5", "g5", "h5"],
+          "tone": "info"
+        },
+        { "type": "arrow", "from": "a1", "to": "a5", "tone": "good" }
+      ]
+    },
+    {
+      "kind": "interactMove",
+      "id": "block-rank",
+      "say": "Bé hãy cho Xe tới ô có ngôi sao để chặn hàng này.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "stickers", "items": [{ "square": "a5", "kind": "star" }] }
+      ],
+      "accept": [{ "from": "a1", "to": "a5" }],
+      "praise": "Giỏi quá! Xe đã chặn hàng rồi.",
+      "retry": "Bé thử lại nhé, Xe đi thẳng lên ngôi sao."
+    },
+    {
+      "kind": "watch",
+      "id": "wall-works",
+      "say": "Vua đen đi sang bên, nhưng không xuống được nữa.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "move", "from": "e6", "to": "d6" },
+        {
+          "type": "highlight",
+          "squares": ["a5", "b5", "c5", "d5", "e5", "f5", "g5", "h5"],
+          "tone": "good"
+        }
+      ],
+      "assert": [{ "type": "pieceAt", "square": "d6", "piece": "bK" }]
+    },
+    {
+      "kind": "watch",
+      "id": "stay-far",
+      "say": "Nhớ nhé, Xe đứng sát Vua đen thì sẽ bị ăn mất. Hãy để Xe ở xa.",
+      "actions": [
+        { "type": "setPosition", "position": "8/8/2Rk4/R7/8/8/8/6K1 b - - 0 1" },
+        { "type": "clear", "target": "all" },
+        { "type": "arrow", "from": "d6", "to": "c6", "tone": "warn" },
+        { "type": "highlight", "squares": ["c6"], "tone": "warn" }
+      ],
+      "assert": [{ "type": "check" }]
+    },
+    {
+      "kind": "interactMove",
+      "id": "first-check",
+      "say": "Bé cho Xe kia tới ngôi sao, chiếu Vua đen từ xa.",
+      "actions": [
+        { "type": "setPosition", "position": "8/8/3k4/R7/8/8/8/1R4K1 w - - 0 1" },
+        { "type": "clear", "target": "all" },
+        { "type": "stickers", "items": [{ "square": "b6", "kind": "star" }] }
+      ],
+      "accept": [{ "from": "b1", "to": "b6" }],
+      "praise": "Giỏi quá! Bé đã chiếu Vua đen.",
+      "retry": "Bé thử lại nhé, Xe ở góc dưới đi lên ngôi sao."
+    },
+    {
+      "kind": "watch",
+      "id": "king-up-1",
+      "say": "Bị chiếu, Vua đen phải chạy lên hàng trên.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "move", "from": "d6", "to": "e7" },
+        {
+          "type": "highlight",
+          "squares": ["a6", "b6", "c6", "d6", "e6", "f6", "g6", "h6"],
+          "tone": "good"
+        }
+      ],
+      "assert": [{ "type": "pieceAt", "square": "e7", "piece": "bK" }]
+    },
+    {
+      "kind": "interactMove",
+      "id": "second-check",
+      "say": "Giờ Xe kia lên chiếu tiếp. Bé cho Xe tới ngôi sao nhé.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "stickers", "items": [{ "square": "a7", "kind": "star" }] }
+      ],
+      "accept": [{ "from": "a5", "to": "a7" }],
+      "praise": "Giỏi quá! Hai Xe thay nhau như leo bậc thang.",
+      "retry": "Bé thử lại nhé, Xe đi thẳng lên ngôi sao."
+    },
+    {
+      "kind": "watch",
+      "id": "king-up-2",
+      "say": "Vua đen lại phải lên. Giờ Vua đen đã ở mép bàn cờ.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "move", "from": "e7", "to": "f8" },
+        {
+          "type": "highlight",
+          "squares": ["a7", "b7", "c7", "d7", "e7", "f7", "g7", "h7"],
+          "tone": "good"
+        }
+      ],
+      "assert": [{ "type": "pieceAt", "square": "f8", "piece": "bK" }]
+    },
+    {
+      "kind": "interactMove",
+      "id": "mate-move",
+      "say": "Bé cho Xe tới ngôi sao ở hàng cuối để chiếu hết nhé.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "stickers", "items": [{ "square": "b8", "kind": "star" }] }
+      ],
+      "accept": [{ "from": "b6", "to": "b8" }],
+      "praise": "Giỏi quá! Bé đã chiếu hết rồi.",
+      "retry": "Bé thử lại nhé, Xe đi thẳng lên hàng cuối."
+    },
+    {
+      "kind": "watch",
+      "id": "mate-done",
+      "say": "Chiếu hết! Một Xe chặn hàng dưới, một Xe chiếu hàng cuối.",
+      "actions": [
+        { "type": "clear", "target": "all" },
+        { "type": "highlight", "squares": ["f8"], "tone": "warn" },
+        { "type": "arrow", "from": "b8", "to": "f8", "tone": "good" },
+        {
+          "type": "highlight",
+          "squares": ["a7", "b7", "c7", "d7", "e7", "f7", "g7", "h7"],
+          "tone": "good"
+        }
+      ],
+      "assert": [{ "type": "checkmate" }]
+    },
+    {
+      "kind": "watch",
+      "id": "goodbye",
+      "say": "Bé đã học xong cách chiếu hết bằng hai Xe. Hẹn gặp lại bé nhé!",
+      "actions": [{ "type": "clear", "target": "all" }]
+    }
+  ]
+}

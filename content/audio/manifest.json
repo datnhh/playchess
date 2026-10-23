@@ -1,4 +1,209 @@
 {
+  "advanced-center/bad-edge/say": {
+    "file": "0fa67fb509d4f53c.mp3",
+    "hash": "0fa67fb509d4f53c",
+    "text": "Còn đi Tốt ở mép bàn cờ là nước dở."
+  },
+  "advanced-center/bad-why/say": {
+    "file": "c5863041daef2a17.mp3",
+    "hash": "c5863041daef2a17",
+    "text": "Tốt ở mép đứng xa trung tâm, chẳng giúp được gì."
+  },
+  "advanced-center/black-e5/say": {
+    "file": "98cdfaecea40ee8f.mp3",
+    "hash": "98cdfaecea40ee8f",
+    "text": "Bên đen cũng đưa Tốt vào trung tâm."
+  },
+  "advanced-center/black-nc6/say": {
+    "file": "4f3baa4cd583138d.mp3",
+    "hash": "4f3baa4cd583138d",
+    "text": "Bên đen đưa Mã ra để bảo vệ Tốt."
+  },
+  "advanced-center/do-d4/praise": {
+    "file": "496f495cbda93668.mp3",
+    "hash": "496f495cbda93668",
+    "text": "Giỏi lắm! Trung tâm bây giờ đông quân trắng."
+  },
+  "advanced-center/do-d4/retry": {
+    "file": "77a2b00eafc9d902.mp3",
+    "hash": "77a2b00eafc9d902",
+    "text": "Bé thử lại nhé, Tốt hậu đi tới ngôi sao."
+  },
+  "advanced-center/do-d4/say": {
+    "file": "d36e427fdfc5ab75.mp3",
+    "hash": "d36e427fdfc5ab75",
+    "text": "Bé hãy cho Tốt hậu tiến hai ô tới ngôi sao."
+  },
+  "advanced-center/do-e4/praise": {
+    "file": "4950c8ebbe65807a.mp3",
+    "hash": "4950c8ebbe65807a",
+    "text": "Giỏi quá! Tốt đã vào trung tâm rồi."
+  },
+  "advanced-center/do-e4/retry": {
+    "file": "cc9b00e0b46ac61e.mp3",
+    "hash": "cc9b00e0b46ac61e",
+    "text": "Bé thử lại nhé, Tốt vua đi tới ngôi sao."
+  },
+  "advanced-center/do-e4/say": {
+    "file": "42c4f873220157dc.mp3",
+    "hash": "42c4f873220157dc",
+    "text": "Bé hãy cho Tốt vua tiến hai ô tới ngôi sao nhé."
+  },
+  "advanced-center/do-nf3/praise": {
+    "file": "a1b0f2b0d042cb2f.mp3",
+    "hash": "a1b0f2b0d042cb2f",
+    "text": "Tuyệt vời! Mã đã nhìn vào trung tâm."
+  },
+  "advanced-center/do-nf3/retry": {
+    "file": "48635f84ad66b55d.mp3",
+    "hash": "48635f84ad66b55d",
+    "text": "Bé thử lại nhé, cho Mã tới ngôi sao."
+  },
+  "advanced-center/do-nf3/say": {
+    "file": "973e37c9e4c24cc2.mp3",
+    "hash": "973e37c9e4c24cc2",
+    "text": "Bé hãy cho Mã nhảy tới ngôi sao, gần trung tâm hơn."
+  },
+  "advanced-center/good-first/say": {
+    "file": "d5d1ff213128aac6.mp3",
+    "hash": "d5d1ff213128aac6",
+    "text": "Khi khai cuộc, nước đầu hay là đưa Tốt vua hoặc Tốt hậu lên hai ô."
+  },
+  "advanced-center/goodbye/say": {
+    "file": "6e0a4a8aaf86dca0.mp3",
+    "hash": "6e0a4a8aaf86dca0",
+    "text": "Bé đã học xong bài chiếm trung tâm. Hẹn gặp lại bé nhé!"
+  },
+  "advanced-center/knight-corner/say": {
+    "file": "0df309526a62babf.mp3",
+    "hash": "0df309526a62babf",
+    "text": "Mã ở góc bàn cờ chỉ đi được hai ô thôi."
+  },
+  "advanced-center/knight-middle/say": {
+    "file": "6168fa92f6375eae.mp3",
+    "hash": "6168fa92f6375eae",
+    "text": "Mã đứng ở giữa bàn cờ đi được tới tám ô."
+  },
+  "advanced-center/meet-center/say": {
+    "file": "001380423907af5e.mp3",
+    "hash": "001380423907af5e",
+    "text": "Bốn ô sáng ở giữa bàn cờ gọi là trung tâm."
+  },
+  "advanced-center/recap/say": {
+    "file": "ca6c791611740114.mp3",
+    "hash": "ca6c791611740114",
+    "text": "Khi khai cuộc, bé nhớ đưa Tốt và Mã vào trung tâm nhé."
+  },
+  "advanced-center/why-center/say": {
+    "file": "82f5155ef32017c9.mp3",
+    "hash": "82f5155ef32017c9",
+    "text": "Quân đứng ở trung tâm đi được nhiều ô hơn, nên mạnh hơn."
+  },
+  "advanced-two-rooks/block-rank/praise": {
+    "file": "09efa414d7b0050a.mp3",
+    "hash": "09efa414d7b0050a",
+    "text": "Giỏi quá! Xe đã chặn hàng rồi."
+  },
+  "advanced-two-rooks/block-rank/retry": {
+    "file": "7d051d470ec05397.mp3",
+    "hash": "7d051d470ec05397",
+    "text": "Bé thử lại nhé, Xe đi thẳng lên ngôi sao."
+  },
+  "advanced-two-rooks/block-rank/say": {
+    "file": "5c98b3169e491070.mp3",
+    "hash": "5c98b3169e491070",
+    "text": "Bé hãy cho Xe tới ô có ngôi sao để chặn hàng này."
+  },
+  "advanced-two-rooks/first-check/praise": {
+    "file": "ca8b78a4956e0d13.mp3",
+    "hash": "ca8b78a4956e0d13",
+    "text": "Giỏi quá! Bé đã chiếu Vua đen."
+  },
+  "advanced-two-rooks/first-check/retry": {
+    "file": "1854114837604fe5.mp3",
+    "hash": "1854114837604fe5",
+    "text": "Bé thử lại nhé, Xe ở góc dưới đi lên ngôi sao."
+  },
+  "advanced-two-rooks/first-check/say": {
+    "file": "20d87159acc4c806.mp3",
+    "hash": "20d87159acc4c806",
+    "text": "Bé cho Xe kia tới ngôi sao, chiếu Vua đen từ xa."
+  },
+  "advanced-two-rooks/goal/say": {
+    "file": "c31a1128224ac9cb.mp3",
+    "hash": "c31a1128224ac9cb",
+    "text": "Mình sẽ đẩy Vua đen lên mép trên, rồi chiếu hết ở đó."
+  },
+  "advanced-two-rooks/goodbye/say": {
+    "file": "c4c9b3192461143c.mp3",
+    "hash": "c4c9b3192461143c",
+    "text": "Bé đã học xong cách chiếu hết bằng hai Xe. Hẹn gặp lại bé nhé!"
+  },
+  "advanced-two-rooks/idea/say": {
+    "file": "c00aacb77a7a8270.mp3",
+    "hash": "c00aacb77a7a8270",
+    "text": "Một Xe đứng chặn một hàng ngang. Vua đen không bước qua hàng đó được."
+  },
+  "advanced-two-rooks/king-up-1/say": {
+    "file": "1c44dde04d406b7e.mp3",
+    "hash": "1c44dde04d406b7e",
+    "text": "Bị chiếu, Vua đen phải chạy lên hàng trên."
+  },
+  "advanced-two-rooks/king-up-2/say": {
+    "file": "7374fc02a4ae036c.mp3",
+    "hash": "7374fc02a4ae036c",
+    "text": "Vua đen lại phải lên. Giờ Vua đen đã ở mép bàn cờ."
+  },
+  "advanced-two-rooks/mate-done/say": {
+    "file": "6d3d415165d6119d.mp3",
+    "hash": "6d3d415165d6119d",
+    "text": "Chiếu hết! Một Xe chặn hàng dưới, một Xe chiếu hàng cuối."
+  },
+  "advanced-two-rooks/mate-move/praise": {
+    "file": "3edc8f6837e0a87e.mp3",
+    "hash": "3edc8f6837e0a87e",
+    "text": "Giỏi quá! Bé đã chiếu hết rồi."
+  },
+  "advanced-two-rooks/mate-move/retry": {
+    "file": "5bc05e598d6646eb.mp3",
+    "hash": "5bc05e598d6646eb",
+    "text": "Bé thử lại nhé, Xe đi thẳng lên hàng cuối."
+  },
+  "advanced-two-rooks/mate-move/say": {
+    "file": "a01a7d923b17f577.mp3",
+    "hash": "a01a7d923b17f577",
+    "text": "Bé cho Xe tới ngôi sao ở hàng cuối để chiếu hết nhé."
+  },
+  "advanced-two-rooks/meet/say": {
+    "file": "2e92d0a89d7fda5f.mp3",
+    "hash": "2e92d0a89d7fda5f",
+    "text": "Bên trắng còn hai Xe. Vua đen chỉ còn một mình."
+  },
+  "advanced-two-rooks/second-check/praise": {
+    "file": "dd60f803315b52d1.mp3",
+    "hash": "dd60f803315b52d1",
+    "text": "Giỏi quá! Hai Xe thay nhau như leo bậc thang."
+  },
+  "advanced-two-rooks/second-check/retry": {
+    "file": "7d051d470ec05397.mp3",
+    "hash": "7d051d470ec05397",
+    "text": "Bé thử lại nhé, Xe đi thẳng lên ngôi sao."
+  },
+  "advanced-two-rooks/second-check/say": {
+    "file": "9c4b86c8a4a20842.mp3",
+    "hash": "9c4b86c8a4a20842",
+    "text": "Giờ Xe kia lên chiếu tiếp. Bé cho Xe tới ngôi sao nhé."
+  },
+  "advanced-two-rooks/stay-far/say": {
+    "file": "6ea4ab58e9bb7497.mp3",
+    "hash": "6ea4ab58e9bb7497",
+    "text": "Nhớ nhé, Xe đứng sát Vua đen thì sẽ bị ăn mất. Hãy để Xe ở xa."
+  },
+  "advanced-two-rooks/wall-works/say": {
+    "file": "afc821dc983d36f9.mp3",
+    "hash": "afc821dc983d36f9",
+    "text": "Vua đen đi sang bên, nhưng không xuống được nữa."
+  },
   "basic-bishop/bishop-diagonals/say": {
     "file": "82df32e0e1c7d519.mp3",
     "hash": "82df32e0e1c7d519",

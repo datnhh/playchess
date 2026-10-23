@@ -1,0 +1,337 @@
+{
+  "schemaVersion": 1,
+  "id": "advanced-center",
+  "track": "advanced",
+  "order": 1,
+  "title": "Chiếm trung tâm",
+  "icon": "opening",
+  "summary": "Bốn ô giữa bàn cờ là trung tâm. Khai cuộc, bé đưa Tốt và Mã vào trung tâm.",
+  "boardMode": "standard",
+  "orientation": "white",
+  "start": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+  "reviewed": false,
+  "steps": [
+    {
+      "kind": "watch",
+      "id": "meet-center",
+      "say": "Bốn ô sáng ở giữa bàn cờ gọi là trung tâm.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "highlight",
+          "squares": ["d4", "e4", "d5", "e5"],
+          "tone": "good"
+        }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "knight-middle",
+      "say": "Mã đứng ở giữa bàn cờ đi được tới tám ô.",
+      "actions": [
+        {
+          "type": "setPosition",
+          "position": "4k3/8/8/8/3N4/8/8/4K3 w - - 0 1"
+        },
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "highlight",
+          "squares": ["b3", "b5", "c2", "c6", "e2", "e6", "f3", "f5"],
+          "tone": "good"
+        }
+      ],
+      "assert": [
+        {
+          "type": "highlightIsLegalMoves",
+          "square": "d4"
+        }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "knight-corner",
+      "say": "Mã ở góc bàn cờ chỉ đi được hai ô thôi.",
+      "actions": [
+        {
+          "type": "setPosition",
+          "position": "4k3/8/8/8/8/8/8/N3K3 w - - 0 1"
+        },
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "highlight",
+          "squares": ["b3", "c2"],
+          "tone": "warn"
+        }
+      ],
+      "assert": [
+        {
+          "type": "highlightIsLegalMoves",
+          "square": "a1"
+        }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "why-center",
+      "say": "Quân đứng ở trung tâm đi được nhiều ô hơn, nên mạnh hơn.",
+      "actions": [
+        {
+          "type": "setPosition",
+          "position": "4k3/8/8/8/3N4/8/8/4K3 w - - 0 1"
+        },
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "highlight",
+          "squares": ["d4"],
+          "tone": "good"
+        }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "good-first",
+      "say": "Khi khai cuộc, nước đầu hay là đưa Tốt vua hoặc Tốt hậu lên hai ô.",
+      "actions": [
+        {
+          "type": "setPosition",
+          "position": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+        },
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "arrow",
+          "from": "e2",
+          "to": "e4",
+          "tone": "good"
+        },
+        {
+          "type": "arrow",
+          "from": "d2",
+          "to": "d4",
+          "tone": "good"
+        }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "bad-edge",
+      "say": "Còn đi Tốt ở mép bàn cờ là nước dở.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "arrow",
+          "from": "a2",
+          "to": "a4",
+          "tone": "warn"
+        },
+        {
+          "type": "arrow",
+          "from": "h2",
+          "to": "h4",
+          "tone": "warn"
+        }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "bad-why",
+      "say": "Tốt ở mép đứng xa trung tâm, chẳng giúp được gì.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "highlight",
+          "squares": ["a2", "h2"],
+          "tone": "warn"
+        },
+        {
+          "type": "highlight",
+          "squares": ["d4", "e4", "d5", "e5"],
+          "tone": "good"
+        }
+      ]
+    },
+    {
+      "kind": "interactMove",
+      "id": "do-e4",
+      "say": "Bé hãy cho Tốt vua tiến hai ô tới ngôi sao nhé.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "stickers",
+          "items": [
+            {
+              "square": "e4",
+              "kind": "star"
+            }
+          ]
+        }
+      ],
+      "accept": [
+        {
+          "from": "e2",
+          "to": "e4"
+        }
+      ],
+      "praise": "Giỏi quá! Tốt đã vào trung tâm rồi.",
+      "retry": "Bé thử lại nhé, Tốt vua đi tới ngôi sao."
+    },
+    {
+      "kind": "watch",
+      "id": "black-e5",
+      "say": "Bên đen cũng đưa Tốt vào trung tâm.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "move",
+          "from": "e7",
+          "to": "e5"
+        }
+      ],
+      "assert": [
+        {
+          "type": "pieceAt",
+          "square": "e5",
+          "piece": "bP"
+        }
+      ]
+    },
+    {
+      "kind": "interactMove",
+      "id": "do-nf3",
+      "say": "Bé hãy cho Mã nhảy tới ngôi sao, gần trung tâm hơn.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "stickers",
+          "items": [
+            {
+              "square": "f3",
+              "kind": "star"
+            }
+          ]
+        }
+      ],
+      "accept": [
+        {
+          "from": "g1",
+          "to": "f3"
+        }
+      ],
+      "praise": "Tuyệt vời! Mã đã nhìn vào trung tâm.",
+      "retry": "Bé thử lại nhé, cho Mã tới ngôi sao."
+    },
+    {
+      "kind": "watch",
+      "id": "black-nc6",
+      "say": "Bên đen đưa Mã ra để bảo vệ Tốt.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "move",
+          "from": "b8",
+          "to": "c6"
+        },
+        {
+          "type": "arrow",
+          "from": "c6",
+          "to": "e5",
+          "tone": "good"
+        }
+      ],
+      "assert": [
+        {
+          "type": "pieceAt",
+          "square": "c6",
+          "piece": "bN"
+        }
+      ]
+    },
+    {
+      "kind": "interactMove",
+      "id": "do-d4",
+      "say": "Bé hãy cho Tốt hậu tiến hai ô tới ngôi sao.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "stickers",
+          "items": [
+            {
+              "square": "d4",
+              "kind": "star"
+            }
+          ]
+        }
+      ],
+      "accept": [
+        {
+          "from": "d2",
+          "to": "d4"
+        }
+      ],
+      "praise": "Giỏi lắm! Trung tâm bây giờ đông quân trắng.",
+      "retry": "Bé thử lại nhé, Tốt hậu đi tới ngôi sao."
+    },
+    {
+      "kind": "watch",
+      "id": "recap",
+      "say": "Khi khai cuộc, bé nhớ đưa Tốt và Mã vào trung tâm nhé.",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        },
+        {
+          "type": "highlight",
+          "squares": ["d4", "e4", "d5", "e5"],
+          "tone": "good"
+        }
+      ]
+    },
+    {
+      "kind": "watch",
+      "id": "goodbye",
+      "say": "Bé đã học xong bài chiếm trung tâm. Hẹn gặp lại bé nhé!",
+      "actions": [
+        {
+          "type": "clear",
+          "target": "all"
+        }
+      ]
+    }
+  ]
+}

@@ -67,7 +67,7 @@ Giới hạn độ dài câu đọc: cơ bản ≤ 15 từ, nâng cao ≤ 25 t�
 
 | #   | Bước                                                                                                  | Trạng thái |
 | --- | ----------------------------------------------------------------------------------------------------- | ---------- |
-| 11  | **Học nâng cao**: 3 nguyên tắc khai cuộc + khai cuộc mẫu; tàn cuộc (Đôi Xe, Vua+Hậu, Vua+Xe, Vua+Tốt) | ⬜         |
+| 11  | **Học nâng cao**: 3 nguyên tắc khai cuộc + khai cuộc mẫu; tàn cuộc (Đôi Xe, Vua+Hậu, Vua+Xe, Vua+Tốt) | 🔄         |
 
 ### Đợt 4: Hoàn thiện (tuần tự)
 
@@ -111,3 +111,5 @@ Giới hạn độ dài câu đọc: cơ bản ≤ 15 từ, nâng cao ≤ 25 t�
 | 2026-10-23 | 9b: soạn đủ 16 bài cơ bản (thêm Tượng, Hậu, Vua, Tốt, Ăn quân, Xếp quân, Chiếu, Chiếu hết, Hòa pat, Nhập thành, Phong cấp, Bắt tốt qua đường, Thắng thua hòa), tất cả `reviewed: false`. Lint, typecheck, 144 unit test, validate 0 lỗi, build, 36 e2e qua. Commit `f5eaa51`, đã deploy.                                                                                                                                               |
 | 2026-10-23 | Không tạo được Azure (tài khoản không có subscription). Tranh luận chéo với agy, đồng thuận chuyển sang Piper offline (biên bản trong `docs/decisions/debates/`, không commit).                                                                                                                                                                                                                                                        |
 | 2026-10-23 | Người dùng duyệt nội dung 16 bài ở `/review`, bật `reviewed: true`. Pipeline Piper: cấu hình theo nhà cung cấp, hash gồm model + `ls`/`ss`, `npm run tts:setup` tải Piper/giọng/ffmpeg vào `.tools/` (kiểm dung lượng + sha256), cờ `--only`. Thử 6 bài, người dùng nghe duyệt; sinh đủ 250 câu (245 file, 4,2 MB). Lint, typecheck, 174 unit test, validate 0 lỗi 0 cảnh báo, build, 39 e2e qua. Chờ người dùng nghe lướt rồi commit. |
+| 2026-10-23 | Commit Piper + audio 16 bài (`2832dd1`), push, kiểm tra Pages: 16 bài có tiếng.                                                                                                                                                                                                                                                                                                                                                        |
+| 2026-10-23 | Đợt 3 theo phương án A (không sửa schema). 11.1: 2 bài thí điểm Chiếm trung tâm, Chiếu hết bằng Đôi Xe (`reviewed: false`), audio Piper; hướng dẫn soạn bài nâng cao (mục 9 `lesson-authoring.md`). 174 unit test, validate 0 lỗi 0 cảnh báo, chạy trọn 2 bài trên dev. Người dùng duyệt, làm tiếp 11.2.                                                                                                                               |

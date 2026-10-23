@@ -82,3 +82,15 @@ Tài liệu này dùng làm đề bài cho người hoặc AI viết bài trong 
 - [ ] Bước cuối là lời tạm biệt; `reviewed: false`; có `icon`.
 - [ ] `npm run validate` báo 0 lỗi (cảnh báo thiếu audio được chấp nhận).
 - [ ] `npx vitest run src/content` đều qua.
+
+## 9. Lộ trình nâng cao (`content/lessons/advanced/`)
+
+Người học đã xong lộ trình cơ bản: biết tên quân, cách đi, chiếu, chiếu hết. Vẫn có thể chưa biết đọc, nên mọi quy tắc ở trên vẫn áp dụng, trừ các điểm sau.
+
+- `track: "advanced"`, `id` = `advanced-<tên file>`, `boardMode: "standard"` (FEN đầy đủ, hợp lệ, đúng lượt đi, quyền nhập thành đúng). `icon`: `opening` cho bài khai cuộc, `endgame` cho bài tàn cuộc.
+- Câu đọc tối đa 25 từ (validator kiểm), nhưng vẫn ưu tiên câu ngắn, một ý. Được dùng "khai cuộc", "tàn cuộc", "trung tâm"; giải thích từ mới bằng hình trên bàn cờ ngay lần đầu nhắc.
+- 10–14 bước. Không sửa schema: mỗi bước `interactMove` chỉ cho bé đi một nước; nước đáp của đối phương là action `move` ở đầu bước sau (sau `setPosition` nếu cần), kèm `pieceAt`.
+- Bé tự đi 3–4 nước then chốt; các nước còn lại xem hoạt cảnh. Tàn cuộc dài thì chọn thế đã rút gọn, chỉ dạy đoạn kết.
+- Dùng `assert` `check` / `checkmate` sau các nước chiếu, chiếu hết.
+- Khung bài khai cuộc: thế ban đầu → nêu nguyên tắc → hoạt cảnh nước tốt → bé chọn nước tốt (`interactMove` với ngôi sao) → hoạt cảnh nước dở (mũi tên `warn`) và vì sao dở → bé áp dụng lần nữa → tóm tắt → tạm biệt.
+- Khung bài tàn cuộc: thế cờ → mục tiêu (chiếu hết / phong cấp) → ý chính của kỹ thuật (ô sáng, mũi tên) → các nước then chốt bé tự đi, máy đáp bằng hoạt cảnh → chiếu hết (`checkmate`) hoặc phong cấp → cảnh báo hòa pat nếu có → tạm biệt.
