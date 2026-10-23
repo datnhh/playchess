@@ -28,11 +28,17 @@ export interface GenerationPlan {
   orphanFiles: string[];
 }
 
+/**
+ * `partial`: `items` is only a subset (`npm run tts -- --only ...`). Entries of other keys are kept
+ * as they are and nothing is reported as removed or orphaned, so a trial run never drops the audio
+ * of lessons it did not touch.
+ */
 export function planGeneration(
   items: readonly Pick<NarrationItem, 'key' | 'text'>[],
   manifest: AudioManifest,
   audioFiles: ReadonlySet<string>,
   provider: TtsProviderName = TTS_CONFIG.provider,
+  { partial = false }: { partial?: boolean } = {},
 ): GenerationPlan {
   const jobs = new Map<string, GenerationJob>();
   const next: Record<string, AudioManifestEntry> = {};
@@ -51,6 +57,16 @@ export function planGeneration(
     const job = jobs.get(hash);
     if (job) job.keys.push(item.key);
     else jobs.set(hash, { hash, file, text: item.text, keys: [item.key] });
+  }
+
+  if (partial) {
+    return {
+      jobs: [...jobs.values()],
+      manifest: { ...manifest, ...next },
+      upToDate,
+      removedKeys: [],
+      orphanFiles: [],
+    };
   }
 
   const referenced = new Set(Object.values(next).map((entry) => entry.file));

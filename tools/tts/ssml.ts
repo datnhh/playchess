@@ -1,6 +1,6 @@
 import { GLOSSARY, type GlossaryEntry } from '../../src/content/glossary.ts';
 import { wholeWordPattern } from '../content/text.ts';
-import { TTS_CONFIG } from './config.ts';
+import { TTS_CONFIG, TTS_VOICES } from './config.ts';
 
 /** SSML for Azure and plain text for Piper, both with glossary pronunciation overrides (`say`). */
 
@@ -51,8 +51,8 @@ function segments(text: string, overrides: readonly Override[]) {
 export function buildSsml(
   text: string,
   glossary: readonly GlossaryEntry[] = GLOSSARY,
-  voice: string = TTS_CONFIG.voice,
-  rate: string = TTS_CONFIG.rate,
+  voice: string = TTS_VOICES.azure.voice,
+  rate: string = TTS_VOICES.azure.rate,
 ): string {
   const body = segments(text, overridesOf(glossary))
     .map((part) =>

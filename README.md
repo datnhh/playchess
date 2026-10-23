@@ -61,6 +61,21 @@ Mỗi bài là một chuỗi bước. Mỗi bước gồm một câu lời giả
 
 Chỉ bài có `"reviewed": true` mới được đưa vào bản production.
 
+### Giọng đọc (Piper, chạy offline)
+
+Audio được tạo sẵn trên máy dev rồi commit vào `public/audio/`; CI và Cloudflare Pages không chạy TTS. Hiện chỉ có script cài cho Windows.
+
+```bash
+npm run tts:setup
+npm run tts -- --only basic-knight
+npm run tts -- --prune
+```
+
+- `npm run tts:setup` tải Piper (MIT), giọng `vi_VN-vais1000-medium` và ffmpeg vào `.tools/` (không commit, không sửa PATH). Mỗi file được kiểm theo dung lượng, và theo sha256 khi nguồn có công bố.
+- `npm run tts` chỉ tạo các câu chưa có file. Tên file là hash của nhà cung cấp, model, tốc độ đọc và câu đọc; đổi một trong các thứ đó thì câu được tạo lại.
+- `--only <id,...>` dùng để thử vài bài mà vẫn giữ audio của các bài khác. `--prune` xóa file không còn dùng (không dùng chung với `--only`).
+- Từ đọc sai: thêm `say` cho thuật ngữ đó trong `src/content/glossary.ts`.
+
 ## Giấy phép
 
-GPL-3.0-or-later (xem `LICENSE`), vì dự án dùng [chessground](https://github.com/lichess-org/chessground) và [Stockfish](https://github.com/official-stockfish/Stockfish) (bản WASM của [stockfish.js](https://github.com/nmrugg/stockfish.js)), cả hai đều theo GPL-3.0. Quân cờ dùng bộ cburnett đi kèm chessground. Font Nunito theo giấy phép SIL OFL 1.1.
+GPL-3.0-or-later (xem `LICENSE`), vì dự án dùng [chessground](https://github.com/lichess-org/chessground) và [Stockfish](https://github.com/official-stockfish/Stockfish) (bản WASM của [stockfish.js](https://github.com/nmrugg/stockfish.js)), cả hai đều theo GPL-3.0. Quân cờ dùng bộ cburnett đi kèm chessground. Font Nunito theo giấy phép SIL OFL 1.1. Giọng đọc tạo bằng [Piper](https://github.com/rhasspy/piper) (MIT) với giọng `vi_VN-vais1000-medium` của [rhasspy/piper-voices](https://huggingface.co/rhasspy/piper-voices), huấn luyện từ bộ dữ liệu VAIS-1000 (IEEE DataPort, doi:10.21227/H2B887), giấy phép CC BY 4.0 theo model card.

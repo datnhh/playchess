@@ -9,7 +9,7 @@
   "boardMode": "sandbox",
   "orientation": "white",
   "start": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR",
-  "reviewed": false,
+  "reviewed": true,
   "steps": [
     {
       "kind": "watch",

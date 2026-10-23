@@ -9,7 +9,7 @@
   "boardMode": "standard",
   "orientation": "white",
   "start": "4k3/3p4/8/4P3/8/8/8/4K3 b - - 0 1",
-  "reviewed": false,
+  "reviewed": true,
   "steps": [
     {
       "kind": "watch",

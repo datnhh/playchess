@@ -40,7 +40,17 @@ export function CreditsPage() {
           </li>
           <li>Hình quân cờ: bộ cburnett.</li>
           <li>Phông chữ: Nunito (SIL Open Font License 1.1).</li>
-          <li>Giọng đọc: Azure Speech, giọng vi-VN-HoaiMyNeural (âm thanh được tạo tự động).</li>
+          <li>
+            Giọng đọc: tạo tự động bằng Piper (MIT) với giọng vi_VN-vais1000-medium của{' '}
+            <a href="https://huggingface.co/rhasspy/piper-voices" {...external}>
+              rhasspy/piper-voices
+            </a>
+            , huấn luyện từ bộ dữ liệu VAIS-1000 (IEEE DataPort, doi:10.21227/H2B887), giấy phép{' '}
+            <a href="https://creativecommons.org/licenses/by/4.0/" {...external}>
+              CC BY 4.0
+            </a>
+            . Âm thanh đã được chuẩn hóa âm lượng.
+          </li>
         </ul>
       </main>
     </ParentalGate>

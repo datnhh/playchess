@@ -13,7 +13,7 @@ import {
   writeManifest,
 } from '../content/files.ts';
 import { allNarration } from '../content/narration.ts';
-import { TTS_CONFIG } from './config.ts';
+import { TTS_CONFIG, voiceSettings, type TtsProviderName } from './config.ts';
 import { loadDotEnv } from './env.ts';
 import { planGeneration, type GenerationJob } from './plan.ts';
 import {
@@ -21,6 +21,7 @@ import {
   createPiperProvider,
   encodeWithFfmpeg,
   hasCommand,
+  resolveFfmpeg,
   SetupError,
   type Provider,
 } from './providers.ts';
@@ -29,11 +30,12 @@ import {
  * TTS pipeline: synthesises every narration text whose hash has no file yet, writes
  * public/audio/<hash>.mp3 and updates content/audio/manifest.json.
  *
- *   npm run tts -- [--provider azure|piper] [--dry-run] [--skip-normalize] [--prune]
+ *   npm run tts -- [--provider azure|piper] [--only <lessonId,...>] [--dry-run] [--skip-normalize] [--prune]
  */
 
 const HELP = `Cách dùng: npm run tts -- [tùy chọn]
-  --provider azure|piper  Nhà cung cấp giọng đọc (mặc định: azure)
+  --provider azure|piper  Nhà cung cấp giọng đọc (mặc định: ${TTS_CONFIG.provider})
+  --only <id,id,...>      Chỉ tạo cho các bài này (kèm clip chung), giữ nguyên audio các bài khác
   --dry-run               Chỉ liệt kê những câu sẽ được tạo, không gọi TTS, không ghi file
   --skip-normalize        Bỏ qua chuẩn hóa âm lượng bằng ffmpeg (KHÔNG dùng cho bản phát hành)
   --prune                 Xóa file trong public/audio/ không còn được dùng`;
@@ -63,7 +65,8 @@ function loadLessons(): Lesson[] {
 async function main(): Promise<number> {
   const { values } = parseArgs({
     options: {
-      provider: { type: 'string', default: 'azure' },
+      provider: { type: 'string', default: TTS_CONFIG.provider },
+      only: { type: 'string' },
       'dry-run': { type: 'boolean', default: false },
       'skip-normalize': { type: 'boolean', default: false },
       prune: { type: 'boolean', default: false },
@@ -79,21 +82,45 @@ async function main(): Promise<number> {
     return 1;
   }
 
+  const providerName: TtsProviderName = values.provider;
+  const only = values.only
+    ? new Set(
+        values.only
+          .split(',')
+          .map((id) => id.trim())
+          .filter(Boolean),
+      )
+    : null;
+  if (only && values.prune) {
+    console.error(
+      'Không dùng --only cùng --prune: --prune sẽ xóa audio của các bài không được chọn.',
+    );
+    return 1;
+  }
+
   if (values.provider !== TTS_CONFIG.provider) {
     console.warn(
       `⚠ Đang dùng ${values.provider} nhưng TTS_CONFIG.provider là ${TTS_CONFIG.provider}: ` +
         'npm run validate sẽ coi các file này là cũ. Đổi TTS_CONFIG.provider nếu muốn chuyển hẳn.',
     );
   }
-  const plan = planGeneration(
-    allNarration(loadLessons()),
-    readManifest(),
-    listAudioFiles(),
-    values.provider,
+  const lessons = loadLessons();
+  if (only) {
+    const unknown = [...only].filter((id) => !lessons.some((lesson) => lesson.id === id));
+    if (unknown.length > 0) {
+      console.error(`Không có bài: ${unknown.join(', ')}`);
+      return 1;
+    }
+  }
+  const items = allNarration(lessons).filter(
+    (item) => !only || item.lessonId === null || only.has(item.lessonId),
   );
-  const keyCount = Object.keys(plan.manifest).length;
+  const plan = planGeneration(items, readManifest(), listAudioFiles(), providerName, {
+    partial: only !== null,
+  });
+  const { voice, rate } = voiceSettings(providerName);
   console.log(
-    `Giọng ${TTS_CONFIG.voice}, tốc độ ${TTS_CONFIG.rate}. ${keyCount} câu: ` +
+    `Giọng ${voice}, tốc độ ${rate}. ${items.length} câu: ` +
       `${plan.upToDate} đã có audio, ${plan.jobs.length} file cần tạo.`,
   );
 
@@ -121,12 +148,13 @@ async function main(): Promise<number> {
         ? createAzureProvider()
         : createPiperProvider();
 
+  const ffmpeg = resolveFfmpeg();
   const needsFfmpeg = !values['skip-normalize'] || values.provider === 'piper';
   if (plan.jobs.length > 0) {
-    if (needsFfmpeg && !hasCommand('ffmpeg')) {
+    if (needsFfmpeg && !hasCommand(ffmpeg)) {
       throw new SetupError(
         'Không tìm thấy ffmpeg (cần để chuẩn hóa âm lượng và chuyển sang MP3). ' +
-          'Cài ffmpeg và thêm vào PATH' +
+          'Chạy npm run tts:setup hoặc đặt FFMPEG_BIN trong .env' +
           (values.provider === 'azure' ? ', hoặc tạm dùng --skip-normalize.' : '.'),
       );
     }
@@ -154,7 +182,7 @@ async function main(): Promise<number> {
         } else {
           const input = path.join(workDir, `${job.hash}.${result.format}`);
           writeFileSync(input, result.audio);
-          await encodeWithFfmpeg(input, target, !values['skip-normalize']);
+          await encodeWithFfmpeg(input, target, !values['skip-normalize'], ffmpeg);
         }
         done += 1;
         console.log(`  [${done}/${plan.jobs.length}] ${job.file}  "${job.text}"`);

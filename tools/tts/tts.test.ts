@@ -1,6 +1,10 @@
 import { createHash } from 'node:crypto';
 import { describe, expect, it } from 'vitest';
+import path from 'node:path';
+import { TTS_VOICES, voiceSettings } from './config.ts';
 import { audioHash } from './hash.ts';
+import { checkPiperModel, resolveTool, SetupError } from './providers.ts';
+import { DOWNLOADS, verify } from './setup.ts';
 import { parseDotEnv } from './env.ts';
 import { planGeneration } from './plan.ts';
 import { applyPronunciation, buildSsml, escapeXml } from './ssml.ts';
@@ -8,16 +12,29 @@ import { applyPronunciation, buildSsml, escapeXml } from './ssml.ts';
 describe('audioHash', () => {
   it('follows the contract: first 16 hex chars of sha256(provider|voice|rate|spoken text)', () => {
     const expected = createHash('sha256')
-      .update('azure|vi-VN-HoaiMyNeural|-10%|Giỏi quá!')
+      .update('piper|vi_VN-vais1000-medium|ls=1.1,ss=0.25|Giỏi quá!')
       .digest('hex')
       .slice(0, 16);
     expect(audioHash('Giỏi quá!')).toBe(expected);
     expect(audioHash('Giỏi quá!')).toMatch(/^[0-9a-f]{16}$/);
     expect(audioHash('Giỏi quá')).not.toBe(expected);
+    const azure = createHash('sha256')
+      .update('azure|vi-VN-HoaiMyNeural|-10%|Giỏi quá!')
+      .digest('hex')
+      .slice(0, 16);
+    expect(audioHash('Giỏi quá!', 'azure')).toBe(azure);
   });
 
-  it('changes with the provider', () => {
-    expect(audioHash('Giỏi quá!', 'piper')).not.toBe(audioHash('Giỏi quá!', 'azure'));
+  it('changes with the provider, the Piper model and every speed setting', () => {
+    const base = audioHash('Giỏi quá!', 'piper');
+    expect(audioHash('Giỏi quá!', 'azure')).not.toBe(base);
+    expect(voiceSettings('piper')).toEqual({
+      voice: TTS_VOICES.piper.model,
+      rate: 'ls=1.1,ss=0.25',
+    });
+    expect(audioHash('Giỏi quá!', 'piper', 'vi_VN-other-medium')).not.toBe(base);
+    expect(audioHash('Giỏi quá!', 'piper', undefined, 'ls=1.2,ss=0.25')).not.toBe(base);
+    expect(audioHash('Giỏi quá!', 'piper', undefined, 'ls=1.1,ss=0.4')).not.toBe(base);
   });
 });
 
@@ -78,8 +95,53 @@ describe('planGeneration', () => {
   });
 });
 
+describe('partial plan (--only)', () => {
+  it('keeps the entries of other lessons and reports nothing as removed or orphaned', () => {
+    const other = { file: 'other.mp3', hash: 'other', text: 'Khác' };
+    const plan = planGeneration(
+      [{ key: 'a/s/say', text: 'Một' }],
+      { 'b/s/say': other },
+      new Set(['other.mp3']),
+      'piper',
+      { partial: true },
+    );
+    expect(plan.manifest['b/s/say']).toEqual(other);
+    expect(Object.keys(plan.manifest).sort()).toEqual(['a/s/say', 'b/s/say']);
+    expect(plan.removedKeys).toEqual([]);
+    expect(plan.orphanFiles).toEqual([]);
+    expect(plan.jobs).toHaveLength(1);
+  });
+});
+
+describe('tool paths', () => {
+  it('prefers the environment, then .tools/, then the command on PATH', () => {
+    expect(resolveTool('rel/ffmpeg.exe', '/t/ffmpeg.exe', 'ffmpeg', () => true)).toBe(
+      path.resolve('rel/ffmpeg.exe'),
+    );
+    expect(resolveTool(undefined, '/t/ffmpeg.exe', 'ffmpeg', () => true)).toBe('/t/ffmpeg.exe');
+    expect(resolveTool(undefined, '/t/ffmpeg.exe', 'ffmpeg', () => false)).toBe('ffmpeg');
+  });
+
+  it('rejects a Piper model that does not match the configured one or lacks its config', () => {
+    const good = `/v/${TTS_VOICES.piper.model}.onnx`;
+    expect(() => checkPiperModel('/v/vi_VN-vivos-x_low.onnx', () => true)).toThrow(SetupError);
+    expect(() => checkPiperModel(good, (file) => !file.endsWith('.json'))).toThrow(/.json/);
+    expect(() => checkPiperModel(good, () => true)).not.toThrow();
+  });
+});
+
 describe('parseDotEnv', () => {
   it('parses simple KEY=value lines', () => {
     expect(parseDotEnv('# c\nA=1\nB = "two"\n\nbad\n')).toEqual({ A: '1', B: 'two' });
+  });
+});
+
+describe('tts:setup downloads', () => {
+  it('pins every file by size and rejects a mismatch', () => {
+    for (const item of DOWNLOADS) expect(item.size).toBeGreaterThan(0);
+    const model = DOWNLOADS.find((item) => item.file.endsWith('.onnx'))!;
+    expect(() => verify(model, model.size, model.sha256!)).not.toThrow();
+    expect(() => verify(model, model.size - 1, model.sha256!)).toThrow(/dung lượng/);
+    expect(() => verify(model, model.size, '0'.repeat(64))).toThrow(/sha256/);
   });
 });

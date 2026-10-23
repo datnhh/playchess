@@ -1,1 +1,1252 @@
-{}
+{
+  "basic-bishop/bishop-diagonals/say": {
+    "file": "82df32e0e1c7d519.mp3",
+    "hash": "82df32e0e1c7d519",
+    "text": "Tượng đi theo đường chéo, đi xa bao nhiêu cũng được."
+  },
+  "basic-bishop/bishop-no-straight/say": {
+    "file": "9f9a2a98946d5fbf.mp3",
+    "hash": "9f9a2a98946d5fbf",
+    "text": "Tượng không đi thẳng được nhé."
+  },
+  "basic-bishop/bishop-same-color/say": {
+    "file": "b149ad5958f76b1e.mp3",
+    "hash": "b149ad5958f76b1e",
+    "text": "Tượng đứng ô tối thì luôn đi trên ô tối."
+  },
+  "basic-bishop/bishop-slides/say": {
+    "file": "d10dd0325818009f.mp3",
+    "hash": "d10dd0325818009f",
+    "text": "Xem này, Tượng đi chéo lên thật xa."
+  },
+  "basic-bishop/eat-apples/praise": {
+    "file": "d178bdb1c8e5e77c.mp3",
+    "hash": "d178bdb1c8e5e77c",
+    "text": "Tuyệt vời! Bé đã giúp Tượng ăn hết táo."
+  },
+  "basic-bishop/eat-apples/say": {
+    "file": "07b2205f5a689dcd.mp3",
+    "hash": "07b2205f5a689dcd",
+    "text": "Bây giờ bé giúp Tượng ăn hết ba quả táo nhé."
+  },
+  "basic-bishop/goodbye/say": {
+    "file": "bec45e5728b22f2d.mp3",
+    "hash": "bec45e5728b22f2d",
+    "text": "Bé đã học xong quân Tượng. Hẹn gặp lại bé nhé!"
+  },
+  "basic-bishop/meet-bishop/say": {
+    "file": "b3496b79306bef20.mp3",
+    "hash": "b3496b79306bef20",
+    "text": "Đây là quân Tượng. Tượng có cái mũ nhọn thật xinh."
+  },
+  "basic-bishop/move-to-star/praise": {
+    "file": "3fd7658223c64323.mp3",
+    "hash": "3fd7658223c64323",
+    "text": "Giỏi quá! Tượng đã đi chéo tới ngôi sao."
+  },
+  "basic-bishop/move-to-star/retry": {
+    "file": "1fd903fe58c14e63.mp3",
+    "hash": "1fd903fe58c14e63",
+    "text": "Chưa đúng rồi. Tượng đi theo đường chéo nhé."
+  },
+  "basic-bishop/move-to-star/say": {
+    "file": "a7a1b2a6eeff2ae2.mp3",
+    "hash": "a7a1b2a6eeff2ae2",
+    "text": "Bé chạm vào Tượng, rồi chạm vào ô có ngôi sao."
+  },
+  "basic-bishop/tap-bishop-square/retry": {
+    "file": "849e18d21309cef5.mp3",
+    "hash": "849e18d21309cef5",
+    "text": "Chưa đúng rồi. Bé nhớ nhé, Tượng chỉ đi chéo thôi."
+  },
+  "basic-bishop/tap-bishop-square/say": {
+    "file": "ce316040f56604d4.mp3",
+    "hash": "ce316040f56604d4",
+    "text": "Bé chạm vào hình dán mà Tượng đi tới được nhé."
+  },
+  "basic-board/goodbye/say": {
+    "file": "168a34abf0a98d44.mp3",
+    "hash": "168a34abf0a98d44",
+    "text": "Bé đã làm quen với bàn cờ rồi. Hẹn gặp lại bé nhé!"
+  },
+  "basic-board/light-corner/say": {
+    "file": "03ef4e901100a0ec.mp3",
+    "hash": "03ef4e901100a0ec",
+    "text": "Góc dưới bên phải bàn cờ luôn là một ô sáng."
+  },
+  "basic-board/light-dark/say": {
+    "file": "2ff5ae6a9d7167fc.mp3",
+    "hash": "2ff5ae6a9d7167fc",
+    "text": "Ô sáng và ô tối nằm xen kẽ nhau, cứ một sáng một tối."
+  },
+  "basic-board/meet-board/say": {
+    "file": "ef32bc03e6519ad4.mp3",
+    "hash": "ef32bc03e6519ad4",
+    "text": "Đây là bàn cờ. Bàn cờ có sáu mươi tư ô vuông nhỏ."
+  },
+  "basic-board/show-diagonal/say": {
+    "file": "5d12d5babfd90309.mp3",
+    "hash": "5d12d5babfd90309",
+    "text": "Các ô cùng màu nối góc với nhau là một đường chéo."
+  },
+  "basic-board/show-file/say": {
+    "file": "e472776eea274a59.mp3",
+    "hash": "e472776eea274a59",
+    "text": "Các ô xếp từ dưới lên trên là một cột dọc."
+  },
+  "basic-board/show-rank/say": {
+    "file": "483bde1893d856e2.mp3",
+    "hash": "483bde1893d856e2",
+    "text": "Các ô xếp từ trái sang phải là một hàng ngang."
+  },
+  "basic-board/tap-diagonal-apple/retry": {
+    "file": "71f57001d0709605.mp3",
+    "hash": "71f57001d0709605",
+    "text": "Chưa đúng rồi. Bé tìm quả táo nằm trên các ô đang sáng nhé."
+  },
+  "basic-board/tap-diagonal-apple/say": {
+    "file": "dafb325bcbeb0db5.mp3",
+    "hash": "dafb325bcbeb0db5",
+    "text": "Bé chạm vào quả táo nằm trên đường chéo đang sáng nhé."
+  },
+  "basic-board/tap-file/say": {
+    "file": "fc1fe4ca8fa2899b.mp3",
+    "hash": "fc1fe4ca8fa2899b",
+    "text": "Bé chạm vào một ô trên cột dọc đang sáng nhé."
+  },
+  "basic-board/tap-flower/say": {
+    "file": "3da32c2abd75b7c4.mp3",
+    "hash": "3da32c2abd75b7c4",
+    "text": "Bé hãy chạm vào ô có bông hoa nhé."
+  },
+  "basic-board/tap-light-corner/retry": {
+    "file": "6e30b5c28fedfb8b.mp3",
+    "hash": "6e30b5c28fedfb8b",
+    "text": "Chưa đúng rồi. Bé tìm góc dưới, phía tay phải nhé."
+  },
+  "basic-board/tap-light-corner/say": {
+    "file": "9c78506b8446f22e.mp3",
+    "hash": "9c78506b8446f22e",
+    "text": "Bé chạm vào ô sáng ở góc dưới bên phải nhé."
+  },
+  "basic-board/tap-rank/say": {
+    "file": "95838c6af57910b2.mp3",
+    "hash": "95838c6af57910b2",
+    "text": "Bé chạm vào một ô trên hàng ngang đang sáng nhé."
+  },
+  "basic-capture/capture-star/praise": {
+    "file": "67fe0b4b8e4746fd.mp3",
+    "hash": "67fe0b4b8e4746fd",
+    "text": "Giỏi quá! Xe đã ăn quân đen rồi."
+  },
+  "basic-capture/capture-star/retry": {
+    "file": "feb861833f63e537.mp3",
+    "hash": "feb861833f63e537",
+    "text": "Chưa đúng rồi. Bé tìm quân đen có ngôi sao nhé."
+  },
+  "basic-capture/capture-star/say": {
+    "file": "3b0ac89c37cb901c.mp3",
+    "hash": "3b0ac89c37cb901c",
+    "text": "Bé chạm vào Xe, rồi ăn quân đen có ngôi sao nhé."
+  },
+  "basic-capture/eat-apples/praise": {
+    "file": "999e10f2dbbff95d.mp3",
+    "hash": "999e10f2dbbff95d",
+    "text": "Tuyệt vời! Bé đã giúp Xe ăn hết quân đen."
+  },
+  "basic-capture/eat-apples/say": {
+    "file": "c042c6da2b0245e0.mp3",
+    "hash": "c042c6da2b0245e0",
+    "text": "Bây giờ bé giúp Xe ăn hết ba quân đen có táo nhé."
+  },
+  "basic-capture/friend-blocks/say": {
+    "file": "65e85b92dfbdd3ba.mp3",
+    "hash": "65e85b92dfbdd3ba",
+    "text": "Bạn đứng chắn đường thì Xe phải dừng lại trước bạn."
+  },
+  "basic-capture/goodbye/say": {
+    "file": "a0b6f7b1a8ef8125.mp3",
+    "hash": "a0b6f7b1a8ef8125",
+    "text": "Bé đã học xong cách ăn quân. Hẹn gặp lại bé nhé!"
+  },
+  "basic-capture/no-same-color/say": {
+    "file": "90f8c668a3537c00.mp3",
+    "hash": "90f8c668a3537c00",
+    "text": "Quân cùng màu là bạn, không ăn được bạn đâu nhé."
+  },
+  "basic-capture/rook-captures/say": {
+    "file": "84e196a728b62f70.mp3",
+    "hash": "84e196a728b62f70",
+    "text": "Xem này, Xe ăn quân đen và đứng vào ô đó."
+  },
+  "basic-capture/tap-knight-target/retry": {
+    "file": "5d79380ee66c7eac.mp3",
+    "hash": "5d79380ee66c7eac",
+    "text": "Chưa đúng rồi. Mã chỉ ăn quân khác màu thôi nhé."
+  },
+  "basic-capture/tap-knight-target/say": {
+    "file": "7ebbd7b7336b3098.mp3",
+    "hash": "7ebbd7b7336b3098",
+    "text": "Bé chạm vào quân mà Mã ăn được nhé."
+  },
+  "basic-capture/tap-rook-target/retry": {
+    "file": "ecec837420af6544.mp3",
+    "hash": "ecec837420af6544",
+    "text": "Chưa đúng rồi. Xe chỉ đi thẳng thôi, bé nhớ nhé."
+  },
+  "basic-capture/tap-rook-target/say": {
+    "file": "9c3e231309caeb4a.mp3",
+    "hash": "9c3e231309caeb4a",
+    "text": "Bé chạm vào quân đen mà Xe ăn được nhé."
+  },
+  "basic-capture/what-is-capture/say": {
+    "file": "e7996c01e797eb30.mp3",
+    "hash": "e7996c01e797eb30",
+    "text": "Quân đi vào ô có quân khác màu, như vậy gọi là ăn quân."
+  },
+  "basic-castling/castle-demo/say": {
+    "file": "4396004a7fca334b.mp3",
+    "hash": "4396004a7fca334b",
+    "text": "Xem này, Vua đi hai ô về phía Xe."
+  },
+  "basic-castling/castling-name/say": {
+    "file": "35ae50af7d125d98.mp3",
+    "hash": "35ae50af7d125d98",
+    "text": "Nước đi này gọi là nhập thành, Vua và Xe cùng đi."
+  },
+  "basic-castling/choose-free-side/praise": {
+    "file": "c4b9e51fda82b072.mp3",
+    "hash": "c4b9e51fda82b072",
+    "text": "Giỏi quá! Bé chọn đúng bên rồi."
+  },
+  "basic-castling/choose-free-side/say": {
+    "file": "a80df1739ce6293e.mp3",
+    "hash": "a80df1739ce6293e",
+    "text": "Bé nhập thành về bên không có quân chặn, tới trái tim nhé."
+  },
+  "basic-castling/do-kingside/praise": {
+    "file": "41bda8b2bfb1e86b.mp3",
+    "hash": "41bda8b2bfb1e86b",
+    "text": "Giỏi quá! Bé đã nhập thành rồi."
+  },
+  "basic-castling/do-kingside/retry": {
+    "file": "547a95d1f12cf017.mp3",
+    "hash": "547a95d1f12cf017",
+    "text": "Chưa đúng rồi. Vua đi hai ô về phía Xe nhé."
+  },
+  "basic-castling/do-kingside/say": {
+    "file": "7276d80ce89d2c29.mp3",
+    "hash": "7276d80ce89d2c29",
+    "text": "Bé chạm vào Vua, rồi chạm vào ô có ngôi sao."
+  },
+  "basic-castling/do-queenside/praise": {
+    "file": "e6a52b513cae37a0.mp3",
+    "hash": "e6a52b513cae37a0",
+    "text": "Tuyệt quá! Xe đã đứng cạnh Vua rồi."
+  },
+  "basic-castling/do-queenside/retry": {
+    "file": "547a95d1f12cf017.mp3",
+    "hash": "547a95d1f12cf017",
+    "text": "Chưa đúng rồi. Vua đi hai ô về phía Xe nhé."
+  },
+  "basic-castling/do-queenside/say": {
+    "file": "3f682ec0b02ceeb6.mp3",
+    "hash": "3f682ec0b02ceeb6",
+    "text": "Bé giúp Vua nhập thành tới ô có bông hoa nhé."
+  },
+  "basic-castling/goodbye/say": {
+    "file": "015e4dd9d835a931.mp3",
+    "hash": "015e4dd9d835a931",
+    "text": "Bé đã học xong nhập thành. Hẹn gặp lại bé nhé!"
+  },
+  "basic-castling/meet-king-rook/say": {
+    "file": "9822f746e8170639.mp3",
+    "hash": "9822f746e8170639",
+    "text": "Đây là Vua và Xe. Hai bạn có một nước đi đặc biệt."
+  },
+  "basic-castling/no-after-moving/say": {
+    "file": "b801dc976aee382e.mp3",
+    "hash": "b801dc976aee382e",
+    "text": "Vua hoặc Xe đã đi rồi thì không được nhập thành."
+  },
+  "basic-castling/no-in-check/say": {
+    "file": "f6522b4065393c5b.mp3",
+    "hash": "f6522b4065393c5b",
+    "text": "Vua đang bị chiếu thì cũng không được nhập thành."
+  },
+  "basic-castling/no-piece-between/say": {
+    "file": "7d63ad59d74dd7ae.mp3",
+    "hash": "7d63ad59d74dd7ae",
+    "text": "Có quân đứng giữa Vua và Xe thì phải chờ nhé."
+  },
+  "basic-castling/queenside/say": {
+    "file": "c79f4a0e373c87ce.mp3",
+    "hash": "c79f4a0e373c87ce",
+    "text": "Vua cũng nhập thành được về phía Xe bên kia."
+  },
+  "basic-castling/tap-rook/retry": {
+    "file": "a8723a32981969cd.mp3",
+    "hash": "a8723a32981969cd",
+    "text": "Chưa đúng rồi. Xe đứng ngay cạnh Vua đó."
+  },
+  "basic-castling/tap-rook/say": {
+    "file": "06cce44d9667c1a9.mp3",
+    "hash": "06cce44d9667c1a9",
+    "text": "Xe nhảy qua Vua. Bé chạm vào Xe vừa nhảy nhé."
+  },
+  "basic-check/do-block/praise": {
+    "file": "3f021b14d446560f.mp3",
+    "hash": "3f021b14d446560f",
+    "text": "Tuyệt vời! Mã đã chặn Xe đen."
+  },
+  "basic-check/do-block/retry": {
+    "file": "48635f84ad66b55d.mp3",
+    "hash": "48635f84ad66b55d",
+    "text": "Bé thử lại nhé, cho Mã tới ngôi sao."
+  },
+  "basic-check/do-block/say": {
+    "file": "120f87f17b93b8a6.mp3",
+    "hash": "120f87f17b93b8a6",
+    "text": "Bé hãy cho Mã nhảy tới ô có ngôi sao để chặn."
+  },
+  "basic-check/do-capture/praise": {
+    "file": "1502ed6d8e7de391.mp3",
+    "hash": "1502ed6d8e7de391",
+    "text": "Giỏi quá! Bé đã ăn quân đang chiếu."
+  },
+  "basic-check/do-capture/retry": {
+    "file": "fa43283638e72059.mp3",
+    "hash": "fa43283638e72059",
+    "text": "Bé thử lại nhé, Xe trắng đi thẳng xuống."
+  },
+  "basic-check/do-capture/say": {
+    "file": "6898dd79cf8cc5fe.mp3",
+    "hash": "6898dd79cf8cc5fe",
+    "text": "Bé hãy cho Xe trắng ăn Xe đen nhé."
+  },
+  "basic-check/do-run/praise": {
+    "file": "f76a6eeeb457f061.mp3",
+    "hash": "f76a6eeeb457f061",
+    "text": "Giỏi quá! Vua đã chạy thoát rồi."
+  },
+  "basic-check/do-run/retry": {
+    "file": "15a09a36e776c066.mp3",
+    "hash": "15a09a36e776c066",
+    "text": "Bé thử lại nhé, Vua đi tới ngôi sao."
+  },
+  "basic-check/do-run/say": {
+    "file": "29d098f83b403eeb.mp3",
+    "hash": "29d098f83b403eeb",
+    "text": "Bé hãy chạm vào Vua, rồi chạm vào ô có ngôi sao."
+  },
+  "basic-check/goodbye/say": {
+    "file": "ece27819bd7cc5ad.mp3",
+    "hash": "ece27819bd7cc5ad",
+    "text": "Bé đã học xong bài chiếu. Hẹn gặp lại bé nhé!"
+  },
+  "basic-check/meet-check/say": {
+    "file": "481752ecc95677cb.mp3",
+    "hash": "481752ecc95677cb",
+    "text": "Xe đen đang tấn công Vua trắng. Như vậy gọi là chiếu."
+  },
+  "basic-check/recap/say": {
+    "file": "2f2ca5f066e1ee40.mp3",
+    "hash": "2f2ca5f066e1ee40",
+    "text": "Chạy Vua, chặn, hoặc ăn quân. Bé nhớ ba cách nhé."
+  },
+  "basic-check/save-king/say": {
+    "file": "f7d59f7cac64c3b0.mp3",
+    "hash": "f7d59f7cac64c3b0",
+    "text": "Khi bị chiếu, bé phải cứu Vua ngay. Có ba cách nhé."
+  },
+  "basic-check/way-block/say": {
+    "file": "62b44b6d8f9334bd.mp3",
+    "hash": "62b44b6d8f9334bd",
+    "text": "Cách thứ hai: đặt một quân vào giữa để chặn."
+  },
+  "basic-check/way-capture/say": {
+    "file": "134e3a48c0ce307e.mp3",
+    "hash": "134e3a48c0ce307e",
+    "text": "Cách thứ ba: ăn luôn quân đang chiếu."
+  },
+  "basic-check/way-run/say": {
+    "file": "ee2d05e623a412ec.mp3",
+    "hash": "ee2d05e623a412ec",
+    "text": "Cách thứ nhất: Vua chạy sang ô an toàn."
+  },
+  "basic-checkmate/goodbye/say": {
+    "file": "b1331deaf2775db0.mp3",
+    "hash": "b1331deaf2775db0",
+    "text": "Bé đã học xong bài chiếu hết. Hẹn gặp lại bé nhé!"
+  },
+  "basic-checkmate/meet-mate/say": {
+    "file": "4e3560f8c3a8df2e.mp3",
+    "hash": "4e3560f8c3a8df2e",
+    "text": "Chiếu mà Vua không còn đường chạy là chiếu hết."
+  },
+  "basic-checkmate/no-escape/say": {
+    "file": "744cb9879f536ce4.mp3",
+    "hash": "744cb9879f536ce4",
+    "text": "Vua đen bị chính Tốt của mình chắn đường."
+  },
+  "basic-checkmate/queen-king/say": {
+    "file": "2d7bc1c12ccca666.mp3",
+    "hash": "2d7bc1c12ccca666",
+    "text": "Hậu và Vua đứng gần nhau cũng chiếu hết được."
+  },
+  "basic-checkmate/queen-mate-done/say": {
+    "file": "9e6a4673de8bb9b5.mp3",
+    "hash": "9e6a4673de8bb9b5",
+    "text": "Vua trắng giữ Hậu, nên Vua đen không ăn Hậu được."
+  },
+  "basic-checkmate/queen-mate/praise": {
+    "file": "3edc8f6837e0a87e.mp3",
+    "hash": "3edc8f6837e0a87e",
+    "text": "Giỏi quá! Bé đã chiếu hết rồi."
+  },
+  "basic-checkmate/queen-mate/retry": {
+    "file": "31e4d0f57d699b15.mp3",
+    "hash": "31e4d0f57d699b15",
+    "text": "Bé thử lại nhé, Hậu đi tới ngôi sao."
+  },
+  "basic-checkmate/queen-mate/say": {
+    "file": "f400ca2e5b7b455e.mp3",
+    "hash": "f400ca2e5b7b455e",
+    "text": "Bé hãy cho Hậu tới ô có ngôi sao, sát Vua đen."
+  },
+  "basic-checkmate/rook-mate-done/say": {
+    "file": "37efb994124410fa.mp3",
+    "hash": "37efb994124410fa",
+    "text": "Chiếu hết rồi! Vua đen không chạy được nữa."
+  },
+  "basic-checkmate/rook-mate/praise": {
+    "file": "7604d6bb180ab597.mp3",
+    "hash": "7604d6bb180ab597",
+    "text": "Giỏi quá! Xe đã tới ngôi sao."
+  },
+  "basic-checkmate/rook-mate/retry": {
+    "file": "3064d4a64fcb7126.mp3",
+    "hash": "3064d4a64fcb7126",
+    "text": "Bé thử lại nhé, Xe đi thẳng lên."
+  },
+  "basic-checkmate/rook-mate/say": {
+    "file": "74d7ece2bd507342.mp3",
+    "hash": "74d7ece2bd507342",
+    "text": "Đến lượt bé. Hãy cho Xe tới ô có ngôi sao."
+  },
+  "basic-checkmate/white-wins/say": {
+    "file": "72955c6d15c1a5f9.mp3",
+    "hash": "72955c6d15c1a5f9",
+    "text": "Không chạy, không chặn, không ăn được Xe. Bên trắng thắng!"
+  },
+  "basic-en-passant/black-double-step/say": {
+    "file": "157b0003c2c494a7.mp3",
+    "hash": "157b0003c2c494a7",
+    "text": "Tốt đen đi hai ô, đứng ngay cạnh Tốt của bé."
+  },
+  "basic-en-passant/capture-heart/praise": {
+    "file": "743d511072ea670f.mp3",
+    "hash": "743d511072ea670f",
+    "text": "Tuyệt quá! Bé bắt rất nhanh."
+  },
+  "basic-en-passant/capture-heart/say": {
+    "file": "a3d919e84f873371.mp3",
+    "hash": "a3d919e84f873371",
+    "text": "Bé thử lại nào, bắt Tốt đen ngay nhé."
+  },
+  "basic-en-passant/capture-star/praise": {
+    "file": "3bc179e70e884410.mp3",
+    "hash": "3bc179e70e884410",
+    "text": "Giỏi quá! Bé đã bắt tốt qua đường."
+  },
+  "basic-en-passant/capture-star/retry": {
+    "file": "542a7821fcc9f8a8.mp3",
+    "hash": "542a7821fcc9f8a8",
+    "text": "Chưa đúng rồi. Tốt đi chéo tới ô ngôi sao nhé."
+  },
+  "basic-en-passant/capture-star/say": {
+    "file": "b33747659821e8d9.mp3",
+    "hash": "b33747659821e8d9",
+    "text": "Tốt đen vừa đi hai ô. Bé bắt tốt qua đường nhé!"
+  },
+  "basic-en-passant/en-passant-demo/say": {
+    "file": "70829058805691fb.mp3",
+    "hash": "70829058805691fb",
+    "text": "Xem này, Tốt đi chéo, và Tốt đen biến mất."
+  },
+  "basic-en-passant/en-passant-name/say": {
+    "file": "ba1852a3f9d9dafd.mp3",
+    "hash": "ba1852a3f9d9dafd",
+    "text": "Bé ăn nó như nó chỉ đi một ô. Đó là bắt tốt qua đường."
+  },
+  "basic-en-passant/goodbye/say": {
+    "file": "6501510960962d83.mp3",
+    "hash": "6501510960962d83",
+    "text": "Bé đã học xong bắt tốt qua đường. Hẹn gặp lại bé nhé!"
+  },
+  "basic-en-passant/meet-pawn/say": {
+    "file": "7c1a0f895f8e2f91.mp3",
+    "hash": "7c1a0f895f8e2f91",
+    "text": "Đây là Tốt của bé, đang đứng ở giữa bàn cờ."
+  },
+  "basic-en-passant/only-right-away/say": {
+    "file": "0afec10859f1da2b.mp3",
+    "hash": "0afec10859f1da2b",
+    "text": "Phải ăn ngay nước sau. Chờ lâu là không được nữa."
+  },
+  "basic-en-passant/tap-black-pawn/retry": {
+    "file": "bfd956f1bb590c8d.mp3",
+    "hash": "bfd956f1bb590c8d",
+    "text": "Chưa đúng rồi. Tốt đen đứng ngay cạnh Tốt của bé."
+  },
+  "basic-en-passant/tap-black-pawn/say": {
+    "file": "bb7c22d45d168031.mp3",
+    "hash": "bb7c22d45d168031",
+    "text": "Bé chạm vào Tốt đen vừa đi hai ô nhé."
+  },
+  "basic-game-results/always-proud/say": {
+    "file": "dcb3e892778548e3.mp3",
+    "hash": "dcb3e892778548e3",
+    "text": "Thắng hay thua, bé đều rất giỏi vì đã cố gắng."
+  },
+  "basic-game-results/black-mated/say": {
+    "file": "dadbbc680f33c067.mp3",
+    "hash": "dadbbc680f33c067",
+    "text": "Vua đen bị chiếu hết, không trốn đi đâu được."
+  },
+  "basic-game-results/do-mate/praise": {
+    "file": "523aac39eed5fccb.mp3",
+    "hash": "523aac39eed5fccb",
+    "text": "Giỏi quá! Chiếu hết rồi, bé thắng!"
+  },
+  "basic-game-results/do-mate/retry": {
+    "file": "dadea14d7c8220cb.mp3",
+    "hash": "dadea14d7c8220cb",
+    "text": "Chưa đúng rồi. Xe đi thẳng lên tới ngôi sao nhé."
+  },
+  "basic-game-results/do-mate/say": {
+    "file": "52674868be083b8c.mp3",
+    "hash": "52674868be083b8c",
+    "text": "Bé đưa Xe tới ngôi sao để chiếu hết nhé."
+  },
+  "basic-game-results/goodbye/say": {
+    "file": "41fa41778657e634.mp3",
+    "hash": "41fa41778657e634",
+    "text": "Bé đã học xong thắng, thua và hòa. Hẹn gặp lại bé nhé!"
+  },
+  "basic-game-results/losing-is-ok/say": {
+    "file": "290065b4061bbcb2.mp3",
+    "hash": "290065b4061bbcb2",
+    "text": "Thua cũng không sao, bé chơi lại sẽ giỏi hơn."
+  },
+  "basic-game-results/mate-wins/say": {
+    "file": "87145d28cfcfe938.mp3",
+    "hash": "87145d28cfcfe938",
+    "text": "Bé chiếu hết Vua bạn là bé thắng ván cờ."
+  },
+  "basic-game-results/stalemate/say": {
+    "file": "761a2246be92b7e7.mp3",
+    "hash": "761a2246be92b7e7",
+    "text": "Vua đen không bị chiếu, nhưng không đi được. Đó là hòa pat."
+  },
+  "basic-game-results/tap-stuck-king/retry": {
+    "file": "0b1635c375985d7a.mp3",
+    "hash": "0b1635c375985d7a",
+    "text": "Chưa đúng rồi. Bé tìm Vua đen ở góc bàn cờ nhé."
+  },
+  "basic-game-results/tap-stuck-king/say": {
+    "file": "f736593623f78525.mp3",
+    "hash": "f736593623f78525",
+    "text": "Bé chạm vào Vua không đi được nữa nhé."
+  },
+  "basic-game-results/two-kings/say": {
+    "file": "ccf5f533b9a0f031.mp3",
+    "hash": "ccf5f533b9a0f031",
+    "text": "Hai bên chỉ còn Vua thì ván cờ hòa."
+  },
+  "basic-game-results/white-mated/say": {
+    "file": "b14c5613a04dae16.mp3",
+    "hash": "b14c5613a04dae16",
+    "text": "Nếu Vua của bé bị chiếu hết, bé thua ván đó."
+  },
+  "basic-king/eat-apples/praise": {
+    "file": "699789b62fec683c.mp3",
+    "hash": "699789b62fec683c",
+    "text": "Tuyệt vời! Bé đã giúp Vua ăn hết táo."
+  },
+  "basic-king/eat-apples/say": {
+    "file": "1ccfb563d935f045.mp3",
+    "hash": "1ccfb563d935f045",
+    "text": "Bây giờ bé giúp Vua ăn hết ba quả táo nhé."
+  },
+  "basic-king/goodbye/say": {
+    "file": "1b8867d6980c173a.mp3",
+    "hash": "1b8867d6980c173a",
+    "text": "Bé đã học xong quân Vua. Hẹn gặp lại bé nhé!"
+  },
+  "basic-king/king-not-far/say": {
+    "file": "4e27df8f9e2e7a3b.mp3",
+    "hash": "4e27df8f9e2e7a3b",
+    "text": "Vua không đi xa được, chỉ một ô thôi."
+  },
+  "basic-king/king-one-step/say": {
+    "file": "95f2586a1eecfda1.mp3",
+    "hash": "95f2586a1eecfda1",
+    "text": "Vua đi từng ô một, đi hướng nào cũng được."
+  },
+  "basic-king/king-steps/say": {
+    "file": "35769d3dceecd953.mp3",
+    "hash": "35769d3dceecd953",
+    "text": "Xem này, Vua bước lên một ô."
+  },
+  "basic-king/meet-king/say": {
+    "file": "a8b22cb6fc2772e0.mp3",
+    "hash": "a8b22cb6fc2772e0",
+    "text": "Đây là quân Vua. Vua đội chiếc vương miện có dấu cộng."
+  },
+  "basic-king/move-to-star/praise": {
+    "file": "e65c8c43352a56ea.mp3",
+    "hash": "e65c8c43352a56ea",
+    "text": "Giỏi quá! Vua đã bước tới ngôi sao."
+  },
+  "basic-king/move-to-star/retry": {
+    "file": "b0700da70bac8e77.mp3",
+    "hash": "b0700da70bac8e77",
+    "text": "Chưa đúng rồi. Vua bước một ô sát bên nhé."
+  },
+  "basic-king/move-to-star/say": {
+    "file": "7276d80ce89d2c29.mp3",
+    "hash": "7276d80ce89d2c29",
+    "text": "Bé chạm vào Vua, rồi chạm vào ô có ngôi sao."
+  },
+  "basic-king/tap-king-square/retry": {
+    "file": "5a1a5dea059b5128.mp3",
+    "hash": "5a1a5dea059b5128",
+    "text": "Chưa đúng rồi. Bé nhớ nhé, Vua chỉ bước một ô."
+  },
+  "basic-king/tap-king-square/say": {
+    "file": "91e550e8797074d5.mp3",
+    "hash": "91e550e8797074d5",
+    "text": "Bé chạm vào hình dán mà Vua bước tới được nhé."
+  },
+  "basic-knight/eat-apples/praise": {
+    "file": "9587e9a9eda587f9.mp3",
+    "hash": "9587e9a9eda587f9",
+    "text": "Tuyệt vời! Bé đã giúp Mã ăn hết táo."
+  },
+  "basic-knight/eat-apples/say": {
+    "file": "1e0484e45661c3f7.mp3",
+    "hash": "1e0484e45661c3f7",
+    "text": "Bây giờ bé giúp Mã ăn hết ba quả táo nhé."
+  },
+  "basic-knight/goodbye/say": {
+    "file": "ce77d92195054e6e.mp3",
+    "hash": "ce77d92195054e6e",
+    "text": "Bé đã học xong quân Mã. Hẹn gặp lại bé nhé!"
+  },
+  "basic-knight/jump-to-flower/praise": {
+    "file": "0228b4e2121a0dc3.mp3",
+    "hash": "0228b4e2121a0dc3",
+    "text": "Tuyệt quá! Mã nhảy qua hàng rào rồi."
+  },
+  "basic-knight/jump-to-flower/say": {
+    "file": "1e03b4f8be2cc700.mp3",
+    "hash": "1e03b4f8be2cc700",
+    "text": "Bé giúp Mã nhảy qua hàng rào, tới ô có bông hoa."
+  },
+  "basic-knight/knight-changes-color/say": {
+    "file": "075652a59914f126.mp3",
+    "hash": "075652a59914f126",
+    "text": "Mã đứng ô tối thì nhảy sang ô sáng, luôn đổi màu."
+  },
+  "basic-knight/knight-eight-squares/say": {
+    "file": "37d461d97c6a804f.mp3",
+    "hash": "37d461d97c6a804f",
+    "text": "Từ đây, Mã có thể nhảy tới tám ô đang sáng."
+  },
+  "basic-knight/knight-jumps-over/say": {
+    "file": "4810778625037c93.mp3",
+    "hash": "4810778625037c93",
+    "text": "Mã còn nhảy qua được các quân khác, như nhảy qua hàng rào."
+  },
+  "basic-knight/knight-jumps/say": {
+    "file": "12d728ec26e30be5.mp3",
+    "hash": "12d728ec26e30be5",
+    "text": "Xem này, Mã nhảy theo hình chữ L."
+  },
+  "basic-knight/knight-l-shape/say": {
+    "file": "a2344371158d8b07.mp3",
+    "hash": "a2344371158d8b07",
+    "text": "Mã đi hai ô thẳng, rồi rẽ sang bên một ô."
+  },
+  "basic-knight/meet-knight/say": {
+    "file": "945704ec2a858c86.mp3",
+    "hash": "945704ec2a858c86",
+    "text": "Đây là quân Mã. Mã có cái bờm thật đẹp."
+  },
+  "basic-knight/move-to-star/praise": {
+    "file": "1d615754ea220eb8.mp3",
+    "hash": "1d615754ea220eb8",
+    "text": "Giỏi quá! Mã đã nhảy tới ngôi sao."
+  },
+  "basic-knight/move-to-star/retry": {
+    "file": "528dc7786e67b683.mp3",
+    "hash": "528dc7786e67b683",
+    "text": "Chưa đúng rồi. Mã đi hai ô thẳng, rồi rẽ một ô nhé."
+  },
+  "basic-knight/move-to-star/say": {
+    "file": "1ea9487e70b10019.mp3",
+    "hash": "1ea9487e70b10019",
+    "text": "Bé chạm vào Mã, rồi chạm vào ô có ngôi sao."
+  },
+  "basic-knight/tap-knight-square/retry": {
+    "file": "420529b2fff40a06.mp3",
+    "hash": "420529b2fff40a06",
+    "text": "Chưa đúng rồi. Bé nhớ nhé, hai ô thẳng rồi rẽ một ô."
+  },
+  "basic-knight/tap-knight-square/say": {
+    "file": "9e6f58d5b8e369e8.mp3",
+    "hash": "9e6f58d5b8e369e8",
+    "text": "Bé chạm vào hình dán mà Mã nhảy tới được nhé."
+  },
+  "basic-pawn/capture-heart/praise": {
+    "file": "46159b4d41c64474.mp3",
+    "hash": "46159b4d41c64474",
+    "text": "Giỏi quá! Tốt đã ăn chéo được quân đen."
+  },
+  "basic-pawn/capture-heart/retry": {
+    "file": "b9b2629c22df593f.mp3",
+    "hash": "b9b2629c22df593f",
+    "text": "Chưa đúng rồi. Tốt ăn quân theo đường chéo nhé."
+  },
+  "basic-pawn/capture-heart/say": {
+    "file": "19e93da69be36638.mp3",
+    "hash": "19e93da69be36638",
+    "text": "Bé giúp Tốt ăn quân đen ở ô có trái tim nhé."
+  },
+  "basic-pawn/eat-apples/praise": {
+    "file": "e000ca767918e5f3.mp3",
+    "hash": "e000ca767918e5f3",
+    "text": "Tuyệt vời! Bé đã giúp Tốt ăn hết táo."
+  },
+  "basic-pawn/eat-apples/retry": {
+    "file": "448518f6ac3db35b.mp3",
+    "hash": "448518f6ac3db35b",
+    "text": "Bé nhớ nhé, Tốt ăn chéo, còn đi thì đi thẳng."
+  },
+  "basic-pawn/eat-apples/say": {
+    "file": "c9a613fd5c0b8d47.mp3",
+    "hash": "c9a613fd5c0b8d47",
+    "text": "Bây giờ bé giúp Tốt ăn hết ba quả táo nhé."
+  },
+  "basic-pawn/goodbye/say": {
+    "file": "6cd9afbb79fcf07d.mp3",
+    "hash": "6cd9afbb79fcf07d",
+    "text": "Bé đã học xong quân Tốt. Hẹn gặp lại bé nhé!"
+  },
+  "basic-pawn/meet-pawn/say": {
+    "file": "cc7a5916f73b2661.mp3",
+    "hash": "cc7a5916f73b2661",
+    "text": "Đây là quân Tốt. Tốt nhỏ bé nhưng rất dũng cảm."
+  },
+  "basic-pawn/move-to-star/praise": {
+    "file": "5d0a127268a0dbcf.mp3",
+    "hash": "5d0a127268a0dbcf",
+    "text": "Giỏi quá! Tốt đã bước tới ngôi sao."
+  },
+  "basic-pawn/move-to-star/retry": {
+    "file": "669f657d9e9434c0.mp3",
+    "hash": "669f657d9e9434c0",
+    "text": "Chưa đúng rồi. Tốt chỉ đi thẳng lên một ô nhé."
+  },
+  "basic-pawn/move-to-star/say": {
+    "file": "8115f3ab6b3874b9.mp3",
+    "hash": "8115f3ab6b3874b9",
+    "text": "Bé chạm vào Tốt, rồi chạm vào ô có ngôi sao."
+  },
+  "basic-pawn/pawn-captures-diagonal/say": {
+    "file": "347caa4efa52acc0.mp3",
+    "hash": "347caa4efa52acc0",
+    "text": "Tốt đi thẳng, nhưng ăn quân thì ăn chéo một ô."
+  },
+  "basic-pawn/pawn-first-move/say": {
+    "file": "51b94cf1dd2be326.mp3",
+    "hash": "51b94cf1dd2be326",
+    "text": "Lần đi đầu tiên, Tốt được đi một ô hoặc hai ô."
+  },
+  "basic-pawn/pawn-no-back/say": {
+    "file": "66be2447eb968b80.mp3",
+    "hash": "66be2447eb968b80",
+    "text": "Tốt chỉ đi về phía trước, không bao giờ đi lùi."
+  },
+  "basic-pawn/pawn-one-step/say": {
+    "file": "3ec6e3844fce6cb3.mp3",
+    "hash": "3ec6e3844fce6cb3",
+    "text": "Sau đó, mỗi lần Tốt chỉ đi thẳng một ô thôi."
+  },
+  "basic-pawn/pawn-two-squares/say": {
+    "file": "62769ded35c96db6.mp3",
+    "hash": "62769ded35c96db6",
+    "text": "Xem này, Tốt bước liền hai ô về phía trước."
+  },
+  "basic-pawn/tap-pawn-square/retry": {
+    "file": "5a0ae71813a19424.mp3",
+    "hash": "5a0ae71813a19424",
+    "text": "Chưa đúng rồi. Tốt đi thẳng lên một ô hoặc hai ô nhé."
+  },
+  "basic-pawn/tap-pawn-square/say": {
+    "file": "8b41794564a67a4c.mp3",
+    "hash": "8b41794564a67a4c",
+    "text": "Bé chạm vào hình dán mà Tốt đi tới được nhé."
+  },
+  "basic-promotion/four-choices/say": {
+    "file": "f4f935f7b571f227.mp3",
+    "hash": "f4f935f7b571f227",
+    "text": "Tốt có thể đổi ra Hậu, Xe, Tượng hoặc Mã."
+  },
+  "basic-promotion/goodbye/say": {
+    "file": "7f78237bd82bf8cf.mp3",
+    "hash": "7f78237bd82bf8cf",
+    "text": "Bé đã học xong phong cấp. Hẹn gặp lại bé nhé!"
+  },
+  "basic-promotion/last-rank/say": {
+    "file": "cd69490ae90fc4ba.mp3",
+    "hash": "cd69490ae90fc4ba",
+    "text": "Đây là hàng cuối. Tốt tới đây sẽ được đổi quân."
+  },
+  "basic-promotion/meet-pawn/say": {
+    "file": "659b8d655dd371f0.mp3",
+    "hash": "659b8d655dd371f0",
+    "text": "Đây là Tốt. Tốt đã đi gần tới hàng cuối rồi."
+  },
+  "basic-promotion/new-queen/say": {
+    "file": "04cb50e27c0dbfd6.mp3",
+    "hash": "04cb50e27c0dbfd6",
+    "text": "Hậu mới của bé đi được thật xa."
+  },
+  "basic-promotion/promote-demo/say": {
+    "file": "1da867395b84ade8.mp3",
+    "hash": "1da867395b84ade8",
+    "text": "Tốt tới hàng cuối thì đổi ra Hậu. Đó là phong cấp."
+  },
+  "basic-promotion/promote-flower/praise": {
+    "file": "68bd341e157157f0.mp3",
+    "hash": "68bd341e157157f0",
+    "text": "Tuyệt quá! Bé lại có thêm một Hậu."
+  },
+  "basic-promotion/promote-flower/say": {
+    "file": "b6171c29f01b8805.mp3",
+    "hash": "b6171c29f01b8805",
+    "text": "Thêm một Tốt nữa. Bé giúp Tốt phong cấp ra Hậu nhé."
+  },
+  "basic-promotion/promote-star/praise": {
+    "file": "c9a58e9e69d43fde.mp3",
+    "hash": "c9a58e9e69d43fde",
+    "text": "Giỏi quá! Tốt đã phong cấp ra Hậu."
+  },
+  "basic-promotion/promote-star/retry": {
+    "file": "62c6941607c37f51.mp3",
+    "hash": "62c6941607c37f51",
+    "text": "Chưa đúng rồi. Tốt đi thẳng lên một ô nhé."
+  },
+  "basic-promotion/promote-star/say": {
+    "file": "c97e194f14824b83.mp3",
+    "hash": "c97e194f14824b83",
+    "text": "Bé chạm vào Tốt, rồi đưa Tốt tới ngôi sao nhé."
+  },
+  "basic-promotion/queen-best/say": {
+    "file": "0722e8b81661444c.mp3",
+    "hash": "0722e8b81661444c",
+    "text": "Hậu mạnh nhất, nên bé thường chọn Hậu nhé."
+  },
+  "basic-promotion/tap-last-rank/say": {
+    "file": "5549dddec9a652d2.mp3",
+    "hash": "5549dddec9a652d2",
+    "text": "Bé chạm vào hàng ngang đang sáng nhé."
+  },
+  "basic-queen/eat-apples/praise": {
+    "file": "b29db930a661b2e5.mp3",
+    "hash": "b29db930a661b2e5",
+    "text": "Tuyệt vời! Bé đã giúp Hậu ăn hết táo."
+  },
+  "basic-queen/eat-apples/say": {
+    "file": "3d11a7e8fbf26612.mp3",
+    "hash": "3d11a7e8fbf26612",
+    "text": "Bây giờ bé giúp Hậu ăn hết ba quả táo nhé."
+  },
+  "basic-queen/goodbye/say": {
+    "file": "7d49b02750de1d92.mp3",
+    "hash": "7d49b02750de1d92",
+    "text": "Bé đã học xong quân Hậu. Hẹn gặp lại bé nhé!"
+  },
+  "basic-queen/meet-queen/say": {
+    "file": "388a758d9345ab36.mp3",
+    "hash": "388a758d9345ab36",
+    "text": "Đây là quân Hậu. Hậu đội chiếc vương miện nhiều răng."
+  },
+  "basic-queen/move-to-star/praise": {
+    "file": "972e311da0b70bbd.mp3",
+    "hash": "972e311da0b70bbd",
+    "text": "Giỏi quá! Hậu đã tới ngôi sao."
+  },
+  "basic-queen/move-to-star/retry": {
+    "file": "fd5f4ceddf574ebd.mp3",
+    "hash": "fd5f4ceddf574ebd",
+    "text": "Chưa đúng rồi. Hậu đi thẳng hoặc đi chéo nhé."
+  },
+  "basic-queen/move-to-star/say": {
+    "file": "0617f6327a4de400.mp3",
+    "hash": "0617f6327a4de400",
+    "text": "Bé chạm vào Hậu, rồi chạm vào ô có ngôi sao."
+  },
+  "basic-queen/queen-all-squares/say": {
+    "file": "2c871875ac7e15ca.mp3",
+    "hash": "2c871875ac7e15ca",
+    "text": "Từ đây, Hậu đi được tới tất cả các ô đang sáng."
+  },
+  "basic-queen/queen-diagonal/say": {
+    "file": "67b3a0a01bca0156.mp3",
+    "hash": "67b3a0a01bca0156",
+    "text": "Hậu cũng đi theo đường chéo, giống Tượng."
+  },
+  "basic-queen/queen-goes-far/say": {
+    "file": "f63cd15a4e391da2.mp3",
+    "hash": "f63cd15a4e391da2",
+    "text": "Xem này, Hậu đi chéo lên thật xa."
+  },
+  "basic-queen/queen-no-jump/say": {
+    "file": "271465050fd0f6f9.mp3",
+    "hash": "271465050fd0f6f9",
+    "text": "Hậu không nhảy hình chữ L như Mã đâu nhé."
+  },
+  "basic-queen/queen-straight/say": {
+    "file": "60b3e10478814aee.mp3",
+    "hash": "60b3e10478814aee",
+    "text": "Hậu đi thẳng theo hàng ngang và cột dọc, giống Xe."
+  },
+  "basic-queen/tap-queen-square/retry": {
+    "file": "fd5f4ceddf574ebd.mp3",
+    "hash": "fd5f4ceddf574ebd",
+    "text": "Chưa đúng rồi. Hậu đi thẳng hoặc đi chéo nhé."
+  },
+  "basic-queen/tap-queen-square/say": {
+    "file": "bbda8d8707e3c68c.mp3",
+    "hash": "bbda8d8707e3c68c",
+    "text": "Bé chạm vào hình dán mà Hậu đi tới được nhé."
+  },
+  "basic-rook/eat-apples/praise": {
+    "file": "dfe04274e166d8a5.mp3",
+    "hash": "dfe04274e166d8a5",
+    "text": "Tuyệt vời! Bé đã giúp Xe ăn hết táo."
+  },
+  "basic-rook/eat-apples/say": {
+    "file": "6c1b2128752c9cb9.mp3",
+    "hash": "6c1b2128752c9cb9",
+    "text": "Bây giờ bé giúp Xe ăn hết ba quả táo nhé."
+  },
+  "basic-rook/goodbye/say": {
+    "file": "a238970f1e3d6e06.mp3",
+    "hash": "a238970f1e3d6e06",
+    "text": "Bé đã học xong quân Xe. Hẹn gặp lại bé nhé!"
+  },
+  "basic-rook/meet-rook/say": {
+    "file": "f5c71e2f7262bfe5.mp3",
+    "hash": "f5c71e2f7262bfe5",
+    "text": "Đây là quân Xe. Xe trông giống một lâu đài nhỏ."
+  },
+  "basic-rook/move-to-star/praise": {
+    "file": "7604d6bb180ab597.mp3",
+    "hash": "7604d6bb180ab597",
+    "text": "Giỏi quá! Xe đã tới ngôi sao."
+  },
+  "basic-rook/move-to-star/retry": {
+    "file": "ff6b65f32ecf6e4b.mp3",
+    "hash": "ff6b65f32ecf6e4b",
+    "text": "Chưa đúng rồi. Bé thử lại nhé, Xe chỉ đi thẳng thôi."
+  },
+  "basic-rook/move-to-star/say": {
+    "file": "45700565d50938b6.mp3",
+    "hash": "45700565d50938b6",
+    "text": "Bé hãy chạm vào Xe, rồi chạm vào ô có ngôi sao."
+  },
+  "basic-rook/rook-goes-far/say": {
+    "file": "16d8e01c486109e6.mp3",
+    "hash": "16d8e01c486109e6",
+    "text": "Xem này, Xe đi lên thật xa."
+  },
+  "basic-rook/rook-lines/say": {
+    "file": "6d4bcd0edad2f27a.mp3",
+    "hash": "6d4bcd0edad2f27a",
+    "text": "Xe đi thẳng theo hàng ngang và cột dọc, đi xa bao nhiêu cũng được."
+  },
+  "basic-rook/rook-no-diagonal/say": {
+    "file": "c0996e1d48c7a487.mp3",
+    "hash": "c0996e1d48c7a487",
+    "text": "Xe không đi chéo được nhé."
+  },
+  "basic-setup/bishops-next/say": {
+    "file": "7decc47addf49e42.mp3",
+    "hash": "7decc47addf49e42",
+    "text": "Hai quân Tượng đứng ngay cạnh hai quân Mã."
+  },
+  "basic-setup/black-side/say": {
+    "file": "91bab3cfa4f6d38e.mp3",
+    "hash": "91bab3cfa4f6d38e",
+    "text": "Quân đen xếp giống hệt như vậy ở phía bên kia."
+  },
+  "basic-setup/goodbye/say": {
+    "file": "29585d3438d1f00d.mp3",
+    "hash": "29585d3438d1f00d",
+    "text": "Bé đã học xong cách xếp quân. Hẹn gặp lại bé nhé!"
+  },
+  "basic-setup/pawn-row/say": {
+    "file": "8f225bb4fd187ecb.mp3",
+    "hash": "8f225bb4fd187ecb",
+    "text": "Tám quân Tốt trắng đứng kín một hàng ngang phía trước."
+  },
+  "basic-setup/rooks-in-corners/say": {
+    "file": "35c27940fc06ff5f.mp3",
+    "hash": "35c27940fc06ff5f",
+    "text": "Hai quân Xe đứng ở hai góc bàn cờ."
+  },
+  "basic-setup/tap-king-spot/retry": {
+    "file": "51fc1b668a675e7c.mp3",
+    "hash": "51fc1b668a675e7c",
+    "text": "Chưa đúng rồi. Vua đứng sát bên Hậu nhé."
+  },
+  "basic-setup/tap-king-spot/say": {
+    "file": "c6e55fc634c58051.mp3",
+    "hash": "c6e55fc634c58051",
+    "text": "Vua đứng ngay cạnh Hậu. Bé chạm vào ô của Vua nhé."
+  },
+  "basic-setup/tap-knight-spot/retry": {
+    "file": "c13911f0e3cef90d.mp3",
+    "hash": "c13911f0e3cef90d",
+    "text": "Chưa đúng rồi. Mã đứng sát bên Xe nhé."
+  },
+  "basic-setup/tap-knight-spot/say": {
+    "file": "bb5332abd6ba0e9c.mp3",
+    "hash": "bb5332abd6ba0e9c",
+    "text": "Mã đứng ngay cạnh Xe. Bé chạm vào ô Mã đứng nhé."
+  },
+  "basic-setup/tap-queen-spot/retry": {
+    "file": "59fbf1dacb10ab73.mp3",
+    "hash": "59fbf1dacb10ab73",
+    "text": "Chưa đúng rồi. Bé tìm ô trống màu sáng nhé."
+  },
+  "basic-setup/tap-queen-spot/say": {
+    "file": "1b1003dc48d3744a.mp3",
+    "hash": "1b1003dc48d3744a",
+    "text": "Hậu trắng thích ô sáng. Bé chạm vào ô sáng còn trống nhé."
+  },
+  "basic-setup/tap-white-rook/retry": {
+    "file": "120c9b3a7efc5f3a.mp3",
+    "hash": "120c9b3a7efc5f3a",
+    "text": "Chưa đúng rồi. Xe trắng đứng ở góc, gần bé nhé."
+  },
+  "basic-setup/tap-white-rook/say": {
+    "file": "84c82c20b507a9dc.mp3",
+    "hash": "84c82c20b507a9dc",
+    "text": "Bé chạm vào một quân Xe trắng nhé."
+  },
+  "basic-setup/white-at-bottom/say": {
+    "file": "4e77aefa2d163470.mp3",
+    "hash": "4e77aefa2d163470",
+    "text": "Lúc bắt đầu, quân trắng đứng ở dưới, gần bé nhất."
+  },
+  "basic-stalemate/be-careful/say": {
+    "file": "80fa202062de4829.mp3",
+    "hash": "80fa202062de4829",
+    "text": "Khi đang thắng, bé cẩn thận đừng làm hòa pat nhé."
+  },
+  "basic-stalemate/compare-mate/say": {
+    "file": "38f0eaf55a0b3957.mp3",
+    "hash": "38f0eaf55a0b3957",
+    "text": "Còn đây là chiếu hết. Vua đen bị chiếu, bên trắng thắng."
+  },
+  "basic-stalemate/goodbye/say": {
+    "file": "857c2c23c5fcc058.mp3",
+    "hash": "857c2c23c5fcc058",
+    "text": "Bé đã học xong bài hòa pat. Hẹn gặp lại bé nhé!"
+  },
+  "basic-stalemate/mate-not-stalemate/praise": {
+    "file": "3edc8f6837e0a87e.mp3",
+    "hash": "3edc8f6837e0a87e",
+    "text": "Giỏi quá! Bé đã chiếu hết rồi."
+  },
+  "basic-stalemate/mate-not-stalemate/retry": {
+    "file": "808d3e859e1871d0.mp3",
+    "hash": "808d3e859e1871d0",
+    "text": "Cẩn thận nhé, bé cho Hậu tới ngôi sao."
+  },
+  "basic-stalemate/mate-not-stalemate/say": {
+    "file": "eeb62d2efd78efc1.mp3",
+    "hash": "eeb62d2efd78efc1",
+    "text": "Bé hãy cho Hậu tới ô có ngôi sao để chiếu hết."
+  },
+  "basic-stalemate/meet-stalemate/say": {
+    "file": "155681397d511f6a.mp3",
+    "hash": "155681397d511f6a",
+    "text": "Đến lượt Vua đen, nhưng Vua đen không đi đâu được."
+  },
+  "basic-stalemate/name-stalemate/say": {
+    "file": "c9da0f63a7887b43.mp3",
+    "hash": "c9da0f63a7887b43",
+    "text": "Như vậy gọi là hòa pat. Không ai thắng cả."
+  },
+  "basic-stalemate/tap-king/praise": {
+    "file": "9e6e6704889658da.mp3",
+    "hash": "9e6e6704889658da",
+    "text": "Đúng rồi! Vua đen không đi được, nên hòa pat."
+  },
+  "basic-stalemate/tap-king/say": {
+    "file": "1942763fffcc5c5b.mp3",
+    "hash": "1942763fffcc5c5b",
+    "text": "Bé hãy chạm vào Vua đen nhé."
+  },
+  "basic-stalemate/why-stuck/say": {
+    "file": "5e8f54610cc31bcd.mp3",
+    "hash": "5e8f54610cc31bcd",
+    "text": "Ô xung quanh đều bị canh, mà Vua không bị chiếu."
+  },
+  "basic-stalemate/won/say": {
+    "file": "b5bc4374545b29d6.mp3",
+    "hash": "b5bc4374545b29d6",
+    "text": "Bé đã thắng mà không làm hòa pat. Tuyệt vời!"
+  },
+  "common/hint-bestMove": {
+    "file": "ce2a85d55aec7639.mp3",
+    "hash": "ce2a85d55aec7639",
+    "text": "Đây là một nước đi tốt. Bé thử xem!"
+  },
+  "common/hint-captureFreePiece": {
+    "file": "fb3d8372eda485fc.mp3",
+    "hash": "fb3d8372eda485fc",
+    "text": "Có một quân không ai bảo vệ. Bé ăn nó đi!"
+  },
+  "common/hint-deliverCheckmate": {
+    "file": "4f1efe5e2f6097ee.mp3",
+    "hash": "4f1efe5e2f6097ee",
+    "text": "Có nước chiếu hết đấy! Bé thử tìm xem."
+  },
+  "common/hint-developPiece": {
+    "file": "e5288aa60b882fce.mp3",
+    "hash": "e5288aa60b882fce",
+    "text": "Bé hãy đưa thêm quân ra giữa bàn cờ nhé."
+  },
+  "common/hint-escapeCheck": {
+    "file": "48f32d452a5a0af7.mp3",
+    "hash": "48f32d452a5a0af7",
+    "text": "Vua đang bị chiếu. Bé hãy cứu Vua nhé!"
+  },
+  "common/lesson-complete": {
+    "file": "e69b3a6a7e1f991c.mp3",
+    "hash": "e69b3a6a7e1f991c",
+    "text": "Bé đã học xong bài này. Giỏi lắm!"
+  },
+  "common/level-1": {
+    "file": "b821f1893f18edda.mp3",
+    "hash": "b821f1893f18edda",
+    "text": "Cấp 1: Gà con."
+  },
+  "common/level-10": {
+    "file": "886bd5763509f926.mp3",
+    "hash": "886bd5763509f926",
+    "text": "Cấp 10: Rồng."
+  },
+  "common/level-2": {
+    "file": "e71e4de37a5184e0.mp3",
+    "hash": "e71e4de37a5184e0",
+    "text": "Cấp 2: Thỏ trắng."
+  },
+  "common/level-3": {
+    "file": "f628b125b3bd7b17.mp3",
+    "hash": "f628b125b3bd7b17",
+    "text": "Cấp 3: Mèo mướp."
+  },
+  "common/level-4": {
+    "file": "1cb5226c1ccca0f2.mp3",
+    "hash": "1cb5226c1ccca0f2",
+    "text": "Cấp 4: Cún con."
+  },
+  "common/level-5": {
+    "file": "a229f8a27e1e2c00.mp3",
+    "hash": "a229f8a27e1e2c00",
+    "text": "Cấp 5: Cáo nhỏ."
+  },
+  "common/level-6": {
+    "file": "eb04ddb8c18f916e.mp3",
+    "hash": "eb04ddb8c18f916e",
+    "text": "Cấp 6: Gấu trúc."
+  },
+  "common/level-7": {
+    "file": "562993c61e3f7e3b.mp3",
+    "hash": "562993c61e3f7e3b",
+    "text": "Cấp 7: Sói xám."
+  },
+  "common/level-8": {
+    "file": "3eb7eb2df4b00f8f.mp3",
+    "hash": "3eb7eb2df4b00f8f",
+    "text": "Cấp 8: Gấu nâu."
+  },
+  "common/level-9": {
+    "file": "4ce2cac242ce982f.mp3",
+    "hash": "4ce2cac242ce982f",
+    "text": "Cấp 9: Hổ vằn."
+  },
+  "common/play-check": {
+    "file": "fcf90da780b24ae5.mp3",
+    "hash": "fcf90da780b24ae5",
+    "text": "Vua đang bị chiếu!"
+  },
+  "common/play-computer-wins": {
+    "file": "529088886dd9e1cf.mp3",
+    "hash": "529088886dd9e1cf",
+    "text": "Máy thắng ván này. Mình chơi lại nhé!"
+  },
+  "common/play-draw": {
+    "file": "8d293c14dbee9a60.mp3",
+    "hash": "8d293c14dbee9a60",
+    "text": "Hòa rồi! Ván cờ rất hay."
+  },
+  "common/play-you-win": {
+    "file": "ddc47a6c414be20b.mp3",
+    "hash": "ddc47a6c414be20b",
+    "text": "Bé thắng rồi! Giỏi quá!"
+  },
+  "common/play-your-turn": {
+    "file": "54432f490b72f77f.mp3",
+    "hash": "54432f490b72f77f",
+    "text": "Đến lượt bé đi."
+  },
+  "common/praise-1": {
+    "file": "1326ffc46107e5ca.mp3",
+    "hash": "1326ffc46107e5ca",
+    "text": "Giỏi quá!"
+  },
+  "common/praise-2": {
+    "file": "3624abdefccc8e82.mp3",
+    "hash": "3624abdefccc8e82",
+    "text": "Bé làm đúng rồi!"
+  },
+  "common/praise-3": {
+    "file": "21efd2e2a89d8294.mp3",
+    "hash": "21efd2e2a89d8294",
+    "text": "Tuyệt vời!"
+  },
+  "common/retry-1": {
+    "file": "0d56d504fab0c219.mp3",
+    "hash": "0d56d504fab0c219",
+    "text": "Chưa đúng rồi, bé thử lại nhé."
+  },
+  "common/retry-2": {
+    "file": "c5b71a6cc6717cd3.mp3",
+    "hash": "c5b71a6cc6717cd3",
+    "text": "Gần đúng rồi, thử lại nào!"
+  },
+  "common/tap-to-start": {
+    "file": "4d63459821dc1079.mp3",
+    "hash": "4d63459821dc1079",
+    "text": "Bé chạm vào nút to để bắt đầu nhé."
+  }
+}

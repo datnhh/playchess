@@ -5,6 +5,9 @@ node_modules/
 dist/
 *.tsbuildinfo
 
+# Offline TTS tools downloaded by npm run tts:setup (Piper, voice model, ffmpeg)
+.tools/
+
 # Engine files are copied from node_modules by scripts/copy-engine.mjs
 public/engine/
 

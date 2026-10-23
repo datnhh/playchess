@@ -19,6 +19,7 @@
     "typecheck": "tsc -b",
     "validate": "node tools/content/validate.ts",
     "tts": "node tools/tts/generate.ts",
+    "tts:setup": "node tools/tts/setup.ts",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "vitest run",

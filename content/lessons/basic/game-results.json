@@ -9,7 +9,7 @@
   "boardMode": "standard",
   "orientation": "white",
   "start": "R5k1/5ppp/8/8/8/8/8/6K1 b - - 0 1",
-  "reviewed": false,
+  "reviewed": true,
   "steps": [
     {
       "kind": "watch",

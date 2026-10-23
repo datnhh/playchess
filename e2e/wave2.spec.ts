@@ -1,3 +1,4 @@
+import { readdirSync, readFileSync } from 'node:fs';
 import { expect, test, type Page } from '@playwright/test';
 
 /** Clicks the centre of a square on a white-oriented chessground board. */
@@ -21,21 +22,38 @@ const blackPieceSquares = (page: Page) =>
       .join(','),
   );
 
-test('home tiles lead to the learning maps (empty until lessons are reviewed)', async ({
-  page,
-}) => {
+// Reviewed lessons ship in production; the manifest tells which audio files they use.
+const lessonFiles = readdirSync('content/lessons/basic');
+const manifest = JSON.parse(readFileSync('content/audio/manifest.json', 'utf8')) as Record<
+  string,
+  { file: string }
+>;
+
+test('home tiles lead to the learning map with every reviewed lesson', async ({ page }) => {
   await page.goto('/');
   await page.getByRole('link', { name: /Học cơ bản/ }).click();
   await expect(page).toHaveURL(/\/learn\/basic$/);
   await expect(page.getByRole('heading', { name: 'Học cơ bản' })).toBeVisible();
-  await expect(page.getByText('Bài học đang được chuẩn bị')).toBeVisible();
+  await expect(page.locator('a[href^="/lesson/basic-"]')).toHaveCount(lessonFiles.length);
+  await page.locator('a[href="/lesson/basic-board"]').click();
+  await expect(page.getByRole('button', { name: '▶ Bắt đầu' })).toBeVisible();
 });
 
-test('unknown track and draft lessons are not reachable in production', async ({ page }) => {
+test('unknown tracks and lessons show the not-found pages', async ({ page }) => {
   await page.goto('/learn/khong-co');
   await expect(page.getByRole('heading', { name: 'Không tìm thấy trang' })).toBeVisible();
-  await page.goto('/lesson/basic-rook');
+  await page.goto('/lesson/basic-khong-co');
   await expect(page.getByText('Không tìm thấy bài học này')).toBeVisible();
+});
+
+test('lesson audio is served as MP3', async ({ request }) => {
+  const files = [...new Set(Object.values(manifest).map((entry) => entry.file))];
+  expect(files.length).toBeGreaterThan(0);
+  for (const file of [files[0]!, files[files.length - 1]!]) {
+    const response = await request.get(`/audio/${file}`);
+    expect(response.status()).toBe(200);
+    expect(response.headers()['content-type']).toContain('audio/mpeg');
+  }
 });
 
 test('play page: pick level 1, move, and the computer answers', async ({ page }) => {

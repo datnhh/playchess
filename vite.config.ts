@@ -31,6 +31,8 @@ function readGlobalHeaders(): Record<string, string> {
 
 export default defineConfig({
   plugins: [react(), lessonsPlugin()],
+  // .tools/ holds the offline TTS binaries and voice (hundreds of MB, gitignored): do not watch it.
+  server: { watch: { ignored: ['**/.tools/**'] } },
   build: {
     target: 'es2022',
     sourcemap: true,
