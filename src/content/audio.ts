@@ -1,3 +1,6 @@
+import type { EngineLevel } from '../engine/types.ts';
+import { LEVEL_CHARACTERS } from './levelCharacters.ts';
+
 /**
  * Audio file contract between the TTS pipeline (tools/tts, writes) and the app (reads).
  *
@@ -29,8 +32,24 @@ export function lessonAudioKey(lessonId: string, stepId: string, field: Narratio
   return `${lessonId}/${stepId}/${field}`;
 }
 
+type LevelClipId = `level-${EngineLevel}`;
+
+/** "Cấp 3: Mèo mướp", read when a child taps a level card on the play page. */
+const LEVEL_CLIPS = Object.fromEntries(
+  LEVEL_CHARACTERS.map((character) => [
+    `level-${character.level}`,
+    `Cấp ${character.level}: ${character.name}.`,
+  ]),
+) as Record<LevelClipId, string>;
+
 /** Short clips used everywhere. Text lives here so the pipeline and the app share one source. */
 export const COMMON_CLIPS = {
+  ...LEVEL_CLIPS,
+  'play-your-turn': 'Đến lượt bé đi.',
+  'play-you-win': 'Bé thắng rồi! Giỏi quá!',
+  'play-draw': 'Hòa rồi! Ván cờ rất hay.',
+  'play-computer-wins': 'Máy thắng ván này. Mình chơi lại nhé!',
+  'play-check': 'Vua đang bị chiếu!',
   'praise-1': 'Giỏi quá!',
   'praise-2': 'Bé làm đúng rồi!',
   'praise-3': 'Tuyệt vời!',

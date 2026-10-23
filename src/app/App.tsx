@@ -1,12 +1,20 @@
-import { lazy, Suspense, type ComponentType } from 'react';
+import { lazy, Suspense, type ComponentType, type ReactElement } from 'react';
+import { trackSchema } from '../content/schema.ts';
 import { HomePage } from '../pages/HomePage.tsx';
 import { NotFoundPage } from '../pages/NotFoundPage.tsx';
-import { usePathname } from './router.ts';
+import { matchPath, usePathname, type RouteParams } from './router.ts';
 
-// Technical pages are loaded on demand so they never weigh on the children's pages.
-const named = <K extends string>(load: () => Promise<Record<K, ComponentType>>, name: K) =>
-  lazy(() => load().then((module) => ({ default: module[name] })));
+// Pages other than the home page are loaded on demand to keep the first load small.
+const named = <K extends string, P extends object>(
+  load: () => Promise<Record<K, ComponentType<P>>>,
+  name: K,
+) => lazy(() => load().then((module) => ({ default: module[name] })));
 
+const TrackPage = named(() => import('../map/TrackPage.tsx'), 'TrackPage');
+const LessonPage = named(() => import('../map/LessonPage.tsx'), 'LessonPage');
+const PlayPage = named(() => import('../play/PlayPage.tsx'), 'PlayPage');
+const SettingsPage = named(() => import('../settings/SettingsPage.tsx'), 'SettingsPage');
+const CreditsPage = named(() => import('../settings/CreditsPage.tsx'), 'CreditsPage');
 const SmokePage = named(() => import('../pages/SmokePage.tsx'), 'SmokePage');
 const DevIndexPage = named(() => import('../pages/DevIndexPage.tsx'), 'DevIndexPage');
 const BoardDemoPage = named(() => import('../board/BoardDemoPage.tsx'), 'BoardDemoPage');
@@ -15,22 +23,47 @@ const EngineDemoPage = named(() => import('../engine/EngineDemoPage.tsx'), 'Engi
 // The review page lists draft lessons: it only exists in `vite dev`, so production never ships it.
 const ReviewPage = import.meta.env.DEV ? lazy(() => import('../review/ReviewPage.tsx')) : null;
 
-const routes: Record<string, ComponentType> = {
-  '/': HomePage,
-  '/smoke': SmokePage,
-  '/dev': DevIndexPage,
-  '/dev/board': BoardDemoPage,
-  '/dev/lesson': DevLessonPage,
-  '/dev/engine': EngineDemoPage,
-  ...(ReviewPage ? { '/review': ReviewPage } : {}),
-};
+interface Route {
+  pattern: string;
+  /** Returns null when the params are invalid, which renders the not-found page. */
+  render: (params: RouteParams) => ReactElement | null;
+}
+
+const ROUTES: readonly Route[] = [
+  { pattern: '/', render: () => <HomePage /> },
+  {
+    pattern: '/learn/:track',
+    render: ({ track }) => {
+      const parsed = trackSchema.safeParse(track);
+      return parsed.success ? <TrackPage track={parsed.data} /> : null;
+    },
+  },
+  { pattern: '/lesson/:id', render: ({ id }) => (id ? <LessonPage lessonId={id} /> : null) },
+  { pattern: '/play', render: () => <PlayPage /> },
+  { pattern: '/settings', render: () => <SettingsPage /> },
+  { pattern: '/credits', render: () => <CreditsPage /> },
+  { pattern: '/smoke', render: () => <SmokePage /> },
+  { pattern: '/dev', render: () => <DevIndexPage /> },
+  { pattern: '/dev/board', render: () => <BoardDemoPage /> },
+  { pattern: '/dev/lesson', render: () => <DevLessonPage /> },
+  { pattern: '/dev/engine', render: () => <EngineDemoPage /> },
+  ...(ReviewPage ? [{ pattern: '/review', render: () => <ReviewPage /> }] : []),
+];
+
+function renderRoute(pathname: string): ReactElement {
+  for (const route of ROUTES) {
+    const params = matchPath(route.pattern, pathname);
+    if (params) return route.render(params) ?? <NotFoundPage />;
+  }
+  return <NotFoundPage />;
+}
 
 export function App() {
   const pathname = usePathname();
-  const Page = routes[pathname] ?? NotFoundPage;
   return (
     <Suspense fallback={<main className="page" aria-busy="true" />}>
-      <Page />
+      {/* key: remount pages when the path changes (e.g. lesson to lesson) so state never leaks. */}
+      <div key={pathname}>{renderRoute(pathname)}</div>
     </Suspense>
   );
 }

@@ -131,6 +131,28 @@ export const stepSchema = z.discriminatedUnion('kind', [
 
 // ---------- Lesson ----------
 
+/** Picture shown for the lesson on the learning map (children recognise icons, not titles). */
+export const lessonIconSchema = z.enum([
+  'board',
+  'king',
+  'queen',
+  'rook',
+  'bishop',
+  'knight',
+  'pawn',
+  'capture',
+  'setup',
+  'check',
+  'checkmate',
+  'stalemate',
+  'castling',
+  'promotion',
+  'enPassant',
+  'opening',
+  'endgame',
+  'trophy',
+]);
+
 /** basic = "Học cơ bản" (all rules needed to play a game), advanced = "Học nâng cao" (openings, endgames). */
 export const trackSchema = z.enum(['basic', 'advanced']);
 
@@ -144,6 +166,7 @@ export const lessonSchema = z
     /** Shown to parents on the map; children rely on icons and audio. */
     title: z.string().trim().min(1).max(80),
     summary: z.string().trim().max(200).optional(),
+    icon: lessonIconSchema.optional(),
     boardMode: z.enum(['sandbox', 'standard']),
     orientation: z.enum(['white', 'black']).default('white'),
     start: z.string().min(1),
@@ -204,3 +227,4 @@ export type LessonAction = z.infer<typeof actionSchema>;
 export type LessonAssertion = z.infer<typeof assertionSchema>;
 export type Track = z.infer<typeof trackSchema>;
 export type StickerKind = z.infer<typeof stickerKindSchema>;
+export type LessonIcon = z.infer<typeof lessonIconSchema>;

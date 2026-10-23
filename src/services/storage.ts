@@ -72,8 +72,24 @@ export const settingsSchema = z.object({
 });
 export type Settings = z.infer<typeof settingsSchema>;
 
+/** Results against the computer, per level ("1".."10"), from the child's point of view. */
+export const playStatsSchema = z.object({
+  levels: z.record(
+    z.string(),
+    z.object({
+      wins: z.number().int().min(0),
+      draws: z.number().int().min(0),
+      losses: z.number().int().min(0),
+      lastPlayedAt: z.string(),
+    }),
+  ),
+});
+export type PlayStats = z.infer<typeof playStatsSchema>;
+export type GameOutcome = 'win' | 'draw' | 'loss';
+
 const PROGRESS_KEY = 'progress';
 const SETTINGS_KEY = 'settings';
+const PLAY_STATS_KEY = 'play-stats';
 
 export const DEFAULT_SETTINGS: Settings = { muted: false, volume: 1 };
 
@@ -95,4 +111,36 @@ export function loadSettings(): Settings {
 
 export function saveSettings(settings: Settings): boolean {
   return writeValue(SETTINGS_KEY, settingsSchema, settings);
+}
+
+export function loadPlayStats(): PlayStats {
+  return readValue(PLAY_STATS_KEY, playStatsSchema, { levels: {} });
+}
+
+/** Adds one finished game to the stats and returns the updated stats (also when saving fails). */
+export function recordGameResult(
+  level: number,
+  outcome: GameOutcome,
+  playedAt: string = new Date().toISOString(),
+): PlayStats {
+  const stats = loadPlayStats();
+  const key = String(level);
+  const current = stats.levels[key] ?? { wins: 0, draws: 0, losses: 0, lastPlayedAt: playedAt };
+  const next: PlayStats = {
+    levels: {
+      ...stats.levels,
+      [key]: {
+        wins: current.wins + (outcome === 'win' ? 1 : 0),
+        draws: current.draws + (outcome === 'draw' ? 1 : 0),
+        losses: current.losses + (outcome === 'loss' ? 1 : 0),
+        lastPlayedAt: playedAt,
+      },
+    },
+  };
+  writeValue(PLAY_STATS_KEY, playStatsSchema, next);
+  return next;
+}
+
+export function clearPlayStats(): boolean {
+  return removeValue(PLAY_STATS_KEY);
 }

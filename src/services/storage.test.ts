@@ -6,6 +6,9 @@ import {
   saveProgress,
   saveSettings,
   clearProgress,
+  clearPlayStats,
+  loadPlayStats,
+  recordGameResult,
 } from './storage.ts';
 
 class MemoryStorage {
@@ -72,6 +75,22 @@ describe('storage service', () => {
     };
     installStorage(storage);
     expect(saveSettings(DEFAULT_SETTINGS)).toBe(false);
+  });
+
+  it('records game results per level', () => {
+    installStorage(new MemoryStorage());
+    recordGameResult(3, 'win', '2026-10-23T10:00:00Z');
+    recordGameResult(3, 'loss', '2026-10-23T10:05:00Z');
+    const stats = recordGameResult(10, 'draw', '2026-10-23T10:10:00Z');
+    expect(stats.levels['3']).toEqual({
+      wins: 1,
+      draws: 0,
+      losses: 1,
+      lastPlayedAt: '2026-10-23T10:05:00Z',
+    });
+    expect(loadPlayStats().levels['10']?.draws).toBe(1);
+    expect(clearPlayStats()).toBe(true);
+    expect(loadPlayStats()).toEqual({ levels: {} });
   });
 
   it('refuses to write invalid values', () => {

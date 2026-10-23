@@ -29,3 +29,31 @@ export function navigate(to: string): void {
   for (const listener of listeners) listener();
   window.scrollTo(0, 0);
 }
+
+export type RouteParams = Readonly<Record<string, string>>;
+
+/**
+ * Matches "/lesson/:id" style patterns. Returns the decoded params, or null when the path does not
+ * match. A trailing slash is ignored; segments never match across "/".
+ */
+export function matchPath(pattern: string, pathname: string): RouteParams | null {
+  const split = (path: string) => path.replace(/\/+$/, '').split('/').filter(Boolean);
+  const patternParts = split(pattern);
+  const pathParts = split(pathname);
+  if (patternParts.length !== pathParts.length) return null;
+
+  const params: Record<string, string> = {};
+  for (const [index, part] of patternParts.entries()) {
+    const actual = pathParts[index]!;
+    if (part.startsWith(':')) {
+      try {
+        params[part.slice(1)] = decodeURIComponent(actual);
+      } catch {
+        return null;
+      }
+    } else if (part !== actual) {
+      return null;
+    }
+  }
+  return params;
+}
